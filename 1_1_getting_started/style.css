@@ -1,7 +1,9 @@
 body {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Roboto Mono';
   font-size: 16px;
   padding: 1em;
+  width: 80%;
+  margin: 0 auto;
 }
 
 h1 {
@@ -16,5 +18,11 @@ h3 {
 
 p {
   font-size: 1em;
-  color: pink;
+  color: rgb(242, 174, 66);
+}
+
+#beeker {
+  width: 30%;
+  margin: auto;
+  display: block;
 }
