@@ -11,14 +11,18 @@ h1 {
   margin: 0.25em 0;
 }
 
-h3 {
+h2 {
   font-size: 2em;
   margin: 0.25em 0;
 }
 
+h3 {
+  color: rgb(242, 174, 66);
+}
+
 p {
   font-size: 1em;
-  color: rgb(242, 174, 66);
+ 
 }
 
 #beeker {
