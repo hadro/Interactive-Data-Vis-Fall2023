@@ -3,17 +3,120 @@
 <head>
   <meta charset="utf-8">
   <title>Interactive Data Visualization Tutorial</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <h1>Hello World!</h1>
+  <h1>Hello Data-Viz World!</h1>
   <h3>Section 1 | Tutorial 2 | Basic HTML</h3>
-  <table>
+  <table class="custom-table">
     <!-- Add your table data here -->
+    <thead>
+      <th></th>
+      <th>Lawful</th>
+      <th>Neutral</th>
+      <th>Chaotic</th>
+    </thead>
+    <tbody>
+    <tr class="good">
+      <td>Good</td>
+      <td>Lawful Good</td>
+      <td>Neutral Good</td> 
+      <td>Chaotic Good</td>
+    </tr>
+    <tr class="neutral">
+      <td>Neutral</td>
+      <td>Lawful Neutral</td>
+      <td>True Neutral</td> 
+      <td>Chaotic Neutral</td>
+    </tr>
+    <tr class="evil">
+      <td>Evil</td>
+      <td>Lawful Evil</td>
+      <td>Neutral Evil</td>
+      <td>Chaotic Evil</td> 
+    </tr>
+  </tbody>
+    <caption>
+      The classic alignment chart
+    </caption>
   </table>
-  <svg>
+  <hr>
+
     <!-- Add your rectangles in here -->
-  </svg>
+    <svg viewBox="0 0 450 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gradient" gradientTransform="rotate(90)">
+          <stop offset="5%"  stop-color="#1b9e77" />
+          <stop offset="30%"  stop-color="#d95f02" />
+          <stop offset="95%" stop-color="#7570b3" />
+        </linearGradient>
+
+        <pattern id="img1" patternUnits="userSpaceOnUse" width="100" height="100">
+          <image href="https://upload.wikimedia.org/wikipedia/en/b/b4/Beaker_%28Muppet%29-en.jpg" x="20" y="0" width="100" height="100" />
+      </defs>
+      <!-- Simple rectangle -->
+      <!-- <rect width="100" height="100" /> -->
+    
+      <!-- Rounded corner rectangle -->
+      <!-- I decided to see if I could use an image as a background-image for an SVG, and it turns out you can! -->
+      <rect class="rounded" x="20" width="100" height="100" rx="15" fill="url(#img1)" stroke="#5E5DF0" />
+
+      <!-- A circle using the rect element -->
+      <!-- added a gradient after looking at the demo -->
+      <rect x="140" width="100" height="100" rx="50" fill="url('#gradient')"  />
+      
+      <!-- A littler circle using the proper circle element -->
+      <circle class="small-circle" cx="290" cy="50" r="10" />
+
+      <!-- A face made, unecessarily, using SVG polyline stuff and circles -->
+
+      <!-- eyes -->
+      <path
+      fill="none"
+      stroke="magenta"
+      d="M 325,50
+         A 25,20 0,0,0 375,50
+         A 25,20 0,0,0 425,50
+         A 25,20 0,0,0 375,50
+         A 25,20 0,0,0 325,50 z" />
+  
+         <!-- pupils -->
+    <circle cx="350" cy="50" r="2" />
+    <circle cx="400" cy="50" r="2" />
+  
+    <!-- nose -->
+    <polyline   fill="none"
+      stroke="black"
+      points="375,60 370,75 380,75"/>
+  
+      <!-- mouth -->
+    <path d="M 350 80 C 365 90, 385 90, 400 80" stroke="black" fill="transparent"/>
+      
+    </svg>
+
+    <div id="beeker">
+      <fieldset>
+        <legend>Check here if you love Beeker:</legend>
+      
+        <div>
+          <input type="checkbox" name="yes" checked />
+          <label for="yes">Yes</label>
+        </div>
+      
+        <div>
+          <input type="checkbox" name="no" />
+          <label for="no">No</label>
+        </div>
+      </fieldset>
+      
+      <button type="button">Honk if you love Beeker</button>
+      <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Beaker_%28Muppet%29-en.jpg" alt="Image of Beeker, the Muppet">
+    </div>
+    
+    
+
+
+
 </body>
 </html>
