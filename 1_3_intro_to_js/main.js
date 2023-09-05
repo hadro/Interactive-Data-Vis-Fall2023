@@ -105,3 +105,4 @@ function updateBar(){
         .attr("fill", function(d) {
         return "rgb("+ Math.round(d.value * 8) + ",0," + Math.round(d.value * 10) + ")";
         });
+      }
