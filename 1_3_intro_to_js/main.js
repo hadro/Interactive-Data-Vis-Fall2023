@@ -86,14 +86,10 @@ svg.selectAll("rect")
 
 d3.select(".increment")
     .on("click", function() {
-        newData(); //Changes de values of the data
+        // newData(); //Changes de values of the data
         updateBar(); //Updates the bar chart
     });
-
-function newData(){
-    dataset = dataset
-    }
-
+  
 function updateBar(){
     //Update all rects
     svg.selectAll("rect")
