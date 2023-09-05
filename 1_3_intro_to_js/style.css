@@ -22,7 +22,16 @@ p {
 
 #beeker {
   margin-top; 3em;
+  margin-bottom: 3em;
+  float: left;
   display: block;
+  width: 49%;
+  /* border-right: 3px solid black; */
+}
+
+#coltrane {
+  padding: 2em;
+  /* width: 49%; */
 }
 
 section {
@@ -58,4 +67,31 @@ button {
 
 .count-container {
   font-size: 4em;
+}
+
+.score {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+th, td {
+  text-align: center;
+  /* border-right: 3px solid black; */
+  border: 3px solid black;
+  border-top: none;
+  padding: 1em;
+}
+
+td {
+  border-bottom: none;
+  
+}
+
+#scorecard {
+  margin: auto;
+  /* width: 50%; */
+}
+
+#my_dataviz {
+  float: right;
 }

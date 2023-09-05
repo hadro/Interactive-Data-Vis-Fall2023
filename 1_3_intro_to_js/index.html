@@ -5,6 +5,8 @@
   <title>Interactive Data Visualization Tutorial</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
   <link rel="stylesheet" href="./style.css">
+  <script src="https://d3js.org/d3.v4.js"></script>
+
 </head>
 <body>
   <h1>Hello World!</h1>
@@ -13,13 +15,42 @@
   
   <hr>
 
+  <div id="my_dataviz"></div>
+
+  <div id="scorecard">
+<h2>Scorecard</h2>
+<table class="score">
+  <thead>
+    <th>Beeker</th>
+    <th>Alice Coltrane</th>
+  </thead>
+  <tr>
+    <td id="beeker-score">0</td>
+    <td id="alice-score">0</td>
+  </tr>
+</table>
+</div>
+
+<hr>
+
   <div id="beeker">   
-    <button type="button">Honk if you love Beeker</button>
-    <p class="count-container"><span id="counter">0 times you've said you love Beeker</span></p>  
+    <button type="button" class="increment" id="beeker-button">Honk if you love Beeker</button>
+    <p class="count-container"><span id="beeker-counter">0 times you've said you love Beeker</span></p>  
+  </div>
+  <div id="coltrane">
+    <button type="button" class="increment" id="coltrane-button">Honk if you're listening to Alice Coltrane</button>
+    <p class="count-container"><span id="coltrane-counter">0 times you've said you're listening to Alice Coltrane</span></p>  
   </div>
 
 
 
+
 </body>
+
+<!-- 
+  There's probably a way to get the javascript to work without having to load it last, 
+  but in my first attemps this was the only way to get it to work 
+-->
+
 <script src="main.js"></script>
 </html>
