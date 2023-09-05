@@ -1,7 +1,7 @@
 // console.log('hello world');
 
 // Data container for click increments
-var dataset = [
+const dataset = [
     {
         name: "beeker",
         value: 1},
@@ -48,15 +48,15 @@ The code is largely adapted from here: https://observablehq.com/@uvizlab/d3-tuto
 
 
 
-var w = 600
-var h = 250
+const w = 600
+const h = 250
    // xScale will help us set the x position of the bars
-var xScale = d3.scaleBand() //Ordinal scale
+const xScale = d3.scaleBand() //Ordinal scale
            .domain(d3.range(dataset.length)) //sets the input domain for the scale
            .rangeRound([0, w]) //enables rounding of the range
            .paddingInner(0.05); //spacing between each bar
 //yScale will help us map data to the height of bars in the barchart
-var yScale = d3.scaleLinear()
+const yScale = d3.scaleLinear()
     //.domain([0, d3.max(dataset, function(d) { return d.value; })]) //sets the upper end of the input domain to the largest data value in dataset
     .domain([0, d3.max(dataset, function(d) { return d.value; })+2]) //sets the upper end of the input domain to the largest data value in dataset
     .range([0, h]);
