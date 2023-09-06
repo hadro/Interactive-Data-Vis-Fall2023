@@ -13,14 +13,14 @@ const dataset = [
 window.addEventListener("load", function() { // when the page has loaded
     
     document.getElementById("beeker-button").addEventListener("click", function() {
-        message = (dataset[0].value == 1) ? "1 time you've said you love Beeker" : dataset[0].value + " times you've said you love Beeker";
+        message = (dataset[0].value === 1) ? "1 time you've said you love Beeker" : dataset[0].value + " times you've said you love Beeker";
         document.getElementById("beeker-counter").innerText = message;
         document.getElementById("beeker-score").innerText = dataset[0].value;
         dataset[0].value++;
 
     });
     document.getElementById("coltrane-button").addEventListener("click", function() {
-        message = (dataset[1].value == 1) ? "1 time you've said you love Alice Coltrane" : dataset[1].value + " times you've said you love Alice Coltrane";
+        message = (dataset[1].value === 1) ? "1 time you've said you love Alice Coltrane" : dataset[1].value + " times you've said you love Alice Coltrane";
         document.getElementById("coltrane-counter").innerText = message;
         document.getElementById("alice-score").innerText = dataset[1].value;
         dataset[1].value++;
