@@ -17,3 +17,15 @@ h3 {
 p {
   font-size: 1em;
 }
+
+div.bar {
+  display: block;
+  height: 30px;
+  /* margin-right: 2px; */
+  background-color: lightsteelblue;
+  margin-top: 2px;
+}
+
+div {
+  margin: 50px 0 0 90px;
+}
