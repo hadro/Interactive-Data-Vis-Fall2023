@@ -4,8 +4,6 @@ const width = window.innerWidth *0.8;
 const height = 500;
 margin = ({top: 20, right: 30, bottom: 30, left: 5})
 
-const color = d3.scaleOrdinal(d3.schemeCategory10);
-
 /* LOAD DATA */
 d3.csv('../data/MoMA_topTenNationalities.csv', d3.autoType)
    .then(data => {
@@ -16,7 +14,7 @@ d3.csv('../data/MoMA_topTenNationalities.csv', d3.autoType)
   // xscale - categorical, activity
   const yScale = d3.scaleBand()
   .domain(data.map(d=> d.Nationality))
-  .range([height - margin.bottom-margin.top - 20, margin.bottom])
+  .range([height - margin.bottom-margin.top - 20, margin.bottom]) // Reversing the order so the largest is next to the x axis
   .paddingInner(.2)
 
   const xScale = d3.scaleLinear()
@@ -25,6 +23,8 @@ d3.csv('../data/MoMA_topTenNationalities.csv', d3.autoType)
   
   const yAxis =  d3.axisLeft(yScale);
   const xAxis =  d3.axisBottom(xScale);
+
+  const color = d3.scaleOrdinal(d3.schemeCategory10);
 
   /* HTML ELEMENTS */
     /** Select your container and append the visual elements to it */
@@ -64,7 +64,7 @@ svg.append("g")
      .attr("font-size","1.5em");
 
 
-
+// A little fun with an image overlaid on the SVG
 svg.append("defs")
      .append('pattern')
        .attr('id', 'locked2')
@@ -72,23 +72,25 @@ svg.append("defs")
        .attr('width', 46)
        .attr('height',100)
       .append("image")
-       .attr("xlink:href", "https://img.freepik.com/free-vector/illustration-usa-flag_53876-18165.jpg?h=24")
+       .attr("xlink:href", "https://img.freepik.com/free-vector/illustration-usa-flag_53876-18165.jpg?h=24") // having a little fun with a repeating american flag
        .attr('width', 45)
        .attr('height', 24);
 
+// The div version
 
 // This was incredibly helpful here: https://codepen.io/paulbhartzog/pen/MbKJJy
 
-       const divvy = d3.select("#div-container")
+const divvy = d3.select("#div-container")
 .append("div")
 .attr("width", width - margin.left)
 .attr("height", height - margin.bottom)
-.attr("viewBox", [-50, 0, width, height]);
+.attr("viewBox", [0, 0, width, height]);
 
 
-d3.select("body").selectAll("#div-container").selectAll()
+//d3.select("body").selectAll(".bar")
+divvy.selectAll(".bar")
        .data(data)
-       .enter()
+       .join("bar")
        .append("div")
        .attr("class", "bar")
        .style("width", function(d) {
