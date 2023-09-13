@@ -94,7 +94,7 @@ divvy.selectAll(".bar")
        .append("div")
        .attr("class", "bar")
        .style("width", function(d) {
-         var barHeight = d.Count / 3.22;
+         var barHeight = d.Count / 3.64;
          return barHeight + "px";
        });
     })
