@@ -63,7 +63,7 @@ svg.append("g")
 
 svg.append("text")
      .attr("transform", "rotate(-90)")
-     .attr("y", 0 - margin.left-110)
+     .attr("y", 0 - margin.left-115)
      .attr("x",0 - (height / 2))
      .attr("dy", "1em")
      .style("text-anchor", "middle")
@@ -71,7 +71,7 @@ svg.append("text")
 
 svg.append("text")      // text label for the x axis
      .attr("x", (width / 2)) 
-     .attr("y", 830 )
+     .attr("y", 870 )
      .style("text-anchor", "middle")
      .text("Length (cm) [Log scale]");
 
