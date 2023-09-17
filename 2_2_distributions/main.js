@@ -10,15 +10,15 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
     //console.log(data)
 
     /* SCALES */
-    const xScale = d3.scaleLinear()
-    .domain([0, d3.max(data, d=> d['Length (cm)'])])
-    .range([40,width]) // visual variable
+    const xScale = d3.scaleLog([3,2000], [40, width])
+    // .domain([0, d3.max(data, d=> d['Length (cm)'])])
+    // .range([40,width]) // visual variable
     
 
 
-    const yScale = d3.scaleLinear()
-    .domain([0, d3.max(data, d=> d['Width (cm)'])])
-    .range([height, 100]) // visual variable
+    const yScale = d3.scaleLog([1,750],[height, 0])
+    // .domain([0, d3.max(data, d=> d['Width (cm)'])])
+    // .range([height, 100]) // visual variable
   
     const yAxis =  d3.axisLeft(yScale);
     const xAxis =  d3.axisBottom(xScale);
@@ -26,9 +26,9 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
     const color = d3.scaleOrdinal(d3.schemeSet1);
     //const shape = d3.scaleOrdinal(data.map(d => d.Gender), d3.symbols.map(s => d3.symbol().type(s).size(data, d => (2 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 100) ? lifespan(d['Artist Lifespan']) : 4)));
 
-    const lifespan = d3.scaleLinear()
-    .domain([0, d3.max(data, d=> d['Artist Lifespan'])])
-    .range([10,97])
+    const lifespan = d3.scaleLinear([35,100],[5,37])
+    // .domain([0, d3.max(data, d=> d['Artist Lifespan'])])
+    // .range([5,97])
  
 
     /* HTML ELEMENTS */
@@ -46,7 +46,7 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
     .attr("cy", d=> yScale(d['Width (cm)']))
     .attr("r", d=> (2 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 100) ? lifespan(d['Artist Lifespan']) : 4)
     .attr("fill", d=> d["Gender"] != '()' ? color(d["Gender"]) : "rgb(70,165,69)" )
-    .attr('fill-opacity', "0.7")  
+    .attr('fill-opacity', "0.3");
 
     svg.append("g")
      .attr("transform", "translate(0, "
@@ -67,13 +67,13 @@ svg.append("text")
      .attr("x",0 - (height / 2))
      .attr("dy", "1em")
      .style("text-anchor", "middle")
-     .text("Width (cm)");
+     .text("Width (cm) [Log scale]");
 
 svg.append("text")      // text label for the x axis
      .attr("x", (width / 2)) 
      .attr("y", 830 )
      .style("text-anchor", "middle")
-     .text("Length (cm)");
+     .text("Length (cm) [Log scale]");
 
 
 const f = d3.format(".0f");
@@ -86,8 +86,8 @@ const text = svg.append("g")
     //  .attr("dx", d=>  xScale(d['Length (cm)']))
     //  .attr("dy", d=> yScale(d['Width (cm)']))
      .attr('transform', d=> 'translate('+xScale(d['Length (cm)'])+','+yScale(d['Width (cm)'])+')')
-     .text(function(d) { return f(d['Length (cm)'])+" x "+ f(d['Width (cm)'])});
-
+    //  .text(function(d) { return f(d['Length (cm)'])+" x "+ f(d['Width (cm)'])  });
+     .text(function(d) { return d.Artist  });
 
 // svg.selectAll("circle")
 //   .data(data)
@@ -101,4 +101,8 @@ const text = svg.append("g")
 //       data.forEach(element => {
 //         //console.log(element['Artist Lifespan'])
 //       });
-  });
+data.forEach(d => {
+  console.log(lifespan(d['Artist Lifespan']))
+});
+});
+
