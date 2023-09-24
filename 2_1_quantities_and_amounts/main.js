@@ -35,9 +35,10 @@ d3.csv('../data/MoMA_topTenNationalities.csv', d3.autoType)
     .attr("viewBox", [-50, 0, width, height]);
 
   // bars
-  svg.selectAll("rect")
+  svg.selectAll("rect.bar")
     .data(data)
     .join("rect")
+    .attr("class", "bar")
     .attr("width", d=>  xScale(d.Count))
     .attr("height", d=> yScale.bandwidth())
     .attr("x", margin.left)
