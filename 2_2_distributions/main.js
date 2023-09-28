@@ -27,10 +27,9 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
     //const shape = d3.scaleOrdinal(data.map(d => d.Gender), d3.symbols.map(s => d3.symbol().type(s).size(data, d => (2 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 100) ? lifespan(d['Artist Lifespan']) : 4)));
 
     // const lifespan = d3.scaleLinear([35,100],[5,37])
-    const lifespan = d3.scaleSqrt().domain([0, 105]).range([0,25])
+    const lifespan = d3.scaleSqrt().domain([15, 97]).range([5,25])
     // .domain([0, d3.max(data, d=> d['Artist Lifespan'])])
     // .range([5,97])
- 
 
     /* HTML ELEMENTS */
     const svg = d3.select("#container")
@@ -45,7 +44,7 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
     .join("circle")
     .attr("cx", d=>  xScale(d['Length (cm)']))
     .attr("cy", d=> yScale(d['Width (cm)']))
-    .attr("r", d=> (2 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 100) ? lifespan(d['Artist Lifespan']) : 4)
+    .attr("r", d=> (15 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 97) ? lifespan(d['Artist Lifespan']) : 4)
     .attr("fill", d=> d["Gender"] != '()' ? color(d["Gender"]) : "rgb(70,165,69)" )
     .attr('fill-opacity', "0.3");
 
@@ -103,8 +102,8 @@ const text = svg.append("g")
 //       data.forEach(element => {
 //         //console.log(element['Artist Lifespan'])
 //       });
-data.forEach(d => {
-  console.log(lifespan(d['Artist Lifespan']))
-});
+// data.forEach(d => {
+//   console.log(d['Artist Lifespan'])
+// });
 });
 
