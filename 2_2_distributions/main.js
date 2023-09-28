@@ -1,7 +1,7 @@
 /* CONSTANTS AND GLOBALS */
 const width = window.innerWidth *0.8;
 const height = window.innerHeight *0.8;
-const margin = ({top: 20, right: 30, bottom: -40, left: -50})
+const margin = ({top: 20, right: 30, bottom: 20, left: 20})
 
 
 /* LOAD DATA */
@@ -10,23 +10,24 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
     //console.log(data)
 
     /* SCALES */
-    const xScale = d3.scaleLog([3,2000], [40, width])
+    const xScale = d3.scaleLog([3,2000], [margin.left, width - margin.right])
     // .domain([0, d3.max(data, d=> d['Length (cm)'])])
     // .range([40,width]) // visual variable
     
 
 
-    const yScale = d3.scaleLog([1,750],[height, 0])
+    const yScale = d3.scaleLog([1,750],[height - margin.bottom, margin.top])
     // .domain([0, d3.max(data, d=> d['Width (cm)'])])
     // .range([height, 100]) // visual variable
   
     const yAxis =  d3.axisLeft(yScale);
     const xAxis =  d3.axisBottom(xScale);
 
-    const color = d3.scaleOrdinal(d3.schemeSet1);
+    const color = d3.scaleOrdinal(d3.schemeSet2);
     //const shape = d3.scaleOrdinal(data.map(d => d.Gender), d3.symbols.map(s => d3.symbol().type(s).size(data, d => (2 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 100) ? lifespan(d['Artist Lifespan']) : 4)));
 
-    const lifespan = d3.scaleLinear([35,100],[5,37])
+    // const lifespan = d3.scaleLinear([35,100],[5,37])
+    const lifespan = d3.scaleSqrt().domain([0, 105]).range([0,25])
     // .domain([0, d3.max(data, d=> d['Artist Lifespan'])])
     // .range([5,97])
  
@@ -34,9 +35,9 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
     /* HTML ELEMENTS */
     const svg = d3.select("#container")
     .append("svg")
-    .attr("width", width-margin.left - margin.right)
+    .attr("width", width+ margin.left + margin.right)
     .attr("height", height - margin.top - margin.bottom)
-    .attr("viewBox", [margin.left -10, margin.top+40, width, height]);
+    .attr("viewBox", [0, margin.top, width, height]);
 
   // bars
   svg.selectAll("circle")
@@ -50,20 +51,21 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
 
     svg.append("g")
      .attr("transform", "translate(0, "
-            + (height + 15) + ")")
+            + (height - margin.bottom) + ")")
     .call(xAxis)
     .selectAll(".tick text")
     .attr("font-size","1.5em")
 
 svg.append("g")
     .call(yAxis)
+    .attr("transform", `translate( ${margin.left} , 0)`)
     .selectAll(".tick text")
      .attr("font-size","1.5em")
      
 
 svg.append("text")
      .attr("transform", "rotate(-90)")
-     .attr("y", 0 - margin.left-115)
+     .attr("y", 0 - margin.left-38)
      .attr("x",0 - (height / 2))
      .attr("dy", "1em")
      .style("text-anchor", "middle")
@@ -71,7 +73,7 @@ svg.append("text")
 
 svg.append("text")      // text label for the x axis
      .attr("x", (width / 2)) 
-     .attr("y", 870 )
+     .attr("y", 830 )
      .style("text-anchor", "middle")
      .text("Length (cm) [Log scale]");
 
