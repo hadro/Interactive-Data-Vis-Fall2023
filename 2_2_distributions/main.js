@@ -10,43 +10,119 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
     //console.log(data)
 
     /* SCALES */
-    const xScale = d3.scaleLog([3,2000], [margin.left, width - margin.right])
+//     const xScale = d3.scaleLog([3,1200], [margin.left, width - margin.right])
     // .domain([0, d3.max(data, d=> d['Length (cm)'])])
     // .range([40,width]) // visual variable
-    
+    const xScale = d3.scaleLog()
+    .domain([3,1100])
+    .range([margin.left, width - margin.right])
+//     .tickFormat(10, "")
 
 
-    const yScale = d3.scaleLog([1,750],[height - margin.bottom, margin.top])
+    const yScale = d3.scaleLog([1,400],[height - margin.bottom, margin.top])
     // .domain([0, d3.max(data, d=> d['Width (cm)'])])
     // .range([height, 100]) // visual variable
   
-    const yAxis =  d3.axisLeft(yScale);
-    const xAxis =  d3.axisBottom(xScale);
+    const yAxis =  d3.axisLeft(yScale).tickArguments([5,".0s"]);
+    const xAxis =  d3.axisBottom(xScale).tickArguments([5,".0s"]);
 
     const color = d3.scaleOrdinal(d3.schemeSet2);
     //const shape = d3.scaleOrdinal(data.map(d => d.Gender), d3.symbols.map(s => d3.symbol().type(s).size(data, d => (2 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 100) ? lifespan(d['Artist Lifespan']) : 4)));
 
-    // const lifespan = d3.scaleLinear([35,100],[5,37])
-    const lifespan = d3.scaleSqrt().domain([15, 97]).range([5,25])
-    // .domain([0, d3.max(data, d=> d['Artist Lifespan'])])
-    // .range([5,97])
+    // const lifespan = d3.scaleLinear([43,97],[5,37])
+    const lifespan = d3.scaleSqrt()
+    .domain(
+     d3.extent(data.filter(function(d){ return (
+          d["Artist Lifespan"] > 0 && d["Artist Lifespan"] < 100
+          ) }), d => d["Artist Lifespan"]
+     ))
+     .range([5,30])
 
-    /* HTML ELEMENTS */
+     /* HTML ELEMENTS */
     const svg = d3.select("#container")
     .append("svg")
     .attr("width", width+ margin.left + margin.right)
     .attr("height", height - margin.top - margin.bottom)
     .attr("viewBox", [0, margin.top, width, height]);
 
+
+
+// Try some tooltips to fix the label overlap issue
+  // A function that change this tooltip when the user hover a point.
+  
+  
+  const tooltip = d3.select("#container")
+  .append("div")
+  .style("opacity", 0)
+  .attr("class", "tooltip")
+  .style("background-color", "white")
+  .style("border", "solid")
+  .style("border-width", "1px")
+  .style("border-radius", "5px")
+  .style("padding", "10px")
+  .style("position", "absolute")
+
+  // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+  const mouseover = function(event, d) {
+     tooltip
+       .style("opacity", 1)
+   }
+ 
+   const mousemove = function(event, d) {
+     tooltip
+     // console.log(event.x, event.y)
+       .html(`${d.Title} by <span style="color: ${color(d.Gender)} ;">${d.Artist}</span>`)
+       .style("left", event.x + 70 + "px") 
+       .style("top", d3.select(this).attr("cy") + "px")
+     //   .style("width", "200px")
+       //console.log(d3.select(this).attr("cx") + 90)
+       
+   }
+ 
+   // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+   const mouseleave = function(event,d) {
+     tooltip
+       .transition()
+       .duration(200)
+       .style("opacity", 0)
+   }
+
+
+
+
   // bars
   svg.selectAll("circle")
-    .data(data)
-    .join("circle")
-    .attr("cx", d=>  xScale(d['Length (cm)']))
-    .attr("cy", d=> yScale(d['Width (cm)']))
-    .attr("r", d=> (15 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 97) ? lifespan(d['Artist Lifespan']) : 4)
-    .attr("fill", d=> d["Gender"] != '()' ? color(d["Gender"]) : "rgb(70,165,69)" )
-    .attr('fill-opacity', "0.3");
+    .data(data, d => d.Artist)
+//     .join("circle")
+//     .attr("cx", d=>  xScale(d['Length (cm)']))
+//     .attr("cy", d=> yScale(d['Width (cm)']))
+//     .attr("r", d=> (15 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 97) ? lifespan(d['Artist Lifespan']) : 4)
+//     .attr("fill", d=> d["Gender"] != '()' ? color(d["Gender"]) : "rgb(70,165,69)" )
+//     .attr('fill-opacity', "0.3");
+//try it with join(enter etc.)
+     .join(
+          enter => enter
+          .append("circle")
+          .attr("class", "dot")
+          .attr("cx", d=>  xScale(d['Length (cm)']))
+          .attr("cy", d=> yScale(d['Width (cm)']))
+          .attr("fill", d=>  color(d["Gender"]) )
+          .attr('fill-opacity', "0.3")
+          .call(enter => enter
+               .transition()
+               .duration(1500)
+               .attr("r", d=> (43 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 97) ? lifespan(d['Artist Lifespan']) : 4)
+               )
+               .on("mouseover", mouseover )
+               .on("mousemove", mousemove )
+               .on("mouseleave", mouseleave ),
+          update => update
+
+
+
+     )
+
+
 
     svg.append("g")
      .attr("transform", "translate(0, "
@@ -77,33 +153,8 @@ svg.append("text")      // text label for the x axis
      .text("Length (cm) [Log scale]");
 
 
-const f = d3.format(".0f");
+const f = d3.format(".2");
 
-const text = svg.append("g")
-     .attr("class", "labels")
-   .selectAll("text")
-     .data(data)
-    .join("text")
-    //  .attr("dx", d=>  xScale(d['Length (cm)']))
-    //  .attr("dy", d=> yScale(d['Width (cm)']))
-     .attr('transform', d=> 'translate('+xScale(d['Length (cm)'])+','+yScale(d['Width (cm)'])+')')
-    //  .text(function(d) { return f(d['Length (cm)'])+" x "+ f(d['Width (cm)'])  });
-     .text(function(d) { return d.Artist  });
 
-// svg.selectAll("circle")
-//   .data(data)
-//   .join("label")     // text label for the x axis
-//   .attr("class", "label")
-//   .attr("cx", d=>  xScale(d['Length (cm)']))
-//   .attr("cy", d=> yScale(d['Width (cm)']))
-//   .append("svg:title")
-//           .text(function(d) { return d.Title});
-
-//       data.forEach(element => {
-//         //console.log(element['Artist Lifespan'])
-//       });
-// data.forEach(d => {
-//   console.log(d['Artist Lifespan'])
-// });
 });
 
