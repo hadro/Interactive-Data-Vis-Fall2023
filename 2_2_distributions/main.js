@@ -133,7 +133,7 @@ svg.append("text")
 
 svg.append("text")      // text label for the x axis
      .attr("x", (width / 2)) 
-     .attr("y", 830 )
+     .attr("y", height+15)
      .style("text-anchor", "middle")
      .text("Length (cm) [Log scale]");
 
