@@ -19,7 +19,7 @@ console.log('data :>> ', data);
 // + SCALES
 const xScale = d3.scaleTime()
   .domain(d3.extent(data, d => d.date))
-  .range([margin.right, width - margin.left])
+  .range([margin.left, width - margin.right])
 
 const yScale = d3.scaleLinear()
   .domain(d3.extent(data, d => d.index))
@@ -55,7 +55,7 @@ const yAxis = d3.axisLeft(yScale)
 
 const yAxisGroup = svg.append("g")
   .attr("class", "yAxis")
-  .attr("transform", `translate(${margin.right}, ${0})`)
+  .attr("transform", `translate(${margin.left}, ${0})`)
   .call(yAxis)
 
 
