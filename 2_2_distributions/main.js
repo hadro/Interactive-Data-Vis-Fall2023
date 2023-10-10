@@ -74,32 +74,20 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
        .html(`${d.Title} by <span style="color: ${color(d.Gender)} ;">${d.Artist}</span>`)
        .style("left", event.x + 70 + "px") 
        .style("top", d3.select(this).attr("cy") + "px")
-     //   .style("width", "200px")
-       //console.log(d3.select(this).attr("cx") + 90)
-       
    }
  
    // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
    const mouseleave = function(event,d) {
      tooltip
        .transition()
+       .delay(50)
        .duration(200)
        .style("opacity", 0)
    }
 
-
-
-
   // bars
   svg.selectAll("circle")
-    .data(data, d => d.Artist)
-//     .join("circle")
-//     .attr("cx", d=>  xScale(d['Length (cm)']))
-//     .attr("cy", d=> yScale(d['Width (cm)']))
-//     .attr("r", d=> (15 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 97) ? lifespan(d['Artist Lifespan']) : 4)
-//     .attr("fill", d=> d["Gender"] != '()' ? color(d["Gender"]) : "rgb(70,165,69)" )
-//     .attr('fill-opacity', "0.3");
-//try it with join(enter etc.)
+    .data(data, d => d.Artist + d.Title)
      .join(
           enter => enter
           .append("circle")
@@ -112,15 +100,12 @@ d3.csv("../data/MoMA_distributions.csv", d3.autoType)
                .transition()
                .duration(1500)
                .attr("r", d=> (43 <= d['Artist Lifespan'] && d['Artist Lifespan'] <= 97) ? lifespan(d['Artist Lifespan']) : 4)
-               )
-               .on("mouseover", mouseover )
-               .on("mousemove", mousemove )
-               .on("mouseleave", mouseleave ),
+               ),
           update => update
-
-
-
      )
+     .on("mouseover", mouseover )
+     .on("mousemove", mousemove )
+     .on("mouseleave", mouseleave )
 
 
 
@@ -151,10 +136,6 @@ svg.append("text")      // text label for the x axis
      .attr("y", 830 )
      .style("text-anchor", "middle")
      .text("Length (cm) [Log scale]");
-
-
-const f = d3.format(".2");
-
 
 });
 
