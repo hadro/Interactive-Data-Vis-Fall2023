@@ -33,14 +33,11 @@ const color = d3.scaleSequential(d3.extent(nationalities, d => d.Count), d3.inte
         // .domain(d3.extent(nationalities, d => d.Count))
         // .range(["#DCE9FF", "#8EBEFF", "#0072BC"])
 
-        // .unknown("#ffE6E6");
-// const color = d3.scaleLinear()
-//         .domain(d3.extent(nationalities, d => d.Count))
-//         .range(["white", "blue"])
-//         .unknown("#E6E6E6");
-// const color = d3.scaleQuantize()
-  // .domain(d3.extent(nationalities, d => d.Count)) // pass only the extreme values to a scaleQuantize’s domain
-  // .range(["white", "pink", "red","yellow","orange","green","violet","lightred"])
+// Define size scale
+const counts = d3.scaleSqrt()
+.domain([1, 5191])
+ .range([5,30])
+
 
   // DEFINE PATH FUNCTION
   const path = d3.geoPath(projection)
@@ -78,12 +75,32 @@ const color = d3.scaleSequential(d3.extent(nationalities, d => d.Count), d3.inte
   .join("path")
   .attr("class", 'fill-countries')
   .attr("stroke", "black")
-  .attr("fill", d => {if(color(data[d.properties.name])){return console.log(color(data[d.properties.name])), d.properties.name in data ? color(data[d.properties.name]) : "transparent"} else{return "transparent"} })
+  .attr("fill", d => {if(color(data[d.properties.name])){return d.properties.name in data ? color(data[d.properties.name]) : "transparent"} else{return "transparent"} })
   .attr("d", path)
 
   // APPEND DATA AS SHAPE
   // prepare pop data to join shapefile
 
+  svg.selectAll("circle")
+    .data(geojson.features.filter(d => picnicFilter(d)))
+    .join(
+    enter => enter
+      .append("circle")
+        .attr("transform", function(d) {
+          let coords = path.centroid(d.geometry);
+          return `translate(${coords[0]}, ${coords[1]})`
+        })
+        .attr("r", d => counts(data[d.properties.name]))
+        .attr("fill", d=> color(data[d.properties.name]))
+        .attr('fill-opacity', "0.99")
+        .attr("stroke", "black")
+        )
+
+function picnicFilter(feature) {
+  if (data[feature.properties.name]) return true
+}
+
+console.log(geojson.features.filter(d => picnicFilter(d)))
 
 // set legend
 svg.append("g")
