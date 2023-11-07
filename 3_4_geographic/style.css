@@ -26,3 +26,9 @@ p {
 path.state {
   stroke: black;
 }
+
+#hover-content {
+  margin: 0 auto;
+  width: 20%;
+  height: 4em;
+}

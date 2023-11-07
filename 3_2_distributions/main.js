@@ -107,6 +107,20 @@ svg.append("g")
  .selectAll(".tick text")
   .attr("font-size","1.5em")
 
+svg.append("text")
+     .attr("transform", "rotate(-90)")
+     .attr("y", 20)
+     .attr("x",0-height/2)
+     .attr("dy", "2em")
+     .style("text-anchor", "middle")
+     .text("Width (cm) [Log scale]");
+
+  svg.append("text")      // text label for the x axis
+  .attr("x", (width / 2)) 
+  .attr("y", height-margin.bottom+40 )
+  .style("text-anchor", "middle")
+  .text("Length (cm) [Log scale]");
+
 tooltip = d3.select("#container")
   .append("div")
   .style("opacity", 0)
