@@ -31,7 +31,7 @@ d3.json("../data/merge__World_Citi__merged_nat.geojson"),
     .filter(point => point.properties['STATUS'] === "National and provincial capital" || point.properties['STATUS'] === "National capital")
     .filter(point => point.properties.Count)
     .forEach(point => {
-        console.log(point)
+        // console.log(point)
         // console.log(point.properties.CNTRY_NAME,point.properties.CITY_NAME)
       new mapboxgl.Marker({
         scale: 0.5,
