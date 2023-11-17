@@ -26,6 +26,7 @@ let tooltip;
 let mouseHover;
 let mouseleave;
 let filteredData;
+let delaySet;
 
 Promise.all([
     d3.csv("met_data.csv", d => {
@@ -105,7 +106,6 @@ selectElementGender
     draw();
   })
 
-
   xAxis = g => g
     .attr("transform", `translate(0,${height - margin.bottom})`)
     .call(g => g.append("g").call(d3.axisBottom(xM).ticks(width / 80, "s")))
@@ -127,6 +127,8 @@ selectElementGender
     .attr("font-family", "sans-serif")
     .attr("font-size", 10);
 
+
+    delaySet = 150;
 
     draw();
   }
@@ -157,7 +159,7 @@ svg // male
 .call(sel => sel
     .transition()
     .duration(1000)
-  .delay(150)
+  .delay((d,i) => {return i*delaySet})
   .attr("x", d => xM(d.male))
   .attr("width", d => xM(0) - xM(d.male))
   .ease(d3.easeLinear)
@@ -194,7 +196,7 @@ svg // female
 .call(sel => sel
     .transition()
     .duration(1000)
-  .delay(150)
+    .delay((d,i) => {return i*delaySet})
   .attr("x", xF(0))
   .attr("width", d => xF(d.female) - xF(0))
   .ease(d3.easeLinear)
