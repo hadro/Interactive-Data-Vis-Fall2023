@@ -133,7 +133,7 @@ selectElementGender
   function draw() {
 
   // + FILTER DATA BASED ON STATE
-const filteredData = state.data
+const filteredData = state.data1
     .filter(d => state.selectedGender === "All" || state.selectedGender === d.Gender)
     .filter(d => state.selectedYear === "All" || state.selectedYear == d.Year)
 
@@ -141,15 +141,15 @@ const filteredData = state.data
 
     state.data1.forEach((x, i) => console.log(x, i));
     state.data1.forEach((x, i) => x)
-svg
-.selectAll("rect.year")
-.data(filteredData, d => d.Gender + d.Count + d.Year)
+svg // male
+.selectAll("rect.year-male")
+.data(filteredData, d => d.male + d.Year)
 .join(
     enter => enter
     .append("rect")
-    .attr("class", "year")
-    .attr("id", d => d.Gender + d.Count + d.Year)
-.attr("fill", d => d3.schemeSet2[d.Gender === "male" ? 1 : 0])
+    .attr("class", "year-male")
+    .attr("id", d => d.male + d.Year)
+.attr("fill", d => d3.schemeSet2[1])
 .attr("x", width/2)
 .attr("y", d => y(d.Year))
 .attr("height", y.bandwidth())
@@ -158,8 +158,8 @@ svg
     .transition()
     .duration(1000)
   .delay(150)
-  .attr("x", d => d.Gender === "male" ? xM(d.Count) : xF(0))
-  .attr("width", d => d.Gender === "male" ? xM(0) - xM(d.Count) : xF(d.Count) - xF(0))
+  .attr("x", d => xM(d.male))
+  .attr("width", d => xM(0) - xM(d.male))
   .ease(d3.easeLinear)
    ),
     update => update
@@ -167,8 +167,8 @@ svg
     //     .transition()
     //     .duration(1000)
     //   .delay(150)
-    .attr("x", d => d.Gender === "male" ? xM(d.Count) : xF(0))
-    .attr("width", d => d.Gender === "male" ? xM(0) - xM(d.Count) : xF(d.Count) - xF(0))),
+    .attr("x", d => xM(d.male))
+    .attr("width", d => xM(0) - xM(d.male))),
     exit => exit
     .call(sel => sel
         .transition()
@@ -176,22 +176,67 @@ svg
       .delay(150)
       .attr("x", width/2)
     .attr("width", 0)
-        .remove()),
-    
-
+        .remove())
+)
+svg // female
+.selectAll("rect.year-female")
+.data(filteredData, d => d.female + d.Year)
+.join(
+    enter => enter
+    .append("rect")
+    .attr("class", "year-female")
+    .attr("id", d => d.female + d.Year)
+.attr("fill", d => d3.schemeSet2[0])
+.attr("x", width/2)
+.attr("y", d => y(d.Year))
+.attr("height", y.bandwidth())
+.attr("width", 0)
+.call(sel => sel
+    .transition()
+    .duration(1000)
+  .delay(150)
+  .attr("x", xF(0))
+  .attr("width", d => xF(d.female) - xF(0))
+  .ease(d3.easeLinear)
+   ),
+    update => update
+    .call(sel => sel
+    //     .transition()
+    //     .duration(1000)
+    //   .delay(150)
+    .attr("x", d => xF(0))
+    .attr("width", d => xF(d.female) - xF(0))),
+    exit => exit
+    .call(sel => sel
+        .transition()
+        .duration(1000)
+      .delay(150)
+      .attr("x", width/2)
+    .attr("width", 0)
+        .remove())
 )
 
-
-svg.append("g")
+svg.append("g") // male
 .attr("fill", "blue")
 .selectAll("text")
 .data(filteredData)
 .join("text")
-.attr("text-anchor", d => d.Gender === "male" ? "start" : "end")
-.attr("x", d => d.Gender === "male" ? xM(d.Count) - 100 : xF(d.Count) + 100)
+.attr("text-anchor", "start")
+.attr("x", d => xM(d.male) - 100)
 .attr("y", d => y(d.Year) + y.bandwidth() / 2)
 .attr("dy", "0.35em")
-.text(d => d.Count.toLocaleString());
+.text(d => d.male.toLocaleString());
+svg.append("g") // female
+.attr("fill", "blue")
+.selectAll("text")
+.data(filteredData)
+.join("text")
+.attr("text-anchor", "end")
+.attr("x", d => xF(d.female) + 100)
+.attr("y", d => y(d.Year) + y.bandwidth() / 2)
+.attr("dy", "0.35em")
+.text(d => d.female.toLocaleString());
+
 
 // svg.append("text")
 // .attr("text-anchor", "end")
