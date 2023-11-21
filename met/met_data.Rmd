@@ -1,3 +1,13 @@
+---
+title: "R Notebook for Met data"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Data prep
+
+```{r}
 library(tidyverse)
 
 df = read_csv("met_data_shaped.csv")
@@ -13,25 +23,27 @@ df %>%
          f_ratio = fnb / (fnb + m), 
          m_ratio = m / (fnb + m)
          ) -> df
+```
 
 
+# 1.) Gender ratio of acquisitions by year
 
+
+```{r}
 # 1.) Gender ratio of acquisitions by year
 df %>%
   ggplot() +
   geom_point(aes(year, m_ratio, color = 'm_ratio')) +
   geom_point(aes(year, f_ratio, color = 'f_ratio')) +
   geom_hline(aes(yintercept = 0.5))
+  
+```
 
+## 2.) Pyramid plot of acquisitions by gender by year
 
+```{r}
 year_range <- range(df$year)
 year_range_seq <- pretty(year_range, n = 10)
-
-
-
-
-
-
 
 # 2.) Pyramid plot of acquisitions by gender by year
 df %>%
@@ -56,13 +68,14 @@ df %>%
                     )) +
   theme_minimal() +
   theme(legend.position = "top")
+```
 
-
+## 3.) barbell plot of acquisitions by gender by year
+```{r}
 # install.packages("extrafont")
 library(ggtext)
 library(extrafont)
   
-
 # font_import()  #run once
 loadfonts(device = "all") #run once per session
 df %>%
@@ -79,10 +92,6 @@ females <- db %>%
   filter(gender == "fnb", year >=1973)
 
 
-
-
-
-
 # 3.) barbell plot of acquisitions by gender by year
 db %>%
   filter(year >= 1973) %>%
@@ -96,20 +105,21 @@ db %>%
   
   geom_point(aes(x = count, y = year, color = gender), size = 4, show.legend = TRUE)
 
+```
+
+## 4.) Time series of acquisitions by gender by year
+```{r}
 
 
-
-
-
-# 3.) Time series of acquisitions by gender by year
+# 4.) Time series of acquisitions by gender by year
 db %>%
   ggplot() + 
   geom_line(aes(year, count, color=gender))
 
+```
 
-
-
-
+## 5.) Date of acquisition by department
+```{r}
 
 artists = read_csv("../data/Artists.csv")
 artworks = read_csv("../data/Artworks.csv")
@@ -127,13 +137,19 @@ all %>%
 gendered %>%
   select(ConstituentID, gender, Artist, Title, Date, Medium, Classification, Department, DateAcquired) -> ff
 
+
+# 5.) Date of acquisition by department
 ff %>%
   ggplot() + 
   geom_point(aes(DateAcquired, Department, color=Department)) #+ 
   #facet_grid(~gender)
+```
 
+## 6.) Number of acquisitions per year by gender and department
+```{r}
 library(lubridate)
 
+# 6.) Number of acquisitions per year by gender and department
 ff %>%
   mutate(year = year(DateAcquired)) %>%
   group_by(year, gender, Classification) %>%
@@ -150,6 +166,5 @@ ff %>%
   geom_point(aes(year, total, color=gender)) +
   ylim(-200, 200) +
   facet_wrap(~Classification)
-  
-
+```
 

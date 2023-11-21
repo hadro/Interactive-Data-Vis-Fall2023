@@ -54,7 +54,7 @@ Promise.all([
 
   function init() {
   xM = d3.scaleLinear()
-  .domain([0, d3.max(state.data, d => d.Count)])
+  .domain([0, d3.max(state.data1, d => d.male)])
   .rangeRound([width / 2, margin.left])
   
   xF = d3.scaleLinear()
@@ -62,7 +62,7 @@ Promise.all([
     .rangeRound([width / 2, width - margin.right])
 
   y = d3.scaleBand()
-    .domain(state.data.map(d => d.Year))
+    .domain(state.data1.map(d => d.Year))
     .rangeRound([height - margin.bottom, margin.top])
     .padding(0.1)
 
@@ -115,8 +115,14 @@ selectElementGender
 
   yAxis = g => g
     .attr("transform", `translate(${xM(0)},0)`)
+    //.call(d3.axisRight(y).tickSizeOuter(0))
+    .call(d3.axisRight(y).tickValues([]))
+    // .call(g => g.selectAll(".tick text").attr("fill", "green"))
+
+    yAxis2 = g => g
+    .attr("transform", `translate(${ xF(d3.max(state.data1, d => d.female)) + 100},0)`)
     .call(d3.axisRight(y).tickSizeOuter(0))
-    .call(g => g.selectAll(".tick text").attr("fill", "green"))
+    .call(g => g.selectAll(".tick text").attr("fill", "magenta"))
 
 
     svg = d3.select("#container")
@@ -128,7 +134,7 @@ selectElementGender
     .attr("font-size", 10);
 
 
-    delaySet = 150;
+    delaySet = 50;
 
     draw();
   }
@@ -141,7 +147,7 @@ const filteredData = state.data1
 
     // console.log(filteredData, state.selectedYear)
 
-    state.data1.forEach((x, i) => console.log(x, i));
+    // state.data1.forEach((x, i) => console.log(x, i));
     state.data1.forEach((x, i) => x)
 svg // male
 .selectAll("rect.year-male")
@@ -262,6 +268,8 @@ svg.append("g")
 svg.append("g")
 .call(yAxis); 
 
+svg.append("g")
+.call(yAxis2); 
 
 }
 
