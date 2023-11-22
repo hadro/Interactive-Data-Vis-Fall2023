@@ -22,6 +22,7 @@ let colorScale;
 let lifespan;
 let xAxis;
 let yAxis;
+let yAxis2;
 let tooltip;
 let mouseHover;
 let mouseleave;
@@ -55,11 +56,11 @@ Promise.all([
   function init() {
   xM = d3.scaleLinear()
   .domain([0, d3.max(state.data1, d => d.male)])
-  .rangeRound([width / 2, margin.left])
+  .rangeRound([(width / 2)-15, margin.left])
   
   xF = d3.scaleLinear()
     .domain(xM.domain())
-    .rangeRound([width / 2, width - margin.right])
+    .rangeRound([(width / 2)+15, width - margin.right])
 
   y = d3.scaleBand()
     .domain(state.data1.map(d => d.Year))
@@ -114,15 +115,20 @@ selectElementGender
     .call(g => g.selectAll(".tick:first-of-type").remove())
 
   yAxis = g => g
-    .attr("transform", `translate(${xM(0)},0)`)
+    .attr("transform", `translate(${xM(0)+15},0)`)
     //.call(d3.axisRight(y).tickSizeOuter(0))
     .call(d3.axisRight(y).tickValues([]))
     // .call(g => g.selectAll(".tick text").attr("fill", "green"))
 
     yAxis2 = g => g
-    .attr("transform", `translate(${ xF(d3.max(state.data1, d => d.female)) + 100},0)`)
+    .attr("transform", `translate(${ width/2 -20},0)`)
+    .attr("class", "yAxis")
     .call(d3.axisRight(y).tickSizeOuter(0))
+    // .call(d3.axisRight(y).tickValues([]))
     .call(g => g.selectAll(".tick text").attr("fill", "magenta"))
+    // .call(d3.axisRight(y)).selectAll(".tick line").remove()
+    .call(g => g.selectAll(".tick line").attr("stroke", "none").attr("fill", "none"))
+    .call(d3.axisRight(y)).select(".domain").remove()
 
 
     svg = d3.select("#container")
@@ -158,7 +164,7 @@ svg // male
     .attr("class", "year-male")
     .attr("id", d => d.male + d.Year)
 .attr("fill", d => d3.schemeSet2[1])
-.attr("x", width/2)
+.attr("x", (width / 2)-15)
 .attr("y", d => y(d.Year))
 .attr("height", y.bandwidth())
 .attr("width", 0)
@@ -182,7 +188,7 @@ svg // male
         .transition()
         .duration(1000)
       .delay(150)
-      .attr("x", width/2)
+      .attr("x", (width / 2)-15)
     .attr("width", 0)
         .remove())
 )
@@ -195,7 +201,7 @@ svg // female
     .attr("class", "year-female")
     .attr("id", d => d.female + d.Year)
 .attr("fill", d => d3.schemeSet2[0])
-.attr("x", width/2)
+.attr("x", (width / 2)+15)
 .attr("y", d => y(d.Year))
 .attr("height", y.bandwidth())
 .attr("width", 0)
@@ -219,31 +225,31 @@ svg // female
         .transition()
         .duration(1000)
       .delay(150)
-      .attr("x", width/2)
+      .attr("x", (width / 2)+15)
     .attr("width", 0)
         .remove())
 )
 
-svg.append("g") // male
-.attr("fill", "blue")
-.selectAll("text")
-.data(filteredData)
-.join("text")
-.attr("text-anchor", "start")
-.attr("x", d => xM(d.male) - 100)
-.attr("y", d => y(d.Year) + y.bandwidth() / 2)
-.attr("dy", "0.35em")
-.text(d => d.male.toLocaleString());
-svg.append("g") // female
-.attr("fill", "blue")
-.selectAll("text")
-.data(filteredData)
-.join("text")
-.attr("text-anchor", "end")
-.attr("x", d => xF(d.female) + 100)
-.attr("y", d => y(d.Year) + y.bandwidth() / 2)
-.attr("dy", "0.35em")
-.text(d => d.female.toLocaleString());
+// svg.append("g") // male
+// .attr("fill", "blue")
+// .selectAll("text")
+// .data(filteredData)
+// .join("text")
+// .attr("text-anchor", "start")
+// .attr("x", d => xM(d.male) - 100)
+// .attr("y", d => y(d.Year) + y.bandwidth() / 2)
+// .attr("dy", "0.35em")
+// .text(d => d.male.toLocaleString());
+// svg.append("g") // female
+// .attr("fill", "blue")
+// .selectAll("text")
+// .data(filteredData)
+// .join("text")
+// .attr("text-anchor", "end")
+// .attr("x", d => xF(d.female) + 100)
+// .attr("y", d => y(d.Year) + y.bandwidth() / 2)
+// .attr("dy", "0.35em")
+// .text(d => d.female.toLocaleString());
 
 
 // svg.append("text")
@@ -265,8 +271,8 @@ svg.append("g") // female
 svg.append("g")
 .call(xAxis);
 
-svg.append("g")
-.call(yAxis); 
+// svg.append("g")
+// .call(yAxis); 
 
 svg.append("g")
 .call(yAxis2); 
