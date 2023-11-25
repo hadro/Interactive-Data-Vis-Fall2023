@@ -285,10 +285,6 @@ svg // female
 // .text("Female");
 
 
-svg.selectAll("g.x.axis")
-        .call(xAxis);
-
-
 // svg.append("g")
 // .call(yAxis); 
 
