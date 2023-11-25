@@ -10,7 +10,7 @@ const width = window.innerWidth * 0.9,
       count: null
     },
     selectedGender: "All", // + YOUR INITIAL FILTER SELECTION
-    selectedYear: "All"
+    selectedClassification: "All"
   };
 
 // these variables allow us to access anything we manipulate in init() but need access to in draw().
@@ -38,24 +38,32 @@ Promise.all([
           Count: +d.Count,
           Gender: d.Gender
         }}), 
-        d3.csv("met_data_shaped.csv", d => {
+        d3.csv("unique_artists_moma_data_shaped.csv", d => {
             // use custom initializer to reformat the data the way we want it
             // ref: https://github.com/d3/d3-fetch#dsv
             return {
               Year: +d.DateAcquired_yr,
               female: +d.female,
               male: +d.male
-            }})
-  ]).then(([data, data1]) => {
+            }}),
+    d3.csv("shaped_with_classification.csv", d => {
+        return {
+            Year: +d.year, 
+            Classification: d.classification,
+            female: +d.female,
+              male: +d.male
+        }})
+  ]).then(([data, data1, data2]) => {
     state.data = data;
     state.data1 = data1;
-    // console.log(data1)
+    state.data2 = data2;
+    //  console.log(data2)
     init();
   });
 
   function init() {
   xM = d3.scaleLinear()
-  .domain([0, d3.max(state.data1, d => d.male)])
+  .domain([0, d3.max(state.data2, d => d.male)])
   .rangeRound([(width / 2)-15, margin.left])
   
   xF = d3.scaleLinear()
@@ -63,17 +71,19 @@ Promise.all([
     .rangeRound([(width / 2)+15, width - margin.right])
 
   y = d3.scaleBand()
-    .domain(state.data1.map(d => d.Year))
+    .domain(state.data2.map(d => d.Year))
     .rangeRound([height - margin.bottom, margin.top])
     .padding(0.1)
 
-// console.log(state.data[0].Count)
-// console.log(xF(state.data[0].Count))
-
+  // + FILTER DATA BASED ON STATE
+filteredData = state.data2
+    // .filter(d => state.selectedGender === "All" || d.male >=0)
+    // .filter(d => state.selectedYear === "All" || state.selectedYear == d.Year)
+    // .filter(d => d.Classification === "all")
 
 // + UI ELEMENT SETUP
   
-const selectElementYear = d3.select("#dropdown-year")
+const selectElementClassification = d3.select("#dropdown-classification")
 const selectElementGender = d3.select("#dropdown-gender")
 
 selectElementGender
@@ -85,9 +95,9 @@ selectElementGender
   .attr("selected", "All")
 
 
-  selectElementYear
+  selectElementClassification
   .selectAll("option")
-  .data([...Array.from(new Set(state.data.map(d => d.Year))), "All"])
+  .data([...Array.from(new Set(state.data2.map(d => d.Classification))), "All"])
   .join("option")
   .attr("value", d => d)
   .text(d => d)
@@ -95,20 +105,22 @@ selectElementGender
 
   selectElementGender
   .on("change", event => {
-    // console.log(event.target.value);
+     console.log(event.target.value);
     state.selectedGender = event.target.value;
+    console.log(event.target.value, state.selectedGender);
     draw();
   })
 
-  selectElementYear
+  selectElementClassification
   .on("change", event => {
-    // console.log(event.target.value);
-    state.selectedYear = event.target.value;
+    console.log(event.target.value);
+    state.selectedClassification = event.target.value;
     draw();
   })
 
   xAxis = g => g
     .attr("transform", `translate(0,${height - margin.bottom})`)
+    .attr("class", "xAxis")
     .call(g => g.append("g").call(d3.axisBottom(xM).ticks(width / 80, "s")))
     .call(g => g.append("g").call(d3.axisBottom(xF).ticks(width / 80, "s")))
     .call(g => g.selectAll(".domain").remove())
@@ -137,8 +149,11 @@ selectElementGender
     .attr("height", height - margin.bottom)
     .attr("viewBox", [0, 0, width, height])
     .attr("font-family", "sans-serif")
-    .attr("font-size", 10);
+    .attr("font-size", 12);
 
+
+    svg.append("g")
+    .call(xAxis);
 
     delaySet = 50;
 
@@ -146,23 +161,24 @@ selectElementGender
   }
   function draw() {
 
-  // + FILTER DATA BASED ON STATE
-const filteredData = state.data1
-    .filter(d => state.selectedGender === "All" || state.selectedGender === d.Gender)
-    .filter(d => state.selectedYear === "All" || state.selectedYear == d.Year)
+//   // + FILTER DATA BASED ON STATE
+filteredData = state.data2
+//     // .filter(d => state.selectedGender === "All" || d.male >=0)
+//     // .filter(d => state.selectedYear === "All" || state.selectedYear == d.Year)
+    .filter(d => d.Classification === state.selectedClassification)
 
-    // console.log(filteredData, state.selectedYear)
+    console.log(filteredData, state.selectedClassification)
 
     // state.data1.forEach((x, i) => console.log(x, i));
-    state.data1.forEach((x, i) => x)
+    filteredData.forEach((x, i) => x)
 svg // male
 .selectAll("rect.year-male")
-.data(filteredData, d => d.male + d.Year)
+.data(filteredData, d => d.male + d.Year + d.Classification)
 .join(
     enter => enter
     .append("rect")
     .attr("class", "year-male")
-    .attr("id", d => d.male + d.Year)
+    .attr("id", d => d.male + d.Year + d.Classification)
 .attr("fill", d => d3.schemeSet2[1])
 .attr("x", (width / 2)-15)
 .attr("y", d => y(d.Year))
@@ -194,12 +210,12 @@ svg // male
 )
 svg // female
 .selectAll("rect.year-female")
-.data(filteredData, d => d.female + d.Year)
+.data(filteredData, d => d.female + d.Year + d.Classification)
 .join(
     enter => enter
     .append("rect")
     .attr("class", "year-female")
-    .attr("id", d => d.female + d.Year)
+    .attr("id", d => d.female + d.Year + d.Classification)
 .attr("fill", d => d3.schemeSet2[0])
 .attr("x", (width / 2)+15)
 .attr("y", d => y(d.Year))
@@ -268,8 +284,10 @@ svg // female
 // .attr("y", y(filteredData[0].Count) + y.bandwidth() / 2)
 // .text("Female");
 
-svg.append("g")
-.call(xAxis);
+
+svg.selectAll("g.x.axis")
+        .call(xAxis);
+
 
 // svg.append("g")
 // .call(yAxis); 
