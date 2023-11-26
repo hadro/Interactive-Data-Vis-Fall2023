@@ -1,0 +1,1582 @@
+,DateAcquired,Gender_y,Classification,gender_year_classification_count,gender_year_count
+0,1929,male,Drawing,1,7
+1,1929,male,Print,6,7
+2,1930,male,Drawing,2,6
+3,1930,male,Painting,1,6
+4,1930,male,Print,1,6
+5,1930,male,Sculpture,2,6
+6,1931,male,Painting,2,3
+7,1931,male,Print,1,3
+8,1932,female,Photograph,1,1
+9,1932,male,Architecture,1,7
+10,1932,male,Drawing,3,7
+11,1932,male,Painting,1,7
+12,1932,male,Print,2,7
+13,1933,male,Photograph,1,3
+14,1933,male,Print,2,3
+15,1934,female,Drawing,1,3
+16,1934,female,Print,2,3
+17,1934,male,Design,5,48
+18,1934,male,Drawing,12,48
+19,1934,male,Illustrated Book,1,48
+20,1934,male,Painting,10,48
+21,1934,male,Photograph,1,48
+22,1934,male,Print,14,48
+23,1934,male,Sculpture,5,48
+24,1935,female,Design,1,3
+25,1935,female,Drawing,1,3
+26,1935,female,Print,1,3
+27,1935,male,Design,1,71
+28,1935,male,Drawing,41,71
+29,1935,male,Painting,14,71
+30,1935,male,Photograph,2,71
+31,1935,male,Print,13,71
+32,1936,female,Design,6,8
+33,1936,female,Drawing,1,8
+34,1936,female,Sculpture,1,8
+35,1936,male,Design,16,50
+36,1936,male,Drawing,15,50
+37,1936,male,Painting,13,50
+38,1936,male,Print,2,50
+39,1936,male,Sculpture,4,50
+40,1937,female,Design,4,8
+41,1937,female,Drawing,2,8
+42,1937,female,Painting,1,8
+43,1937,female,Photograph,1,8
+44,1937,male,Design,70,118
+45,1937,male,Drawing,16,118
+46,1937,male,Illustrated Book,1,118
+47,1937,male,Painting,14,118
+48,1937,male,Photograph,4,118
+49,1937,male,Print,1,118
+50,1937,male,Sculpture,12,118
+51,1938,female,Design,1,3
+52,1938,female,Painting,1,3
+53,1938,female,Photograph,1,3
+54,1938,male,Architecture,1,41
+55,1938,male,Design,5,41
+56,1938,male,Drawing,2,41
+57,1938,male,Film,1,41
+58,1938,male,Painting,6,41
+59,1938,male,Photograph,20,41
+60,1938,male,Print,1,41
+61,1938,male,Sculpture,5,41
+62,1939,female,Drawing,1,4
+63,1939,female,Photograph,1,4
+64,1939,female,Print,1,4
+65,1939,female,Sculpture,1,4
+66,1939,male,Architecture,1,83
+67,1939,male,Design,8,83
+68,1939,male,Drawing,16,83
+69,1939,male,Illustrated Book,1,83
+70,1939,male,Painting,27,83
+71,1939,male,Photograph,5,83
+72,1939,male,Print,11,83
+73,1939,male,Sculpture,14,83
+74,1940,female,Drawing,2,26
+75,1940,female,Photograph,3,26
+76,1940,female,Print,21,26
+77,1940,male,Design,30,242
+78,1940,male,Drawing,27,242
+79,1940,male,Illustrated Book,1,242
+80,1940,male,Painting,14,242
+81,1940,male,Photograph,10,242
+82,1940,male,Print,157,242
+83,1940,male,Sculpture,3,242
+84,1941,female,Drawing,3,33
+85,1941,female,Painting,2,33
+86,1941,female,Photograph,18,33
+87,1941,female,Print,8,33
+88,1941,female,Sculpture,2,33
+89,1941,male,Design,4,171
+90,1941,male,Drawing,24,171
+91,1941,male,Painting,32,171
+92,1941,male,Photograph,86,171
+93,1941,male,Print,19,171
+94,1941,male,Sculpture,6,171
+95,1942,female,Design,4,23
+96,1942,female,Drawing,5,23
+97,1942,female,Painting,4,23
+98,1942,female,Photograph,3,23
+99,1942,female,Print,6,23
+100,1942,female,Sculpture,1,23
+101,1942,male,Design,6,184
+102,1942,male,Drawing,51,184
+103,1942,male,Illustrated Book,1,184
+104,1942,male,Painting,37,184
+105,1942,male,Photograph,25,184
+106,1942,male,Poster,1,184
+107,1942,male,Print,60,184
+108,1942,male,Sculpture,3,184
+109,1943,female,Design,4,11
+110,1943,female,Drawing,1,11
+111,1943,female,Painting,1,11
+112,1943,female,Photograph,4,11
+113,1943,female,Sculpture,1,11
+114,1943,male,Design,59,156
+115,1943,male,Drawing,18,156
+116,1943,male,Painting,21,156
+117,1943,male,Photograph,21,156
+118,1943,male,Print,29,156
+119,1943,male,Sculpture,8,156
+120,1944,female,Design,2,18
+121,1944,female,Drawing,2,18
+122,1944,female,Painting,3,18
+123,1944,female,Photograph,8,18
+124,1944,female,Print,2,18
+125,1944,female,Sculpture,1,18
+126,1944,male,Design,20,108
+127,1944,male,Drawing,15,108
+128,1944,male,Illustrated Book,8,108
+129,1944,male,Painting,13,108
+130,1944,male,Photograph,28,108
+131,1944,male,Print,23,108
+132,1944,male,Sculpture,1,108
+133,1945,female,Design,1,4
+134,1945,female,Illustrated Book,1,4
+135,1945,female,Painting,2,4
+136,1945,male,Design,23,89
+137,1945,male,Drawing,13,89
+138,1945,male,Illustrated Book,23,89
+139,1945,male,Painting,12,89
+140,1945,male,Print,15,89
+141,1945,male,Sculpture,3,89
+142,1946,female,Photograph,2,4
+143,1946,female,Sculpture,2,4
+144,1946,male,Design,8,34
+145,1946,male,Drawing,5,34
+146,1946,male,Illustrated Book,2,34
+147,1946,male,Painting,5,34
+148,1946,male,Photograph,7,34
+149,1946,male,Print,6,34
+150,1946,male,Sculpture,1,34
+151,1947,female,Design,1,13
+152,1947,female,Drawing,3,13
+153,1947,female,Illustrated Book,7,13
+154,1947,female,Painting,1,13
+155,1947,female,Print,1,13
+156,1947,male,Architecture,3,125
+157,1947,male,Design,13,125
+158,1947,male,Drawing,26,125
+159,1947,male,Illustrated Book,20,125
+160,1947,male,Painting,12,125
+161,1947,male,Photograph,3,125
+162,1947,male,Print,45,125
+163,1947,male,Sculpture,3,125
+164,1948,female,Design,5,10
+165,1948,female,Print,5,10
+166,1948,male,Design,30,121
+167,1948,male,Drawing,21,121
+168,1948,male,Illustrated Book,4,121
+169,1948,male,Painting,11,121
+170,1948,male,Photograph,1,121
+171,1948,male,Print,48,121
+172,1948,male,Sculpture,6,121
+173,1949,female,Drawing,1,26
+174,1949,female,Illustrated Book,8,26
+175,1949,female,Painting,1,26
+176,1949,female,Print,16,26
+177,1949,male,Design,8,276
+178,1949,male,Drawing,20,276
+179,1949,male,Illustrated Book,70,276
+180,1949,male,Painting,22,276
+181,1949,male,Periodical,1,276
+182,1949,male,Print,148,276
+183,1949,male,Sculpture,7,276
+184,1950,female,Design,6,15
+185,1950,female,Drawing,1,15
+186,1950,female,Painting,1,15
+187,1950,female,Print,7,15
+188,1950,male,Design,38,142
+189,1950,male,Drawing,18,142
+190,1950,male,Illustrated Book,4,142
+191,1950,male,Painting,18,142
+192,1950,male,Photograph,2,142
+193,1950,male,Print,55,142
+194,1950,male,Sculpture,7,142
+195,1951,female,Design,2,11
+196,1951,female,Drawing,2,11
+197,1951,female,Illustrated Book,3,11
+198,1951,female,Painting,1,11
+199,1951,female,Print,2,11
+200,1951,female,Sculpture,1,11
+201,1951,male,Design,36,178
+202,1951,male,Drawing,13,178
+203,1951,male,Illustrated Book,29,178
+204,1951,male,Painting,23,178
+205,1951,male,Print,69,178
+206,1951,male,Sculpture,8,178
+207,1952,female,Design,3,16
+208,1952,female,Periodical,1,16
+209,1952,female,Photograph,1,16
+210,1952,female,Print,11,16
+211,1952,male,Architecture,1,178
+212,1952,male,Design,32,178
+213,1952,male,Drawing,14,178
+214,1952,male,Illustrated Book,8,178
+215,1952,male,Painting,17,178
+216,1952,male,Periodical,17,178
+217,1952,male,Photograph,1,178
+218,1952,male,Print,82,178
+219,1952,male,Sculpture,6,178
+220,1953,female,Design,4,12
+221,1953,female,Drawing,3,12
+222,1953,female,Painting,1,12
+223,1953,female,Print,3,12
+224,1953,female,Sculpture,1,12
+225,1953,male,Architecture,1,187
+226,1953,male,Design,61,187
+227,1953,male,Drawing,30,187
+228,1953,male,Illustrated Book,4,187
+229,1953,male,Painting,20,187
+230,1953,male,Photograph,3,187
+231,1953,male,Print,54,187
+232,1953,male,Sculpture,14,187
+233,1954,female,Design,5,20
+234,1954,female,Drawing,1,20
+235,1954,female,Painting,4,20
+236,1954,female,Photograph,3,20
+237,1954,female,Print,7,20
+238,1954,male,Architecture,1,308
+239,1954,male,Design,44,308
+240,1954,male,Drawing,29,308
+241,1954,male,Illustrated Book,21,308
+242,1954,male,Painting,25,308
+243,1954,male,Photograph,20,308
+244,1954,male,Print,163,308
+245,1954,male,Sculpture,5,308
+246,1955,female,Drawing,2,9
+247,1955,female,Painting,4,9
+248,1955,female,Print,3,9
+249,1955,male,Design,26,172
+250,1955,male,Drawing,18,172
+251,1955,male,Illustrated Book,8,172
+252,1955,male,Painting,26,172
+253,1955,male,Photograph,2,172
+254,1955,male,Print,81,172
+255,1955,male,Sculpture,11,172
+256,1956,female,Design,2,11
+257,1956,female,Drawing,1,11
+258,1956,female,Illustrated Book,1,11
+259,1956,female,Painting,3,11
+260,1956,female,Print,2,11
+261,1956,female,Sculpture,2,11
+262,1956,male,Architecture,1,309
+263,1956,male,Design,82,309
+264,1956,male,Drawing,40,309
+265,1956,male,Illustrated Book,19,309
+266,1956,male,Painting,33,309
+267,1956,male,Periodical,9,309
+268,1956,male,Photograph,4,309
+269,1956,male,Print,107,309
+270,1956,male,Sculpture,14,309
+271,1957,female,Design,3,9
+272,1957,female,Drawing,1,9
+273,1957,female,Print,4,9
+274,1957,female,Sculpture,1,9
+275,1957,male,Design,39,141
+276,1957,male,Drawing,22,141
+277,1957,male,Ephemera,1,141
+278,1957,male,Illustrated Book,1,141
+279,1957,male,Painting,17,141
+280,1957,male,Photograph,1,141
+281,1957,male,Print,54,141
+282,1957,male,Sculpture,6,141
+283,1958,female,Design,10,23
+284,1958,female,Drawing,2,23
+285,1958,female,Painting,2,23
+286,1958,female,Print,8,23
+287,1958,female,Sculpture,1,23
+288,1958,male,Architecture,2,253
+289,1958,male,Design,57,253
+290,1958,male,Drawing,27,253
+291,1958,male,Illustrated Book,10,253
+292,1958,male,Painting,31,253
+293,1958,male,Print,117,253
+294,1958,male,Sculpture,9,253
+295,1959,female,Design,1,28
+296,1959,female,Illustrated Book,2,28
+297,1959,female,Photograph,18,28
+298,1959,female,Print,5,28
+299,1959,female,Sculpture,2,28
+300,1959,male,Design,5,294
+301,1959,male,Drawing,10,294
+302,1959,male,Illustrated Book,8,294
+303,1959,male,Painting,35,294
+304,1959,male,Photograph,149,294
+305,1959,male,Print,68,294
+306,1959,male,Sculpture,19,294
+307,1960,female,Design,3,20
+308,1960,female,Painting,5,20
+309,1960,female,Photograph,6,20
+310,1960,female,Print,2,20
+311,1960,female,Sculpture,4,20
+312,1960,male,Architecture,2,192
+313,1960,male,Design,45,192
+314,1960,male,Drawing,24,192
+315,1960,male,Illustrated Book,6,192
+316,1960,male,Painting,28,192
+317,1960,male,Photograph,45,192
+318,1960,male,Print,29,192
+319,1960,male,Sculpture,13,192
+320,1961,female,Design,2,24
+321,1961,female,Drawing,4,24
+322,1961,female,Painting,4,24
+323,1961,female,Photograph,3,24
+324,1961,female,Print,8,24
+325,1961,female,Sculpture,3,24
+326,1961,male,Architecture,1,219
+327,1961,male,Design,35,219
+328,1961,male,Drawing,31,219
+329,1961,male,Illustrated Book,4,219
+330,1961,male,Painting,38,219
+331,1961,male,Photograph,14,219
+332,1961,male,Print,68,219
+333,1961,male,Sculpture,28,219
+334,1962,female,Design,3,13
+335,1962,female,Drawing,1,13
+336,1962,female,Painting,1,13
+337,1962,female,Photograph,4,13
+338,1962,female,Print,3,13
+339,1962,female,Sculpture,1,13
+340,1962,male,Architecture,1,154
+341,1962,male,Design,17,154
+342,1962,male,Drawing,64,154
+343,1962,male,Illustrated Book,2,154
+344,1962,male,Painting,17,154
+345,1962,male,Photograph,18,154
+346,1962,male,Print,22,154
+347,1962,male,Sculpture,13,154
+348,1963,female,Design,1,23
+349,1963,female,Drawing,7,23
+350,1963,female,Illustrated Book,1,23
+351,1963,female,Painting,1,23
+352,1963,female,Photograph,2,23
+353,1963,female,Print,9,23
+354,1963,female,Sculpture,2,23
+355,1963,male,Architecture,3,269
+356,1963,male,Design,40,269
+357,1963,male,Drawing,73,269
+358,1963,male,Illustrated Book,8,269
+359,1963,male,Mies van der Rohe Archive,1,269
+360,1963,male,Painting,28,269
+361,1963,male,Photograph,11,269
+362,1963,male,Print,90,269
+363,1963,male,Sculpture,15,269
+364,1964,female,Design,1,59
+365,1964,female,Drawing,7,59
+366,1964,female,Illustrated Book,20,59
+367,1964,female,Painting,4,59
+368,1964,female,Photograph,15,59
+369,1964,female,Print,10,59
+370,1964,female,Sculpture,2,59
+371,1964,male,Architecture,1,600
+372,1964,male,Design,28,600
+373,1964,male,Drawing,47,600
+374,1964,male,Film (object),1,600
+375,1964,male,Illustrated Book,277,600
+376,1964,male,Mies van der Rohe Archive,1,600
+377,1964,male,Multiple,1,600
+378,1964,male,Painting,26,600
+379,1964,male,Photograph,90,600
+380,1964,male,Print,107,600
+381,1964,male,Sculpture,21,600
+382,1965,female,Design,5,35
+383,1965,female,Drawing,6,35
+384,1965,female,Ephemera,1,35
+385,1965,female,Illustrated Book,3,35
+386,1965,female,Painting,4,35
+387,1965,female,Photograph,6,35
+388,1965,female,Print,10,35
+389,1965,male,Architecture,2,388
+390,1965,male,Design,39,388
+391,1965,male,Drawing,57,388
+392,1965,male,Illustrated Book,37,388
+393,1965,male,Mies van der Rohe Archive,1,388
+394,1965,male,Painting,35,388
+395,1965,male,Photograph,49,388
+396,1965,male,Print,140,388
+397,1965,male,Sculpture,28,388
+398,1966,female,Design,4,20
+399,1966,female,Drawing,3,20
+400,1966,female,Painting,1,20
+401,1966,female,Photograph,3,20
+402,1966,female,Print,7,20
+403,1966,female,Sculpture,2,20
+404,1966,male,Architecture,4,309
+405,1966,male,Design,46,309
+406,1966,male,Drawing,54,309
+407,1966,male,Illustrated Book,25,309
+408,1966,male,Mies van der Rohe Archive,1,309
+409,1966,male,Painting,22,309
+410,1966,male,Photograph,36,309
+411,1966,male,Print,108,309
+412,1966,male,Sculpture,13,309
+413,1967,female,Design,9,47
+414,1967,female,Drawing,11,47
+415,1967,female,Illustrated Book,6,47
+416,1967,female,Photograph,4,47
+417,1967,female,Print,16,47
+418,1967,female,Sculpture,1,47
+419,1967,male,Architecture,2,606
+420,1967,male,Design,66,606
+421,1967,male,Drawing,90,606
+422,1967,male,Illustrated Book,76,606
+423,1967,male,Multiple,2,606
+424,1967,male,Painting,52,606
+425,1967,male,Photograph,35,606
+426,1967,male,Print,263,606
+427,1967,male,Sculpture,20,606
+428,1968,female,Design,2,44
+429,1968,female,Drawing,3,44
+430,1968,female,Illustrated Book,13,44
+431,1968,female,Painting,2,44
+432,1968,female,Photograph,12,44
+433,1968,female,Print,10,44
+434,1968,female,Sculpture,2,44
+435,1968,male,Architecture,3,427
+436,1968,male,Design,100,427
+437,1968,male,Drawing,60,427
+438,1968,male,Graphic Design,1,427
+439,1968,male,Illustrated Book,61,427
+440,1968,male,Mies van der Rohe Archive,1,427
+441,1968,male,Multiple,2,427
+442,1968,male,Painting,14,427
+443,1968,male,Photograph,64,427
+444,1968,male,Print,103,427
+445,1968,male,Sculpture,18,427
+446,1969,female,Design,2,41
+447,1969,female,Drawing,5,41
+448,1969,female,Illustrated Book,4,41
+449,1969,female,Painting,3,41
+450,1969,female,Photograph,4,41
+451,1969,female,Print,21,41
+452,1969,female,Sculpture,2,41
+453,1969,male,Architecture,3,418
+454,1969,male,Design,28,418
+455,1969,male,Drawing,78,418
+456,1969,male,Illustrated Book,35,418
+457,1969,male,Multiple,1,418
+458,1969,male,Painting,32,418
+459,1969,male,Photograph,40,418
+460,1969,male,Print,177,418
+461,1969,male,Sculpture,24,418
+462,1970,female,Design,4,30
+463,1970,female,Drawing,6,30
+464,1970,female,Illustrated Book,4,30
+465,1970,female,Painting,3,30
+466,1970,female,Photograph,3,30
+467,1970,female,Print,9,30
+468,1970,female,Sculpture,1,30
+469,1970,male,Architecture,1,255
+470,1970,male,Design,23,255
+471,1970,male,Drawing,40,255
+472,1970,male,Illustrated Book,27,255
+473,1970,male,Painting,23,255
+474,1970,male,Photograph,42,255
+475,1970,male,Print,78,255
+476,1970,male,Sculpture,21,255
+477,1971,female,Drawing,3,18
+478,1971,female,Painting,3,18
+479,1971,female,Photograph,3,18
+480,1971,female,Print,9,18
+481,1971,male,Architecture,2,197
+482,1971,male,Drawing,36,197
+483,1971,male,Illustrated Book,6,197
+484,1971,male,Notebook,1,197
+485,1971,male,Painting,20,197
+486,1971,male,Photograph,46,197
+487,1971,male,Print,68,197
+488,1971,male,Sculpture,18,197
+489,1972,female,Design,2,18
+490,1972,female,Drawing,2,18
+491,1972,female,Photograph,5,18
+492,1972,female,Print,9,18
+493,1972,male,Architecture,1,151
+494,1972,male,Design,24,151
+495,1972,male,Drawing,24,151
+496,1972,male,Illustrated Book,7,151
+497,1972,male,Painting,6,151
+498,1972,male,Photograph,40,151
+499,1972,male,Print,45,151
+500,1972,male,Sculpture,4,151
+501,1973,female,Drawing,3,27
+502,1973,female,Illustrated Book,2,27
+503,1973,female,Photograph,6,27
+504,1973,female,Print,14,27
+505,1973,female,Sculpture,2,27
+506,1973,male,Architecture,2,238
+507,1973,male,Design,9,238
+508,1973,male,Drawing,36,238
+509,1973,male,Illustrated Book,18,238
+510,1973,male,Multiple,1,238
+511,1973,male,Painting,16,238
+512,1973,male,Periodical,13,238
+513,1973,male,Photograph,48,238
+514,1973,male,Print,86,238
+515,1973,male,Sculpture,9,238
+516,1974,female,Architecture,1,56
+517,1974,female,Design,2,56
+518,1974,female,Drawing,5,56
+519,1974,female,Illustrated Book,3,56
+520,1974,female,Painting,1,56
+521,1974,female,Photograph,13,56
+522,1974,female,Print,29,56
+523,1974,female,Sculpture,2,56
+524,1974,male,Architecture,2,309
+525,1974,male,Design,13,309
+526,1974,male,Drawing,41,309
+527,1974,male,Illustrated Book,15,309
+528,1974,male,Installation,1,309
+529,1974,male,Mies van der Rohe Archive,1,309
+530,1974,male,Painting,10,309
+531,1974,male,Photograph,46,309
+532,1974,male,Print,172,309
+533,1974,male,Sculpture,8,309
+534,1975,female,Design,4,27
+535,1975,female,Drawing,1,27
+536,1975,female,Painting,1,27
+537,1975,female,Photograph,8,27
+538,1975,female,Print,10,27
+539,1975,female,Sculpture,2,27
+540,1975,female,Video,1,27
+541,1975,male,Architecture,1,211
+542,1975,male,Design,9,211
+543,1975,male,Drawing,36,211
+544,1975,male,Fashion,1,211
+545,1975,male,Illustrated Book,15,211
+546,1975,male,Painting,18,211
+547,1975,male,Photograph,50,211
+548,1975,male,Print,64,211
+549,1975,male,Sculpture,11,211
+550,1975,male,Video,6,211
+551,1976,female,Drawing,6,20
+552,1976,female,Painting,2,20
+553,1976,female,Photograph,5,20
+554,1976,female,Print,6,20
+555,1976,female,Video,1,20
+556,1976,male,Architecture,2,272
+557,1976,male,Design,34,272
+558,1976,male,Drawing,35,272
+559,1976,male,Illustrated Book,20,272
+560,1976,male,Painting,16,272
+561,1976,male,Photograph,61,272
+562,1976,male,Print,93,272
+563,1976,male,Sculpture,8,272
+564,1976,male,Video,3,272
+565,1977,female,Design,3,60
+566,1977,female,Drawing,12,60
+567,1977,female,Illustrated Book,7,60
+568,1977,female,Multiple,2,60
+569,1977,female,Painting,2,60
+570,1977,female,Photograph,7,60
+571,1977,female,Print,27,60
+572,1977,male,Design,54,326
+573,1977,male,Drawing,52,326
+574,1977,male,Illustrated Book,26,326
+575,1977,male,Multiple,8,326
+576,1977,male,Painting,14,326
+577,1977,male,Photograph,61,326
+578,1977,male,Print,104,326
+579,1977,male,Sculpture,7,326
+580,1978,female,Design,2,46
+581,1978,female,Drawing,20,46
+582,1978,female,Illustrated Book,2,46
+583,1978,female,Painting,1,46
+584,1978,female,Photograph,11,46
+585,1978,female,Print,7,46
+586,1978,female,Sculpture,3,46
+587,1978,male,Architecture,2,307
+588,1978,male,Design,35,307
+589,1978,male,Drawing,137,307
+590,1978,male,Illustrated Book,12,307
+591,1978,male,Installation,1,307
+592,1978,male,Painting,20,307
+593,1978,male,Photograph,52,307
+594,1978,male,Print,37,307
+595,1978,male,Sculpture,11,307
+596,1979,female,Design,2,51
+597,1979,female,Drawing,17,51
+598,1979,female,Illustrated Book,1,51
+599,1979,female,Painting,6,51
+600,1979,female,Photograph,9,51
+601,1979,female,Print,11,51
+602,1979,female,Sculpture,2,51
+603,1979,female,Video,3,51
+604,1979,male,Design,38,323
+605,1979,male,Drawing,62,323
+606,1979,male,Film,1,323
+607,1979,male,Illustrated Book,14,323
+608,1979,male,Installation,2,323
+609,1979,male,Mies van der Rohe Archive,1,323
+610,1979,male,Multiple,1,323
+611,1979,male,Painting,31,323
+612,1979,male,Periodical,1,323
+613,1979,male,Photograph,60,323
+614,1979,male,Print,82,323
+615,1979,male,Sculpture,16,323
+616,1979,male,Video,14,323
+617,1980,female,Design,6,40
+618,1980,female,Drawing,5,40
+619,1980,female,Illustrated Book,1,40
+620,1980,female,Painting,1,40
+621,1980,female,Photograph,12,40
+622,1980,female,Print,11,40
+623,1980,female,Sculpture,1,40
+624,1980,female,Video,3,40
+625,1980,male,Architecture,5,204
+626,1980,male,Design,47,204
+627,1980,male,Drawing,47,204
+628,1980,male,Illustrated Book,12,204
+629,1980,male,Mies van der Rohe Archive,1,204
+630,1980,male,Painting,9,204
+631,1980,male,Photograph,37,204
+632,1980,male,Print,40,204
+633,1980,male,Sculpture,4,204
+634,1980,male,Video,2,204
+635,1981,female,Design,6,31
+636,1981,female,Drawing,3,31
+637,1981,female,Illustrated Book,2,31
+638,1981,female,Installation,1,31
+639,1981,female,Painting,1,31
+640,1981,female,Photograph,9,31
+641,1981,female,Print,6,31
+642,1981,female,Video,3,31
+643,1981,male,Architecture,3,293
+644,1981,male,Design,71,293
+645,1981,male,Drawing,29,293
+646,1981,male,Illustrated Book,43,293
+647,1981,male,Painting,17,293
+648,1981,male,Photograph,71,293
+649,1981,male,Print,40,293
+650,1981,male,Sculpture,3,293
+651,1981,male,Video,16,293
+652,1982,female,Design,2,26
+653,1982,female,Drawing,2,26
+654,1982,female,Illustrated Book,2,26
+655,1982,female,Multiple,1,26
+656,1982,female,Painting,2,26
+657,1982,female,Photograph,8,26
+658,1982,female,Print,6,26
+659,1982,female,Video,3,26
+660,1982,male,Architecture,3,259
+661,1982,male,Design,28,259
+662,1982,male,Drawing,28,259
+663,1982,male,Illustrated Book,14,259
+664,1982,male,Installation,1,259
+665,1982,male,Multiple,2,259
+666,1982,male,Painting,18,259
+667,1982,male,Photograph,84,259
+668,1982,male,Print,70,259
+669,1982,male,Sculpture,6,259
+670,1982,male,Video,5,259
+671,1983,female,Design,8,47
+672,1983,female,Drawing,5,47
+673,1983,female,Illustrated Book,1,47
+674,1983,female,Painting,6,47
+675,1983,female,Photograph,11,47
+676,1983,female,Print,9,47
+677,1983,female,Sculpture,5,47
+678,1983,female,Video,2,47
+679,1983,male,Design,111,321
+680,1983,male,Drawing,34,321
+681,1983,male,Film,1,321
+682,1983,male,Illustrated Book,10,321
+683,1983,male,Installation,1,321
+684,1983,male,Painting,20,321
+685,1983,male,Photograph,78,321
+686,1983,male,Print,50,321
+687,1983,male,Sculpture,10,321
+688,1983,male,Video,6,321
+689,1984,female,Design,3,50
+690,1984,female,Drawing,8,50
+691,1984,female,Painting,3,50
+692,1984,female,Photograph,11,50
+693,1984,female,Print,8,50
+694,1984,female,Video,17,50
+695,1984,male,Architecture,4,265
+696,1984,male,Design,34,265
+697,1984,male,Drawing,31,265
+698,1984,male,Illustrated Book,17,265
+699,1984,male,Multiple,2,265
+700,1984,male,Painting,12,265
+701,1984,male,Photograph,59,265
+702,1984,male,Print,65,265
+703,1984,male,Sculpture,13,265
+704,1984,male,Video,28,265
+705,1985,female,Design,2,58
+706,1985,female,Drawing,16,58
+707,1985,female,Illustrated Book,5,58
+708,1985,female,Installation,1,58
+709,1985,female,Multiple,1,58
+710,1985,female,Painting,8,58
+711,1985,female,Photograph,12,58
+712,1985,female,Print,11,58
+713,1985,female,Sculpture,1,58
+714,1985,female,Video,1,58
+715,1985,male,Architecture,7,382
+716,1985,male,Design,33,382
+717,1985,male,Drawing,88,382
+718,1985,male,Illustrated Book,29,382
+719,1985,male,Multiple,1,382
+720,1985,male,Painting,62,382
+721,1985,male,Photograph,48,382
+722,1985,male,Print,86,382
+723,1985,male,Sculpture,23,382
+724,1985,male,Video,5,382
+725,1986,female,Design,1,41
+726,1986,female,Drawing,5,41
+727,1986,female,Illustrated Book,1,41
+728,1986,female,Painting,2,41
+729,1986,female,Photograph,13,41
+730,1986,female,Print,10,41
+731,1986,female,Sculpture,2,41
+732,1986,female,Video,7,41
+733,1986,male,Architecture,3,296
+734,1986,male,Design,30,296
+735,1986,male,Drawing,31,296
+736,1986,male,Illustrated Book,22,296
+737,1986,male,Painting,13,296
+738,1986,male,Photograph,74,296
+739,1986,male,Print,80,296
+740,1986,male,Sculpture,12,296
+741,1986,male,Video,31,296
+742,1987,female,Design,6,70
+743,1987,female,Illustrated Book,3,70
+744,1987,female,Multiple,1,70
+745,1987,female,Painting,4,70
+746,1987,female,Photograph,16,70
+747,1987,female,Print,36,70
+748,1987,female,Sculpture,2,70
+749,1987,female,Video,2,70
+750,1987,male,Architecture,3,364
+751,1987,male,Design,55,364
+752,1987,male,Drawing,19,364
+753,1987,male,Illustrated Book,25,364
+754,1987,male,Installation,3,364
+755,1987,male,Multiple,4,364
+756,1987,male,Painting,7,364
+757,1987,male,Photograph,54,364
+758,1987,male,Print,182,364
+759,1987,male,Sculpture,8,364
+760,1987,male,Video,4,364
+761,1988,female,Design,5,59
+762,1988,female,Drawing,5,59
+763,1988,female,Illustrated Book,3,59
+764,1988,female,Multiple,1,59
+765,1988,female,Painting,2,59
+766,1988,female,Photograph,12,59
+767,1988,female,Print,18,59
+768,1988,female,Sculpture,1,59
+769,1988,female,Video,12,59
+770,1988,male,Architecture,3,246
+771,1988,male,Design,32,246
+772,1988,male,Drawing,33,246
+773,1988,male,Illustrated Book,24,246
+774,1988,male,Painting,4,246
+775,1988,male,Photograph,56,246
+776,1988,male,Print,73,246
+777,1988,male,Sculpture,7,246
+778,1988,male,Video,14,246
+779,1989,female,Design,1,32
+780,1989,female,Drawing,1,32
+781,1989,female,Illustrated Book,5,32
+782,1989,female,Installation,1,32
+783,1989,female,Painting,1,32
+784,1989,female,Photograph,10,32
+785,1989,female,Print,12,32
+786,1989,female,Video,1,32
+787,1989,male,Architecture,3,214
+788,1989,male,Design,6,214
+789,1989,male,Drawing,12,214
+790,1989,male,Illustrated Book,9,214
+791,1989,male,Installation,1,214
+792,1989,male,Multiple,2,214
+793,1989,male,Painting,6,214
+794,1989,male,Photograph,80,214
+795,1989,male,Print,82,214
+796,1989,male,Sculpture,5,214
+797,1989,male,Video,8,214
+798,1990,female,Design,4,55
+799,1990,female,Drawing,10,55
+800,1990,female,Illustrated Book,4,55
+801,1990,female,Multiple,1,55
+802,1990,female,Painting,3,55
+803,1990,female,Photograph,12,55
+804,1990,female,Print,15,55
+805,1990,female,Sculpture,1,55
+806,1990,female,Video,5,55
+807,1990,male,Architecture,4,245
+808,1990,male,Design,37,245
+809,1990,male,Drawing,27,245
+810,1990,male,Illustrated Book,16,245
+811,1990,male,Installation,1,245
+812,1990,male,Painting,15,245
+813,1990,male,Photograph,47,245
+814,1990,male,Print,85,245
+815,1990,male,Sculpture,11,245
+816,1990,male,Video,2,245
+817,1991,female,Design,1,51
+818,1991,female,Illustrated Book,12,51
+819,1991,female,Painting,3,51
+820,1991,female,Photograph,15,51
+821,1991,female,Print,15,51
+822,1991,female,Sculpture,3,51
+823,1991,female,Video,2,51
+824,1991,male,Architecture,2,219
+825,1991,male,Design,8,219
+826,1991,male,Drawing,26,219
+827,1991,male,Illustrated Book,31,219
+828,1991,male,Installation,2,219
+829,1991,male,Painting,28,219
+830,1991,male,Photograph,52,219
+831,1991,male,Print,52,219
+832,1991,male,Sculpture,14,219
+833,1991,male,Video,4,219
+834,1992,female,Architecture,1,57
+835,1992,female,Drawing,2,57
+836,1992,female,Illustrated Book,3,57
+837,1992,female,Painting,4,57
+838,1992,female,Photograph,24,57
+839,1992,female,Print,19,57
+840,1992,female,Sculpture,2,57
+841,1992,female,Video,2,57
+842,1992,male,Architecture,9,274
+843,1992,male,Design,17,274
+844,1992,male,Drawing,18,274
+845,1992,male,Illustrated Book,42,274
+846,1992,male,Installation,1,274
+847,1992,male,Painting,16,274
+848,1992,male,Photograph,94,274
+849,1992,male,Print,64,274
+850,1992,male,Sculpture,10,274
+851,1992,male,Video,3,274
+852,1993,female,Design,3,51
+853,1993,female,Drawing,3,51
+854,1993,female,Illustrated Book,9,51
+855,1993,female,Installation,1,51
+856,1993,female,Photograph,13,51
+857,1993,female,Print,19,51
+858,1993,female,Sculpture,1,51
+859,1993,female,Video,2,51
+860,1993,male,Architecture,7,211
+861,1993,male,Design,16,211
+862,1993,male,Drawing,14,211
+863,1993,male,Illustrated Book,42,211
+864,1993,male,Installation,1,211
+865,1993,male,Painting,6,211
+866,1993,male,Photograph,59,211
+867,1993,male,Print,53,211
+868,1993,male,Sculpture,7,211
+869,1993,male,Video,6,211
+870,1994,female,Design,3,56
+871,1994,female,Illustrated Book,3,56
+872,1994,female,Installation,1,56
+873,1994,female,Multiple,2,56
+874,1994,female,Painting,5,56
+875,1994,female,Photograph,20,56
+876,1994,female,Print,15,56
+877,1994,female,Sculpture,3,56
+878,1994,female,Video,4,56
+879,1994,male,Architecture,15,243
+880,1994,male,Design,34,243
+881,1994,male,Drawing,7,243
+882,1994,male,Illustrated Book,12,243
+883,1994,male,Installation,1,243
+884,1994,male,Multiple,3,243
+885,1994,male,Painting,20,243
+886,1994,male,Photograph,69,243
+887,1994,male,Print,51,243
+888,1994,male,Sculpture,17,243
+889,1994,male,Video,14,243
+890,1995,female,Design,5,48
+891,1995,female,Drawing,6,48
+892,1995,female,Illustrated Book,2,48
+893,1995,female,Multiple,3,48
+894,1995,female,Painting,1,48
+895,1995,female,Photograph,13,48
+896,1995,female,Print,16,48
+897,1995,female,Sculpture,2,48
+898,1995,male,Architecture,3,169
+899,1995,male,Design,32,169
+900,1995,male,Drawing,15,169
+901,1995,male,Illustrated Book,17,169
+902,1995,male,Installation,2,169
+903,1995,male,Multiple,3,169
+904,1995,male,Painting,11,169
+905,1995,male,Photograph,24,169
+906,1995,male,Print,51,169
+907,1995,male,Sculpture,8,169
+908,1995,male,Video,3,169
+909,1996,female,Architecture,1,50
+910,1996,female,Design,4,50
+911,1996,female,Drawing,9,50
+912,1996,female,Illustrated Book,6,50
+913,1996,female,Painting,2,50
+914,1996,female,Photograph,7,50
+915,1996,female,Print,18,50
+916,1996,female,Sculpture,3,50
+917,1996,male,Architecture,20,206
+918,1996,male,Design,21,206
+919,1996,male,Drawing,29,206
+920,1996,male,Illustrated Book,13,206
+921,1996,male,Installation,5,206
+922,1996,male,Painting,20,206
+923,1996,male,Photograph,37,206
+924,1996,male,Print,44,206
+925,1996,male,Sculpture,17,206
+926,1997,female,Design,3,64
+927,1997,female,Drawing,6,64
+928,1997,female,Illustrated Book,4,64
+929,1997,female,Multiple,4,64
+930,1997,female,Painting,5,64
+931,1997,female,Photograph,19,64
+932,1997,female,Print,17,64
+933,1997,female,Sculpture,4,64
+934,1997,female,Video,2,64
+935,1997,male,Architecture,12,241
+936,1997,male,Design,25,241
+937,1997,male,Drawing,20,241
+938,1997,male,Illustrated Book,35,241
+939,1997,male,Installation,3,241
+940,1997,male,Multiple,6,241
+941,1997,male,Painting,14,241
+942,1997,male,Photograph,48,241
+943,1997,male,Print,66,241
+944,1997,male,Sculpture,9,241
+945,1997,male,Video,3,241
+946,1998,female,Design,1,82
+947,1998,female,Drawing,5,82
+948,1998,female,Illustrated Book,5,82
+949,1998,female,Installation,1,82
+950,1998,female,Multiple,11,82
+951,1998,female,Painting,1,82
+952,1998,female,Photograph,13,82
+953,1998,female,Print,37,82
+954,1998,female,Sculpture,1,82
+955,1998,female,Video,7,82
+956,1998,male,Architecture,3,283
+957,1998,male,Design,43,283
+958,1998,male,Drawing,25,283
+959,1998,male,Film,1,283
+960,1998,male,Illustrated Book,10,283
+961,1998,male,Installation,3,283
+962,1998,male,Media,1,283
+963,1998,male,Multiple,23,283
+964,1998,male,Painting,19,283
+965,1998,male,Photograph,45,283
+966,1998,male,Print,87,283
+967,1998,male,Sculpture,15,283
+968,1998,male,Video,8,283
+969,1999,female,Design,1,63
+970,1999,female,Drawing,12,63
+971,1999,female,Illustrated Book,5,63
+972,1999,female,Multiple,5,63
+973,1999,female,Photograph,6,63
+974,1999,female,Print,21,63
+975,1999,female,Sculpture,2,63
+976,1999,female,Video,11,63
+977,1999,male,Architecture,5,230
+978,1999,male,Design,49,230
+979,1999,male,Drawing,38,230
+980,1999,male,Film,1,230
+981,1999,male,Illustrated Book,11,230
+982,1999,male,Multiple,6,230
+983,1999,male,Painting,18,230
+984,1999,male,Photograph,31,230
+985,1999,male,Print,50,230
+986,1999,male,Sculpture,10,230
+987,1999,male,Video,11,230
+988,2000,female,Architecture,1,56
+989,2000,female,Design,6,56
+990,2000,female,Drawing,8,56
+991,2000,female,Installation,2,56
+992,2000,female,Multiple,2,56
+993,2000,female,Painting,1,56
+994,2000,female,Photograph,6,56
+995,2000,female,Print,18,56
+996,2000,female,Video,12,56
+997,2000,male,Architecture,25,229
+998,2000,male,Design,95,229
+999,2000,male,Drawing,25,229
+1000,2000,male,Illustrated Book,7,229
+1001,2000,male,Installation,1,229
+1002,2000,male,Multiple,9,229
+1003,2000,male,Painting,6,229
+1004,2000,male,Photograph,14,229
+1005,2000,male,Print,25,229
+1006,2000,male,Sculpture,7,229
+1007,2000,male,Video,15,229
+1008,2000,non-binary,Video,1,1
+1009,2001,female,Design,7,130
+1010,2001,female,Drawing,20,130
+1011,2001,female,Illustrated Book,30,130
+1012,2001,female,Installation,2,130
+1013,2001,female,Multiple,2,130
+1014,2001,female,Painting,2,130
+1015,2001,female,Periodical,1,130
+1016,2001,female,Photograph,34,130
+1017,2001,female,Print,27,130
+1018,2001,female,Sculpture,2,130
+1019,2001,female,Video,3,130
+1020,2001,male,Architecture,8,626
+1021,2001,male,Design,75,626
+1022,2001,male,Drawing,68,626
+1023,2001,male,Graphic Design,1,626
+1024,2001,male,Illustrated Book,170,626
+1025,2001,male,Installation,2,626
+1026,2001,male,Multiple,16,626
+1027,2001,male,Painting,6,626
+1028,2001,male,Periodical,7,626
+1029,2001,male,Photograph,202,626
+1030,2001,male,Print,59,626
+1031,2001,male,Sculpture,10,626
+1032,2001,male,Video,2,626
+1033,2002,female,Drawing,8,51
+1034,2002,female,Illustrated Book,9,51
+1035,2002,female,Installation,1,51
+1036,2002,female,Painting,6,51
+1037,2002,female,Photograph,8,51
+1038,2002,female,Print,16,51
+1039,2002,female,Sculpture,1,51
+1040,2002,female,Video,2,51
+1041,2002,male,Architecture,3,144
+1042,2002,male,Design,16,144
+1043,2002,male,Drawing,33,144
+1044,2002,male,Film,1,144
+1045,2002,male,Illustrated Book,11,144
+1046,2002,male,Installation,1,144
+1047,2002,male,Multiple,3,144
+1048,2002,male,Painting,16,144
+1049,2002,male,Photograph,22,144
+1050,2002,male,Print,31,144
+1051,2002,male,Sculpture,6,144
+1052,2002,male,Video,1,144
+1053,2003,female,Design,1,43
+1054,2003,female,Drawing,11,43
+1055,2003,female,Illustrated Book,1,43
+1056,2003,female,Installation,2,43
+1057,2003,female,Photograph,5,43
+1058,2003,female,Print,15,43
+1059,2003,female,Sculpture,3,43
+1060,2003,female,Video,5,43
+1061,2003,male,Architecture,11,127
+1062,2003,male,Design,12,127
+1063,2003,male,Drawing,25,127
+1064,2003,male,Illustrated Book,7,127
+1065,2003,male,Multiple,8,127
+1066,2003,male,Painting,4,127
+1067,2003,male,Photograph,10,127
+1068,2003,male,Print,38,127
+1069,2003,male,Sculpture,6,127
+1070,2003,male,Video,6,127
+1071,2004,female,Architecture,1,75
+1072,2004,female,Drawing,34,75
+1073,2004,female,Illustrated Book,1,75
+1074,2004,female,Installation,5,75
+1075,2004,female,Multiple,1,75
+1076,2004,female,Painting,5,75
+1077,2004,female,Photograph,11,75
+1078,2004,female,Print,8,75
+1079,2004,female,Sculpture,5,75
+1080,2004,female,Video,4,75
+1081,2004,male,Architecture,8,180
+1082,2004,male,Design,15,180
+1083,2004,male,Drawing,65,180
+1084,2004,male,Film,1,180
+1085,2004,male,Illustrated Book,3,180
+1086,2004,male,Installation,8,180
+1087,2004,male,Painting,9,180
+1088,2004,male,Photograph,27,180
+1089,2004,male,Print,28,180
+1090,2004,male,Sculpture,9,180
+1091,2004,male,Video,7,180
+1092,2005,female,Architecture,1,255
+1093,2005,female,Design,2,255
+1094,2005,female,Drawing,189,255
+1095,2005,female,Illustrated Book,3,255
+1096,2005,female,Installation,1,255
+1097,2005,female,Multiple,5,255
+1098,2005,female,Painting,11,255
+1099,2005,female,Photograph,6,255
+1100,2005,female,Print,20,255
+1101,2005,female,Sculpture,12,255
+1102,2005,female,Video,5,255
+1103,2005,male,Architecture,6,709
+1104,2005,male,Design,33,709
+1105,2005,male,Drawing,478,709
+1106,2005,male,Film,1,709
+1107,2005,male,Illustrated Book,6,709
+1108,2005,male,Installation,14,709
+1109,2005,male,Multiple,11,709
+1110,2005,male,Painting,25,709
+1111,2005,male,Photograph,26,709
+1112,2005,male,Print,55,709
+1113,2005,male,Sculpture,21,709
+1114,2005,male,Video,11,709
+1115,2005,male,Work on Paper,22,709
+1116,2006,female,Architecture,1,136
+1117,2006,female,Design,6,136
+1118,2006,female,Drawing,15,136
+1119,2006,female,Illustrated Book,3,136
+1120,2006,female,Multiple,3,136
+1121,2006,female,Painting,3,136
+1122,2006,female,Photograph,9,136
+1123,2006,female,Print,91,136
+1124,2006,female,Sculpture,3,136
+1125,2006,female,Video,2,136
+1126,2006,male,Architecture,2,404
+1127,2006,male,Design,41,404
+1128,2006,male,Drawing,33,404
+1129,2006,male,Film,1,404
+1130,2006,male,Illustrated Book,8,404
+1131,2006,male,Installation,6,404
+1132,2006,male,Multiple,10,404
+1133,2006,male,Painting,8,404
+1134,2006,male,Photograph,34,404
+1135,2006,male,Print,249,404
+1136,2006,male,Sculpture,7,404
+1137,2006,male,Video,5,404
+1138,2007,female,Design,5,83
+1139,2007,female,Drawing,9,83
+1140,2007,female,Film,1,83
+1141,2007,female,Installation,10,83
+1142,2007,female,Multiple,1,83
+1143,2007,female,Painting,3,83
+1144,2007,female,Photograph,11,83
+1145,2007,female,Print,33,83
+1146,2007,female,Sculpture,4,83
+1147,2007,female,Video,5,83
+1148,2007,female,Work on Paper,1,83
+1149,2007,male,Architecture,3,310
+1150,2007,male,Audio,1,310
+1151,2007,male,Design,19,310
+1152,2007,male,Drawing,44,310
+1153,2007,male,Ephemera,1,310
+1154,2007,male,Illustrated Book,18,310
+1155,2007,male,Installation,23,310
+1156,2007,male,Multiple,12,310
+1157,2007,male,Painting,8,310
+1158,2007,male,Photograph,37,310
+1159,2007,male,Poster,1,310
+1160,2007,male,Print,117,310
+1161,2007,male,Sculpture,10,310
+1162,2007,male,Textile,1,310
+1163,2007,male,Video,11,310
+1164,2007,male,Work on Paper,4,310
+1165,2008,female,(not assigned),4,130
+1166,2008,female,Audio,2,130
+1167,2008,female,Design,2,130
+1168,2008,female,Drawing,22,130
+1169,2008,female,Film,2,130
+1170,2008,female,Illustrated Book,9,130
+1171,2008,female,Installation,11,130
+1172,2008,female,Media,1,130
+1173,2008,female,Multiple,11,130
+1174,2008,female,Painting,5,130
+1175,2008,female,Periodical,1,130
+1176,2008,female,Photograph,17,130
+1177,2008,female,Print,19,130
+1178,2008,female,Sculpture,11,130
+1179,2008,female,Video,13,130
+1180,2008,male,(not assigned),29,609
+1181,2008,male,Architecture,3,609
+1182,2008,male,Audio,36,609
+1183,2008,male,Design,29,609
+1184,2008,male,Drawing,89,609
+1185,2008,male,Ephemera,6,609
+1186,2008,male,Film,13,609
+1187,2008,male,Illustrated Book,36,609
+1188,2008,male,Installation,31,609
+1189,2008,male,Media,4,609
+1190,2008,male,Multiple,55,609
+1191,2008,male,Painting,19,609
+1192,2008,male,Performance,2,609
+1193,2008,male,Periodical,3,609
+1194,2008,male,Photograph,87,609
+1195,2008,male,Poster,3,609
+1196,2008,male,Print,98,609
+1197,2008,male,Sculpture,33,609
+1198,2008,male,Textile,5,609
+1199,2008,male,Video,28,609
+1200,2009,female,Architecture,1,70
+1201,2009,female,Design,3,70
+1202,2009,female,Drawing,13,70
+1203,2009,female,Illustrated Book,3,70
+1204,2009,female,Installation,9,70
+1205,2009,female,Multiple,1,70
+1206,2009,female,Painting,5,70
+1207,2009,female,Photograph,9,70
+1208,2009,female,Print,17,70
+1209,2009,female,Sculpture,2,70
+1210,2009,female,Video,7,70
+1211,2009,male,Architecture,5,182
+1212,2009,male,Design,20,182
+1213,2009,male,Drawing,14,182
+1214,2009,male,Film,1,182
+1215,2009,male,Illustrated Book,5,182
+1216,2009,male,Installation,13,182
+1217,2009,male,Multiple,4,182
+1218,2009,male,Painting,7,182
+1219,2009,male,Performance,2,182
+1220,2009,male,Photograph,59,182
+1221,2009,male,Print,43,182
+1222,2009,male,Sculpture,4,182
+1223,2009,male,Video,5,182
+1224,2010,female,Audio,1,84
+1225,2010,female,Design,5,84
+1226,2010,female,Drawing,13,84
+1227,2010,female,Illustrated Book,1,84
+1228,2010,female,Installation,1,84
+1229,2010,female,Multiple,3,84
+1230,2010,female,Painting,5,84
+1231,2010,female,Periodical,2,84
+1232,2010,female,Photograph,16,84
+1233,2010,female,Print,32,84
+1234,2010,female,Sculpture,5,84
+1235,2010,male,(not assigned),1,218
+1236,2010,male,Architecture,7,218
+1237,2010,male,Design,44,218
+1238,2010,male,Drawing,31,218
+1239,2010,male,Illustrated Book,9,218
+1240,2010,male,Installation,6,218
+1241,2010,male,Multiple,9,218
+1242,2010,male,Painting,12,218
+1243,2010,male,Periodical,25,218
+1244,2010,male,Photograph,30,218
+1245,2010,male,Print,30,218
+1246,2010,male,Sculpture,12,218
+1247,2010,male,Video,2,218
+1248,2011,female,Audio,1,114
+1249,2011,female,Collage,1,114
+1250,2011,female,Design,19,114
+1251,2011,female,Drawing,19,114
+1252,2011,female,Ephemera,2,114
+1253,2011,female,Illustrated Book,5,114
+1254,2011,female,Installation,11,114
+1255,2011,female,Multiple,3,114
+1256,2011,female,Painting,4,114
+1257,2011,female,Photograph,23,114
+1258,2011,female,Print,10,114
+1259,2011,female,Sculpture,9,114
+1260,2011,female,Textile,1,114
+1261,2011,female,Video,6,114
+1262,2011,male,Architecture,3,262
+1263,2011,male,Audio,2,262
+1264,2011,male,Collage,3,262
+1265,2011,male,Design,24,262
+1266,2011,male,Drawing,44,262
+1267,2011,male,Ephemera,3,262
+1268,2011,male,Illustrated Book,29,262
+1269,2011,male,Installation,18,262
+1270,2011,male,Multiple,8,262
+1271,2011,male,Painting,18,262
+1272,2011,male,Photograph,38,262
+1273,2011,male,Print,38,262
+1274,2011,male,Sculpture,24,262
+1275,2011,male,Textile,1,262
+1276,2011,male,Video,9,262
+1277,2012,female,Architecture,2,105
+1278,2012,female,Design,4,105
+1279,2012,female,Drawing,13,105
+1280,2012,female,Ephemera,1,105
+1281,2012,female,Illustrated Book,10,105
+1282,2012,female,Installation,6,105
+1283,2012,female,Media,1,105
+1284,2012,female,Multiple,4,105
+1285,2012,female,Painting,3,105
+1286,2012,female,Periodical,1,105
+1287,2012,female,Photograph,21,105
+1288,2012,female,Print,20,105
+1289,2012,female,Sculpture,9,105
+1290,2012,female,Textile,2,105
+1291,2012,female,Video,8,105
+1292,2012,male,Architecture,13,234
+1293,2012,male,Design,43,234
+1294,2012,male,Drawing,32,234
+1295,2012,male,Ephemera,1,234
+1296,2012,male,Film,2,234
+1297,2012,male,Frank Lloyd Wright Archive,1,234
+1298,2012,male,Graphic Design,1,234
+1299,2012,male,Illustrated Book,12,234
+1300,2012,male,Installation,11,234
+1301,2012,male,Multiple,7,234
+1302,2012,male,Painting,13,234
+1303,2012,male,Performance,1,234
+1304,2012,male,Photograph,31,234
+1305,2012,male,Print,41,234
+1306,2012,male,Sculpture,12,234
+1307,2012,male,Video,6,234
+1308,2012,male,Work on Paper,7,234
+1309,2013,female,Architecture,1,105
+1310,2013,female,Audio,21,105
+1311,2013,female,Design,1,105
+1312,2013,female,Drawing,8,105
+1313,2013,female,Film,2,105
+1314,2013,female,Illustrated Book,1,105
+1315,2013,female,Installation,7,105
+1316,2013,female,Multiple,3,105
+1317,2013,female,Painting,4,105
+1318,2013,female,Photograph,28,105
+1319,2013,female,Print,12,105
+1320,2013,female,Sculpture,12,105
+1321,2013,female,Video,4,105
+1322,2013,female,Work on Paper,1,105
+1323,2013,male,(not assigned),1,316
+1324,2013,male,Architecture,8,316
+1325,2013,male,Audio,72,316
+1326,2013,male,Design,23,316
+1327,2013,male,Drawing,29,316
+1328,2013,male,Film,2,316
+1329,2013,male,Illustrated Book,11,316
+1330,2013,male,Installation,14,316
+1331,2013,male,Media,1,316
+1332,2013,male,Multiple,5,316
+1333,2013,male,Painting,13,316
+1334,2013,male,Periodical,1,316
+1335,2013,male,Photograph,39,316
+1336,2013,male,Poster,9,316
+1337,2013,male,Print,47,316
+1338,2013,male,Sculpture,17,316
+1339,2013,male,Video,10,316
+1340,2013,male,Work on Paper,14,316
+1341,2014,female,Audio,1,77
+1342,2014,female,Design,5,77
+1343,2014,female,Drawing,13,77
+1344,2014,female,Film,2,77
+1345,2014,female,Illustrated Book,4,77
+1346,2014,female,Installation,3,77
+1347,2014,female,Multiple,4,77
+1348,2014,female,Painting,5,77
+1349,2014,female,Photograph,19,77
+1350,2014,female,Print,10,77
+1351,2014,female,Sculpture,3,77
+1352,2014,female,Video,8,77
+1353,2014,male,Architecture,20,239
+1354,2014,male,Design,37,239
+1355,2014,male,Drawing,27,239
+1356,2014,male,Ephemera,1,239
+1357,2014,male,Film,1,239
+1358,2014,male,Illustrated Book,14,239
+1359,2014,male,Installation,17,239
+1360,2014,male,Media,1,239
+1361,2014,male,Multiple,12,239
+1362,2014,male,Painting,13,239
+1363,2014,male,Performance,1,239
+1364,2014,male,Photograph,42,239
+1365,2014,male,Print,36,239
+1366,2014,male,Sculpture,10,239
+1367,2014,male,Video,7,239
+1368,2014,non-binary,Sculpture,1,1
+1369,2015,female,Architecture,2,116
+1370,2015,female,Design,29,116
+1371,2015,female,Drawing,10,116
+1372,2015,female,Ephemera,1,116
+1373,2015,female,Illustrated Book,6,116
+1374,2015,female,Installation,3,116
+1375,2015,female,Painting,6,116
+1376,2015,female,Performance,1,116
+1377,2015,female,Photograph,19,116
+1378,2015,female,Print,29,116
+1379,2015,female,Sculpture,5,116
+1380,2015,female,Video,5,116
+1381,2015,male,Architecture,15,459
+1382,2015,male,Design,222,459
+1383,2015,male,Drawing,23,459
+1384,2015,male,Film,3,459
+1385,2015,male,Graphic Design,1,459
+1386,2015,male,Illustrated Book,12,459
+1387,2015,male,Installation,7,459
+1388,2015,male,Multiple,10,459
+1389,2015,male,Painting,11,459
+1390,2015,male,Periodical,2,459
+1391,2015,male,Photograph,41,459
+1392,2015,male,Poster,1,459
+1393,2015,male,Print,87,459
+1394,2015,male,Sculpture,12,459
+1395,2015,male,Video,12,459
+1396,2016,female,Architecture,2,93
+1397,2016,female,Design,10,93
+1398,2016,female,Drawing,18,93
+1399,2016,female,Ephemera,1,93
+1400,2016,female,Illustrated Book,3,93
+1401,2016,female,Installation,3,93
+1402,2016,female,Multiple,3,93
+1403,2016,female,Painting,11,93
+1404,2016,female,Photograph,17,93
+1405,2016,female,Print,15,93
+1406,2016,female,Sculpture,4,93
+1407,2016,female,Video,6,93
+1408,2016,male,Architecture,9,268
+1409,2016,male,Design,49,268
+1410,2016,male,Drawing,16,268
+1411,2016,male,Film,4,268
+1412,2016,male,Illustrated Book,12,268
+1413,2016,male,Installation,11,268
+1414,2016,male,Multiple,7,268
+1415,2016,male,Painting,39,268
+1416,2016,male,Photograph,65,268
+1417,2016,male,Print,33,268
+1418,2016,male,Sculpture,14,268
+1419,2016,male,Textile,2,268
+1420,2016,male,Video,6,268
+1421,2016,male,Work on Paper,1,268
+1422,2017,female,Architecture,1,116
+1423,2017,female,Design,6,116
+1424,2017,female,Drawing,10,116
+1425,2017,female,Ephemera,1,116
+1426,2017,female,Furniture and Interiors,1,116
+1427,2017,female,Illustrated Book,6,116
+1428,2017,female,Installation,8,116
+1429,2017,female,Multiple,7,116
+1430,2017,female,Painting,9,116
+1431,2017,female,Photograph,29,116
+1432,2017,female,Poster,1,116
+1433,2017,female,Print,16,116
+1434,2017,female,Sculpture,11,116
+1435,2017,female,Software,1,116
+1436,2017,female,Textile,1,116
+1437,2017,female,Video,8,116
+1438,2017,male,Architecture,2,192
+1439,2017,male,Audio,2,192
+1440,2017,male,Collage,1,192
+1441,2017,male,Design,9,192
+1442,2017,male,Drawing,22,192
+1443,2017,male,Ephemera,2,192
+1444,2017,male,Film,3,192
+1445,2017,male,Illustrated Book,11,192
+1446,2017,male,Installation,10,192
+1447,2017,male,Multiple,8,192
+1448,2017,male,Painting,12,192
+1449,2017,male,Performance,1,192
+1450,2017,male,Photograph,53,192
+1451,2017,male,Print,28,192
+1452,2017,male,Sculpture,12,192
+1453,2017,male,Textile,1,192
+1454,2017,male,Video,15,192
+1455,2017,non-binary,Installation,1,1
+1456,2018,female,Architecture,2,157
+1457,2018,female,Design,20,157
+1458,2018,female,Drawing,52,157
+1459,2018,female,Illustrated Book,3,157
+1460,2018,female,Installation,4,157
+1461,2018,female,Multiple,4,157
+1462,2018,female,Painting,9,157
+1463,2018,female,Periodical,2,157
+1464,2018,female,Photograph,28,157
+1465,2018,female,Print,21,157
+1466,2018,female,Sculpture,5,157
+1467,2018,female,Video,7,157
+1468,2018,male,Architecture,29,403
+1469,2018,male,Design,70,403
+1470,2018,male,Drawing,169,403
+1471,2018,male,Ephemera,3,403
+1472,2018,male,Illustrated Book,9,403
+1473,2018,male,Installation,9,403
+1474,2018,male,Multiple,9,403
+1475,2018,male,Painting,9,403
+1476,2018,male,Periodical,1,403
+1477,2018,male,Photograph,53,403
+1478,2018,male,Print,32,403
+1479,2018,male,Sculpture,4,403
+1480,2018,male,Video,6,403
+1481,2018,non-binary,Video,1,1
+1482,2019,female,(not assigned),1,81
+1483,2019,female,Architectural Model,1,81
+1484,2019,female,Audio,1,81
+1485,2019,female,Design,7,81
+1486,2019,female,Drawing,7,81
+1487,2019,female,Film,2,81
+1488,2019,female,Graphic Design,1,81
+1489,2019,female,Illustrated Book,1,81
+1490,2019,female,Installation,2,81
+1491,2019,female,Multiple,2,81
+1492,2019,female,Painting,11,81
+1493,2019,female,Photograph,27,81
+1494,2019,female,Print,12,81
+1495,2019,female,Sculpture,1,81
+1496,2019,female,Video,4,81
+1497,2019,female,Work on Paper,1,81
+1498,2019,male,Architecture,6,109
+1499,2019,male,Audio,1,109
+1500,2019,male,Design,5,109
+1501,2019,male,Drawing,16,109
+1502,2019,male,Ephemera,1,109
+1503,2019,male,Illustrated Book,7,109
+1504,2019,male,Installation,4,109
+1505,2019,male,Painting,6,109
+1506,2019,male,Performance,1,109
+1507,2019,male,Photograph,37,109
+1508,2019,male,Print,12,109
+1509,2019,male,Sculpture,8,109
+1510,2019,male,Video,4,109
+1511,2019,male,Work on Paper,1,109
+1512,2020,female,Design,1,78
+1513,2020,female,Document,1,78
+1514,2020,female,Drawing,9,78
+1515,2020,female,Illustrated Book,2,78
+1516,2020,female,Installation,3,78
+1517,2020,female,Multiple,1,78
+1518,2020,female,Painting,1,78
+1519,2020,female,Photograph,38,78
+1520,2020,female,Print,17,78
+1521,2020,female,Publication,1,78
+1522,2020,female,Sculpture,1,78
+1523,2020,female,Video,3,78
+1524,2020,male,Architecture,4,59
+1525,2020,male,Audio,1,59
+1526,2020,male,Design,1,59
+1527,2020,male,Drawing,6,59
+1528,2020,male,Illustrated Book,5,59
+1529,2020,male,Installation,2,59
+1530,2020,male,Multiple,2,59
+1531,2020,male,Notebook,1,59
+1532,2020,male,Painting,9,59
+1533,2020,male,Photograph,11,59
+1534,2020,male,Print,13,59
+1535,2020,male,Sculpture,2,59
+1536,2020,male,Video,2,59
+1537,2020,non-binary,Video,1,1
+1538,2021,female,Architecture,1,108
+1539,2021,female,Design,5,108
+1540,2021,female,Drawing,10,108
+1541,2021,female,Film,1,108
+1542,2021,female,Installation,5,108
+1543,2021,female,Multiple,2,108
+1544,2021,female,Painting,11,108
+1545,2021,female,Photograph,54,108
+1546,2021,female,Print,13,108
+1547,2021,female,Sculpture,4,108
+1548,2021,female,Video,2,108
+1549,2021,male,Architecture,4,93
+1550,2021,male,Design,11,93
+1551,2021,male,Drawing,9,93
+1552,2021,male,Illustrated Book,2,93
+1553,2021,male,Installation,2,93
+1554,2021,male,Multiple,3,93
+1555,2021,male,Painting,13,93
+1556,2021,male,Photograph,34,93
+1557,2021,male,Print,6,93
+1558,2021,male,Sculpture,6,93
+1559,2021,male,Video,3,93
+1560,2022,female,Collage,1,47
+1561,2022,female,Design,1,47
+1562,2022,female,Drawing,7,47
+1563,2022,female,Installation,3,47
+1564,2022,female,Media,1,47
+1565,2022,female,Painting,9,47
+1566,2022,female,Photograph,5,47
+1567,2022,female,Print,10,47
+1568,2022,female,Sculpture,6,47
+1569,2022,female,Textile,2,47
+1570,2022,female,Video,2,47
+1571,2022,male,Drawing,11,76
+1572,2022,male,Illustrated Book,2,76
+1573,2022,male,Installation,3,76
+1574,2022,male,Multiple,1,76
+1575,2022,male,Notebook,1,76
+1576,2022,male,Painting,6,76
+1577,2022,male,Photograph,34,76
+1578,2022,male,Print,10,76
+1579,2022,male,Sculpture,5,76
+1580,2022,male,Video,3,76

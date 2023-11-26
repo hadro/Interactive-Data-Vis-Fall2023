@@ -62,24 +62,19 @@ Promise.all([
   });
 
   function init() {
-  xM = d3.scaleLinear()
-  .domain([0, d3.max(state.data2, d => d.male)])
-  .rangeRound([(width / 2)-15, margin.left])
-  
-  xF = d3.scaleLinear()
-    .domain(xM.domain())
-    .rangeRound([(width / 2)+15, width - margin.right])
+
+
+  // + FILTER DATA BASED ON STATE
+filteredData = state.data2
+// .filter(d => state.selectedGender === "All" || d.male >=0)
+// .filter(d => state.selectedYear === "All" || state.selectedYear == d.Year)
+// .filter(d => d.Classification === "all")
+
 
   y = d3.scaleBand()
     .domain(state.data2.map(d => d.Year))
     .rangeRound([height - margin.bottom, margin.top])
     .padding(0.1)
-
-  // + FILTER DATA BASED ON STATE
-filteredData = state.data2
-    // .filter(d => state.selectedGender === "All" || d.male >=0)
-    // .filter(d => state.selectedYear === "All" || state.selectedYear == d.Year)
-    // .filter(d => d.Classification === "all")
 
 // + UI ELEMENT SETUP
   
@@ -105,26 +100,26 @@ selectElementGender
 
   selectElementGender
   .on("change", event => {
-     console.log(event.target.value);
+    //  console.log(event.target.value);
     state.selectedGender = event.target.value;
-    console.log(event.target.value, state.selectedGender);
+    // console.log(event.target.value, state.selectedGender);
     draw();
   })
 
   selectElementClassification
   .on("change", event => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     state.selectedClassification = event.target.value;
     draw();
   })
 
-  xAxis = g => g
-    .attr("transform", `translate(0,${height - margin.bottom})`)
-    .attr("class", "xAxis")
-    .call(g => g.append("g").call(d3.axisBottom(xM).ticks(width / 80, "s")))
-    .call(g => g.append("g").call(d3.axisBottom(xF).ticks(width / 80, "s")))
-    .call(g => g.selectAll(".domain").remove())
-    .call(g => g.selectAll(".tick:first-of-type").remove())
+//   xAxis = g => g
+//     .attr("transform", `translate(0,${height - margin.bottom})`)
+//     .attr("class", "xAxis")
+//     .call(g => g.append("g").call(d3.axisBottom(xM).ticks(width / 80, "s")))
+//     .call(g => g.append("g").call(d3.axisBottom(xF).ticks(width / 80, "s")))
+//     .call(g => g.selectAll(".domain").remove())
+//     .call(g => g.selectAll(".tick:first-of-type").remove())
 
   yAxis = g => g
     .attr("transform", `translate(${xM(0)+15},0)`)
@@ -152,10 +147,13 @@ selectElementGender
     .attr("font-size", 12);
 
 
-    svg.append("g")
-    .call(xAxis);
+    // svg.append("g")
+    // .call(xAxis);
 
-    delaySet = 50;
+    svg.append("g")
+.call(yAxis2); 
+
+    delaySet = 10;
 
     draw();
   }
@@ -167,7 +165,52 @@ filteredData = state.data2
 //     // .filter(d => state.selectedYear === "All" || state.selectedYear == d.Year)
     .filter(d => d.Classification === state.selectedClassification)
 
-    console.log(filteredData, state.selectedClassification)
+    // console.log(filteredData, state.selectedClassification)
+    
+    xM = d3.scaleLinear()
+    .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
+    .rangeRound([(width / 2)-15, margin.left])
+    .nice();
+    
+    xF = d3.scaleLinear()
+      .domain(xM.domain())
+      .rangeRound([(width / 2)+15, width - margin.right])
+      .nice();
+
+//   xM
+//   .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
+//   .rangeRound([(width / 2)-15, margin.left]);
+  
+//   xF
+//     .domain(xM.domain())
+//     .rangeRound([(width / 2)+15, width - margin.right]);
+    
+    console.log(xM.domain(), xF.domain())
+
+        console.log(d3.max(filteredData, d => Math.max(d.female,d.male)))
+
+const g1 = svg.append("g").attr('class', 'x-axis-left');
+const g2 = svg.append("g").attr('class', 'x-axis-right');
+const xAxis2 = d3.axisBottom(xM);
+const xAxis3 = d3.axisBottom(xF);
+
+
+        
+        svg.selectAll('.x-axis-left')
+        .attr("transform", `translate(0,${height - margin.bottom})`)
+        // .attr("transform", `translate(${margin.left}, ${height / 2})`)
+    .transition()
+    .duration(1500)
+    .ease(d3.easeLinear)
+        .call(xAxis2);
+
+        svg.selectAll('.x-axis-right')
+        .attr("transform", `translate(0,${height - margin.bottom})`)
+        // .attr("transform", `translate(${margin.left}, ${height / 2})`)
+    .transition().duration(1500)
+        .call(xAxis3);
+
+        console.log(svg.selectAll('g'))
 
     // state.data1.forEach((x, i) => console.log(x, i));
     filteredData.forEach((x, i) => x)
@@ -288,8 +331,49 @@ svg // female
 // svg.append("g")
 // .call(yAxis); 
 
-svg.append("g")
-.call(yAxis2); 
+
+
+// svg.select("g .xAxis")
+// .transition()
+// .duration(49)
+// // .call(d3.axisBottom(xScale).tickFormat(d3.format(".0%")))
+// .call(d3.axisBottom(xM).scale(xM))
+// .call(d3.axisBottom(xF).scale(xF))
+
+    // // Update X axis
+    // xM.domain([0, d3.max(filteredData, d => d.male)]);
+    // xF.domain([0, d3.max(filteredData, d => d.male)]);
+    // svg.select('.xAxis')
+    // .transition().duration(150).ease(d3.easeLinear)
+    // .call(d3.axisBottom(xM))
+    // // .call(d3.axisBottom(xM).ticks(width / 80, "s"))
+    // // .call(d3.axisBottom(xF).ticks(width / 80, "s"))
+
+//     // Update chart
+//     svg.selectAll("circle")
+//        .data(data)
+//        .transition()
+//        .duration(1000)
+//        .attr("cx", function (d) { return x(d.Sepal_Length); } )
+//        .attr("cy", function (d) { return y(d.Petal_Length); } )
+
+  // Add an event listener to the button created in the html part
+//   d3.select("#buttonXlim").on("input", updatePlot )
+
+  //Update xAxis scale
+
+
+
+
+  //Call axes
+//   xAxis = g => g
+//   .attr("transform", "translate(0," + (height - margin.bottom) + ")")
+
+
+    // .transition().duration(1000)
+    // .call(xAxis);
+
+
 
 }
 
