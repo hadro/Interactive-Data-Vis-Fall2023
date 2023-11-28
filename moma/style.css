@@ -1,0 +1,86 @@
+
+@font-face {
+font-display: block;
+font-family: "Neue Haas Grotesk";
+src: url("https://type.cargo.site/files/NeueHaasGroteskText-Regular.woff") format("woff");
+font-style: normal;
+font-weight: normal;
+unicode-range: U+0000-DFFF, U+F900-FFFD;
+}
+@font-face {
+font-display: block;
+font-family: "Neue Haas Grotesk";
+src: url("https://type.cargo.site/files/NeueHaasGroteskText-Italic.woff") format("woff");
+font-style: italic;
+font-weight: normal;
+unicode-range: U+0000-DFFF, U+F900-FFFD;
+}
+@font-face {
+font-display: block;
+font-family: "Neue Haas Grotesk";
+src: url("https://type.cargo.site/files/NeueHaasGroteskText-Medium.woff") format("woff");
+font-style: normal;
+font-weight: 500;
+unicode-range: U+0000-DFFF, U+F900-FFFD;
+}
+@font-face {
+font-display: block;
+font-family: "Neue Haas Grotesk";
+src: url("https://type.cargo.site/files/NeueHaasGroteskText-MediumItalic.woff") format("woff");
+font-style: italic;
+font-weight: 500;
+unicode-range: U+0000-DFFF, U+F900-FFFD;
+}
+@font-face {
+font-display: block;
+font-family: "Neue Haas Grotesk";
+src: url("https://type.cargo.site/files/NeueHaasGroteskText-Bold.woff") format("woff");
+font-style: normal;
+font-weight: bold;
+unicode-range: U+0000-DFFF, U+F900-FFFD;
+}
+@font-face {
+font-display: block;
+font-family: "Neue Haas Grotesk";
+src: url("https://type.cargo.site/files/NeueHaasGroteskText-BoldItalic.woff") format("woff");
+font-style: italic;
+font-weight: bold;
+unicode-range: U+0000-DFFF, U+F900-FFFD;
+}
+@font-face {
+font-display: block;
+font-family: "Freight Text";
+src: url("https://type.cargo.site/files/FreightText-Book.woff") format("woff");
+font-style: normal;
+font-weight: normal;
+unicode-range: U+0000-DFFF, U+F900-FFFD;
+}
+@font-face {
+font-display: block;
+font-family: "Freight Text";
+src: url("https://type.cargo.site/files/FreightText-BookItalic.woff") format("woff");
+font-style: italic;
+font-weight: normal;
+unicode-range: U+0000-DFFF, U+F900-FFFD;
+}
+@font-face {
+font-display: block;
+font-family: "Freight Text";
+src: url("https://type.cargo.site/files/FreightText-Bold.woff") format("woff");
+font-style: normal;
+font-weight: bold;
+unicode-range: U+0000-DFFF, U+F900-FFFD;
+}
+@font-face {
+font-display: block;
+font-family: "Freight Text";
+src: url("https://type.cargo.site/files/FreightText-BoldItalic.woff") format("woff");
+font-style: italic;
+font-weight: bold;
+unicode-range: U+0000-DFFF, U+F900-FFFD;
+}
+
+body {
+    font-family: "Neue Haas Grotesk";   
+    padding-left: 2%;
+}

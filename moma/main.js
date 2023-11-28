@@ -1,7 +1,7 @@
 /* CONSTANTS AND GLOBALS */
 const width = window.innerWidth * 0.9,
   height = window.innerHeight * 0.9,
-  margin = ({top: 10, right: 0, bottom: 20, left: 0})
+  margin = ({top: 10, right: 0, bottom: 30, left: 0})
   
   let state = {
     data: [],
@@ -28,6 +28,10 @@ let mouseHover;
 let mouseleave;
 let filteredData;
 let delaySet;
+let g1;
+let g2;
+let xAxis2;
+let xAxis3;
 
 Promise.all([
     d3.csv("met_data.csv", d => {
@@ -121,22 +125,33 @@ selectElementGender
 //     .call(g => g.selectAll(".domain").remove())
 //     .call(g => g.selectAll(".tick:first-of-type").remove())
 
-  yAxis = g => g
-    .attr("transform", `translate(${xM(0)+15},0)`)
-    //.call(d3.axisRight(y).tickSizeOuter(0))
-    .call(d3.axisRight(y).tickValues([]))
-    // .call(g => g.selectAll(".tick text").attr("fill", "green"))
+  // yAxis = g => g
+  //   .attr("transform", `translate(${xM(0)+15},0)`)
+  //   //.call(d3.axisRight(y).tickSizeOuter(0))
+  //   .call(d3.axisRight(y).tickValues([]))
+  //   // .call(g => g.selectAll(".tick text").attr("fill", "green"))
 
     yAxis2 = g => g
-    .attr("transform", `translate(${ width/2 -20},0)`)
+    .attr("transform", `translate(${ width/2 -28},0)`)
     .attr("class", "yAxis")
-    .call(d3.axisRight(y).tickSizeOuter(0))
-    // .call(d3.axisRight(y).tickValues([]))
-    .call(g => g.selectAll(".tick text").attr("fill", "magenta"))
-    // .call(d3.axisRight(y)).selectAll(".tick line").remove()
+    .call(d3.axisRight(y)
+    // .tickSizeOuter(0)
+    // .tickValues([1, 2, 3, 5, 8, 13, 21])
+    .tickValues(d3.range(1930, 2023, 10))
+    )
+    // // .call(d3.axisRight(y).tickValues([]))
+    // .call(g => g.selectAll(".tick text").attr("fill", "magenta"))
+    // // .call(d3.axisRight(y)).selectAll(".tick line").remove()
     .call(g => g.selectAll(".tick line").attr("stroke", "none").attr("fill", "none"))
-    .call(d3.axisRight(y)).select(".domain").remove()
+    .call(g => g.select(".domain").remove())
+    // .call(d3.axisRight(y).tickValues([1, 2, 3, 5, 8, 13, 21]))
 
+    // yAxis2 = g => g
+    // .call(g => g.selectAll(".tick text")
+    // .filter(d => d.Year % 10 === 0).attr("fill", "black"))
+
+// state.data.forEach(d => d.Year % 10 === 0 ? console.log(d.Year) : console.log('No'))
+// state.data.forEach(d => console.log(d.Year % 10 === 0))
 
     svg = d3.select("#container")
     .append("svg")
@@ -151,9 +166,11 @@ selectElementGender
     // .call(xAxis);
 
     svg.append("g")
+    .style("font-size", "1.5em")
 .call(yAxis2); 
 
     delaySet = 10;
+  
 
     draw();
   }
@@ -166,16 +183,7 @@ filteredData = state.data2
     .filter(d => d.Classification === state.selectedClassification)
 
     // console.log(filteredData, state.selectedClassification)
-    
-    xM = d3.scaleLinear()
-    .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
-    .rangeRound([(width / 2)-15, margin.left])
-    .nice();
-    
-    xF = d3.scaleLinear()
-      .domain(xM.domain())
-      .rangeRound([(width / 2)+15, width - margin.right])
-      .nice();
+
 
 //   xM
 //   .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
@@ -185,19 +193,27 @@ filteredData = state.data2
 //     .domain(xM.domain())
 //     .rangeRound([(width / 2)+15, width - margin.right]);
     
-    console.log(xM.domain(), xF.domain())
+    // console.log(xM.domain(), xF.domain())
 
-        console.log(d3.max(filteredData, d => Math.max(d.female,d.male)))
-
-const g1 = svg.append("g").attr('class', 'x-axis-left');
-const g2 = svg.append("g").attr('class', 'x-axis-right');
-const xAxis2 = d3.axisBottom(xM);
-const xAxis3 = d3.axisBottom(xF);
-
-
+        // console.log(d3.max(filteredData, d => Math.max(d.female,d.male)))
+        xM = d3.scaleLinear()
+        .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
+        .rangeRound([(width / 2)-25, margin.left])
+        .nice();
+        
+        xF = d3.scaleLinear()
+          .domain(xM.domain())
+          .rangeRound([(width / 2)+25, width - margin.right])
+          .nice();
+          
+        g1 = svg.append("g").attr('class', 'x-axis-left');
+        g2 = svg.append("g").attr('class', 'x-axis-right');
+        xAxis2 = d3.axisBottom(xM);
+        xAxis3 = d3.axisBottom(xF);
         
         svg.selectAll('.x-axis-left')
         .attr("transform", `translate(0,${height - margin.bottom})`)
+        .style("font-size", "1.6em")
         // .attr("transform", `translate(${margin.left}, ${height / 2})`)
     .transition()
     .duration(1500)
@@ -206,11 +222,12 @@ const xAxis3 = d3.axisBottom(xF);
 
         svg.selectAll('.x-axis-right')
         .attr("transform", `translate(0,${height - margin.bottom})`)
+        .style("font-size", "1.6em")
         // .attr("transform", `translate(${margin.left}, ${height / 2})`)
     .transition().duration(1500)
         .call(xAxis3);
 
-        console.log(svg.selectAll('g'))
+        // console.log(svg.selectAll('g'))
 
     // state.data1.forEach((x, i) => console.log(x, i));
     filteredData.forEach((x, i) => x)
