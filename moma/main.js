@@ -10,7 +10,8 @@ const width = window.innerWidth * 0.9,
       count: null
     },
     selectedGender: "All", // + YOUR INITIAL FILTER SELECTION
-    selectedClassification: "All"
+    selectedClassification: "All",
+    selectedToggle: 1
   };
 
 // these variables allow us to access anything we manipulate in init() but need access to in draw().
@@ -171,6 +172,77 @@ selectElementGender
 
     delaySet = 10;
   
+    tooltip = d3.select("#container")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("padding", "10px")
+    .style("position", "absolute")
+  
+options = function(d) { 
+option1 = `<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male:</span> ${d.male}</b><br>
+    <b> <span style="color:#66c2a5;">Female</span></b>: ${d.female}`;
+option2 = `<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male</span></b>: ${d.male}<br>
+    <b><span style="color:#66c2a5;">Female:</span> ${d.female}</b>`;
+    return d.male > d.female ? option1 : option2;
+  }
+
+  mouseHover = function(event, d) {
+    tooltip
+    .style("opacity", 1)
+    .html(options(d))
+    .style("left", event.x + 70 + "px") 
+    .style("top", event.y + "px")
+    .transition()
+    .delay(50)
+  }
+
+      // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+      mouseleave = function(event,d) {
+        tooltip
+          .transition()
+          .delay(20)
+          .duration(200)
+          .style("opacity", 0)
+      }
+    
+// toggle = function(d) {
+//   toggled = state.data2.filter( d =>
+//     d.Classification === "All" &
+//     d.female > d.male
+//   )
+//   console.log(filteredData1)
+// }
+
+// toggle()
+
+d3.selectAll("[name=greaterToggle]").on("change", function() {
+  selectedToggle = this.value;
+  opacity = this.checked ? d3.schemeSet2[0] : d3.schemeSet2[0];
+  console.log(opacity, selectedToggle)
+svg.selectAll("rect.year-female")
+  .filter(function(d) {return d.female > d.male;})
+  .transition()
+  .style("fill", opacity);
+  svg.selectAll("rect.year-female")
+  .filter(function(d) {return d.male > d.female;})
+  .transition()
+  .style("fill", "#ccc");
+  svg.selectAll("rect.year-male")
+  .filter(function(d) {return d.female > d.male;})
+  .transition()
+  .style("fill", d3.schemeSet2[1]);
+  svg.selectAll("rect.year-male")
+  .filter(function(d) {return d.male > d.female;})
+  .transition()
+  .style("fill", "#ccc");
+   draw()
+  }); 
+
 
     draw();
   }
@@ -203,7 +275,7 @@ filteredData = state.data2
         
         xF = d3.scaleLinear()
           .domain(xM.domain())
-          .rangeRound([(width / 2)+25, width - margin.right])
+          // .rangeRound([(width / 2)+25, width - margin.right])
           .nice();
           
         g1 = svg.append("g").attr('class', 'x-axis-left');
@@ -233,14 +305,14 @@ filteredData = state.data2
     filteredData.forEach((x, i) => x)
 svg // male
 .selectAll("rect.year-male")
-.data(filteredData, d => d.male + d.Year + d.Classification)
+.data(filteredData, d => d.male + d.Year + d.Classification + state.selectedToggle)
 .join(
     enter => enter
     .append("rect")
     .attr("class", "year-male")
-    .attr("id", d => d.male + d.Year + d.Classification)
+    .attr("id", d => d.male + d.Year + d.Classification + state.selectedToggle)
 .attr("fill", d => d3.schemeSet2[1])
-.attr("x", (width / 2)-15)
+.attr("x", (width / 2)-25)
 .attr("y", d => y(d.Year))
 .attr("height", y.bandwidth())
 .attr("width", 0)
@@ -264,20 +336,23 @@ svg // male
         .transition()
         .duration(1000)
       .delay(150)
-      .attr("x", (width / 2)-15)
+      .attr("x", (width / 2)-25)
     .attr("width", 0)
         .remove())
 )
+.on("mouseleave", mouseleave )
+.on("mouseover", mouseHover )
+
 svg // female
 .selectAll("rect.year-female")
-.data(filteredData, d => d.female + d.Year + d.Classification)
+.data(filteredData, d => d.female + d.Year + d.Classification + state.selectedToggle)
 .join(
     enter => enter
     .append("rect")
     .attr("class", "year-female")
-    .attr("id", d => d.female + d.Year + d.Classification)
+    .attr("id", d => d.female + d.Year + d.Classification + state.selectedToggle)
 .attr("fill", d => d3.schemeSet2[0])
-.attr("x", (width / 2)+15)
+.attr("x", (width / 2)+25)
 .attr("y", d => y(d.Year))
 .attr("height", y.bandwidth())
 .attr("width", 0)
@@ -301,10 +376,12 @@ svg // female
         .transition()
         .duration(1000)
       .delay(150)
-      .attr("x", (width / 2)+15)
+      .attr("x", (width / 2)+25)
     .attr("width", 0)
         .remove())
 )
+.on("mouseleave", mouseleave )
+.on("mouseover", mouseHover )
 
 // svg.append("g") // male
 // .attr("fill", "blue")
