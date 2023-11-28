@@ -275,7 +275,7 @@ filteredData = state.data2
         
         xF = d3.scaleLinear()
           .domain(xM.domain())
-          // .rangeRound([(width / 2)+25, width - margin.right])
+          .rangeRound([(width / 2)+25, width - margin.right])
           .nice();
           
         g1 = svg.append("g").attr('class', 'x-axis-left');
