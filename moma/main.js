@@ -1,6 +1,6 @@
 /* CONSTANTS AND GLOBALS */
 const width = window.innerWidth * 0.9,
-  height = window.innerHeight * 0.9,
+  height = window.innerHeight * 0.85,
   margin = ({top: 10, right: 0, bottom: 30, left: 0})
   
   let state = {
@@ -84,16 +84,6 @@ filteredData = state.data2
 // + UI ELEMENT SETUP
   
 const selectElementClassification = d3.select("#dropdown-classification")
-const selectElementGender = d3.select("#dropdown-gender")
-
-selectElementGender
-  .selectAll("option")
-  .data([...Array.from(new Set(state.data.map(d => d.Gender))), "All"])
-  .join("option")
-  .attr("value", d => d)
-  .text(d => d)
-  .attr("selected", "All")
-
 
   selectElementClassification
   .selectAll("option")
@@ -102,14 +92,6 @@ selectElementGender
   .attr("value", d => d)
   .text(d => d)
   .attr("selected", "All")
-
-  selectElementGender
-  .on("change", event => {
-    //  console.log(event.target.value);
-    state.selectedGender = event.target.value;
-    // console.log(event.target.value, state.selectedGender);
-    draw();
-  })
 
   selectElementClassification
   .on("change", event => {
@@ -196,7 +178,7 @@ option2 = `<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male</span></b>: ${
     .style("opacity", 1)
     .html(options(d))
     .style("left", event.x + 70 + "px") 
-    .style("top", event.y + "px")
+    .style("top", event.y - 120 + "px")
     .transition()
     .delay(50)
   }
