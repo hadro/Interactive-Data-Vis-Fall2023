@@ -182,19 +182,21 @@ filteredData = state.data2
         xAxis2 = d3.axisBottom(xM);
         xAxis3 = d3.axisBottom(xF);
         
-        svg.selectAll('.x-axis-left')
+        svg.select('.x-axis-left')
         .attr("transform", `translate(0,${height - margin.bottom})`)
         .style("font-size", "1.6em")
     .transition()
     .duration(1500)
-    .ease(d3.easeLinear)
+    // .ease(d3.easeLinear)
         .call(xAxis2);
 
-        svg.selectAll('.x-axis-right')
+        svg.select('.x-axis-right')
         .attr("transform", `translate(0,${height - margin.bottom})`)
         .style("font-size", "1.6em")
         // .attr("transform", `translate(${margin.left}, ${height / 2})`)
-    .transition().duration(1500)
+    .transition()
+    .duration(1500)
+    // .ease(d3.easeLinear)
         .call(xAxis3);
 
 
@@ -217,7 +219,7 @@ svg // male
   .delay((d,i) => {return i*delaySet})
   .attr("x", d => xM(d.male))
   .attr("width", d => xM(0) - xM(d.male))
-  .ease(d3.easeLinear)
+  // .ease(d3.easeLinear)
    ),
     update => update
     .call(sel => sel
@@ -254,7 +256,7 @@ svg // female
     .delay((d,i) => {return i*delaySet})
   .attr("x", xF(0))
   .attr("width", d => xF(d.female) - xF(0))
-  .ease(d3.easeLinear)
+  // .ease(d3.easeLinear)
    ),
     update => update
     .call(sel => sel
