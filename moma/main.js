@@ -1,6 +1,6 @@
 /* CONSTANTS AND GLOBALS */
 const width = window.innerWidth * 0.9,
-  height = window.innerHeight * 0.85,
+  height = window.innerHeight * 0.95,
   margin = ({top: 10, right: 0, bottom: 30, left: 0})
   
   let state = {
@@ -11,7 +11,7 @@ const width = window.innerWidth * 0.9,
     },
     selectedGender: "All", // + YOUR INITIAL FILTER SELECTION
     selectedClassification: "All",
-    selectedToggle: 1
+    selectedToggle: false
   };
 
 // these variables allow us to access anything we manipulate in init() but need access to in draw().
@@ -31,9 +31,11 @@ let g1;
 let g2;
 let xAxis2;
 let xAxis3;
+let toggle;
+let toggler;
 
 Promise.all([
-    d3.csv("shaped_with_classification.csv", d => {
+    d3.csv("moma_data_shaped_with_classification.csv", d => {
         return {
             Year: +d.year, 
             Classification: d.classification,
@@ -54,11 +56,11 @@ const selectElementClassification = d3.select("#dropdown-classification")
 
   selectElementClassification
   .selectAll("option")
-  .data([...Array.from(new Set(state.data2.map(d => d.Classification))), "All"])
+  .data([...Array.from(new Set(state.data2.map(d => d.Classification)))])
   .join("option")
   .attr("value", d => d)
   .text(d => d)
-  .attr("selected", "All")
+  // .attr("selected", "All")
 
   selectElementClassification
   .on("change", event => {
@@ -119,7 +121,7 @@ option2 = `<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male</span></b>: ${
     .style("opacity", 1)
     .html(options(d))
     .style("left", event.x + 70 + "px") 
-    .style("top", event.y - 120 + "px")
+    .style("top", event.y + "px")
     .transition()
     .delay(50)
   }
@@ -134,27 +136,37 @@ option2 = `<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male</span></b>: ${
       }
 
 d3.selectAll("[name=greaterToggle]").on("change", function() {
-  selectedToggle = this.value;
-  opacity = this.checked ? d3.schemeSet2[0] : d3.schemeSet2[0];
-  console.log(opacity, selectedToggle)
-svg.selectAll("rect.year-female")
+  state.selectedToggle = this.checked;
+  color = this.checked ? d3.schemeSet2[0] : d3.schemeSet2[0];
+  // console.log(color, state.selectedToggle)
+ toggle(state.selectedToggle)
+  }); 
+
+toggle = function(toggleState) {
+  return state.selectedToggle === true ?
+  (svg.selectAll("rect.year-female")
   .filter(function(d) {return d.female > d.male;})
   .transition()
-  .style("fill", opacity);
+  .style("fill", d3.schemeSet2[0]),
   svg.selectAll("rect.year-female")
   .filter(function(d) {return d.male > d.female;})
   .transition()
-  .style("fill", "#ccc");
+  .style("fill", "#ccc"),
   svg.selectAll("rect.year-male")
   .filter(function(d) {return d.female > d.male;})
   .transition()
-  .style("fill", d3.schemeSet2[1]);
+  .style("fill", d3.schemeSet2[1]),
   svg.selectAll("rect.year-male")
   .filter(function(d) {return d.male > d.female;})
   .transition()
-  .style("fill", "#ccc");
-   draw()
-  }); 
+  .style("fill", "#ccc"))  : (svg.selectAll("rect.year-female")
+  .transition()
+  .style("fill", d3.schemeSet2[0]),
+  svg.selectAll("rect.year-male")
+  .transition()
+  .style("fill", d3.schemeSet2[1]))
+
+}
 
 
     draw();
@@ -166,6 +178,7 @@ filteredData = state.data2
 //     // .filter(d => state.selectedGender === "All" || d.male >=0)
 //     // .filter(d => state.selectedYear === "All" || state.selectedYear == d.Year)
     .filter(d => d.Classification === state.selectedClassification)
+    // .filter( state.selectedToggle === true ? )
 
         xM = d3.scaleLinear()
         .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
@@ -199,16 +212,17 @@ filteredData = state.data2
     // .ease(d3.easeLinear)
         .call(xAxis3);
 
+console.log(state.selectedToggle)
 
 svg // male
 .selectAll("rect.year-male")
-.data(filteredData, d => d.male + d.Year + d.Classification + state.selectedToggle)
+.data(filteredData, d => d.Year + d.Classification + d.male +  state.selectedToggle)
 .join(
     enter => enter
     .append("rect")
     .attr("class", "year-male")
-    .attr("id", d => d.male + d.Year + d.Classification + state.selectedToggle)
-.attr("fill", d => d3.schemeSet2[1])
+    .attr("id", d => d.Year + d.Classification + d.male + state.selectedToggle)
+.attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : "#ccc")
 .attr("x", (width / 2)-25)
 .attr("y", d => y(d.Year))
 .attr("height", y.bandwidth())
@@ -239,13 +253,16 @@ svg // male
 
 svg // female
 .selectAll("rect.year-female")
-.data(filteredData, d => d.female + d.Year + d.Classification + state.selectedToggle)
+.data(filteredData, d => d.Year + d.Classification + d.female +  state.selectedToggle)
 .join(
     enter => enter
     .append("rect")
     .attr("class", "year-female")
-    .attr("id", d => d.female + d.Year + d.Classification + state.selectedToggle)
-.attr("fill", d => d3.schemeSet2[0])
+    .attr("id", d => d.Year + d.Classification + d.female + state.selectedToggle)
+.attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
+                    d.female > d.male ? d3.schemeSet2[0] : "#ccc"
+
+)
 .attr("x", (width / 2)+25)
 .attr("y", d => y(d.Year))
 .attr("height", y.bandwidth())
@@ -274,5 +291,6 @@ svg // female
 .on("mouseleave", mouseleave )
 .on("mouseover", mouseHover )
 
+// toggle()
 }
 
