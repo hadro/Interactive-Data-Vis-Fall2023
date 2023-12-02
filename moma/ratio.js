@@ -113,7 +113,12 @@ Promise.all([
     .style("left", event.x + 70 + "px") 
     .style("top", d3.select(this).attr("cy") + "px")
     .transition()
+    .delay(50);
+    svg.selectAll(`circle[year="${d3.timeFormat('%Y')(d.Year)}"]`)
+    .transition()
     .delay(50)
+    .attr('fill-opacity', "1")
+    .attr("fill", d=>  "#aaa" );
   
   }
   
@@ -121,9 +126,30 @@ Promise.all([
   mouseleave = function(event,d) {
       tooltip
         .transition()
-        .delay(20)
+        .delay(200)
         .duration(200)
-        .style("opacity", 0)
+        .style("opacity", 0);
+
+        svg.selectAll("circle.male-ratio")
+        .transition()
+        .delay(20)
+        // .duration(200)
+        .attr("fill", colorScale(1) )
+        .attr('fill-opacity', "0.5");
+        
+        svg.selectAll("circle.female-ratio")
+        .transition()
+        .delay(20)
+        // .duration(200)
+        .attr("fill", colorScale(2) )
+        .attr('fill-opacity', "0.5");
+        
+        // svg.selectAll(`circle[year="${d3.timeFormat('%Y')(d.Year)}"]`)
+        // .transition()
+        // .delay(230)
+        // .attr('fill-opacity', "0.5");
+
+        
     }
   
 
@@ -140,10 +166,11 @@ Promise.all([
       enter => enter
       .append("circle")
       .attr("class", "female-ratio")
+      .attr("year", d => d3.timeFormat('%Y')(d.Year))
       .attr("cx", d=>  x(d.Year))
       .attr("cy", d=> y(d.f_ratio))
-      .attr("fill", d=>  colorScale(2) )
-      .attr('fill-opacity', "0.7")
+      .attr("fill", colorScale(2) )
+      .attr('fill-opacity', "0.5")
           .call(sel => sel
                 .transition()
                 .duration(2500)
@@ -171,10 +198,11 @@ Promise.all([
       enter => enter
       .append("circle")
       .attr("class", "male-ratio")
+      .attr("year", d => d3.timeFormat('%Y')(d.Year))
       .attr("cx", d=>  x(d.Year))
       .attr("cy", d=> y(d.m_ratio))
-      .attr("fill", d=>  colorScale(1) )
-      .attr('fill-opacity', "0.7")
+      .attr("fill", colorScale(1) )
+      .attr('fill-opacity', "0.5")
           .call(sel => sel
                 .transition()
                 .duration(2500)

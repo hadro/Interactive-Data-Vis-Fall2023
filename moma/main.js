@@ -108,31 +108,39 @@ const selectElementClassification = d3.select("#dropdown-classification")
     .style("padding", "10px")
     .style("position", "absolute")
   
-options = function(d) { 
-option1 = `<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male:</span> ${d.male}</b><br>
-    <b> <span style="color:#66c2a5;">Female</span></b>: ${d.female}`;
-option2 = `<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male</span></b>: ${d.male}<br>
-    <b><span style="color:#66c2a5;">Female:</span> ${d.female}</b>`;
-    return d.male > d.female ? option1 : option2;
-  }
+// options = function(d) { 
+// option1 = `<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male:</span> ${d.male}</b><br>
+//     <b> <span style="color:#66c2a5;">Female</span></b>: ${d.female}`;
+// option2 = `<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male</span></b>: ${d.male}<br>
+//     <b><span style="color:#66c2a5;">Female:</span> ${d.female}</b>`;
+//     return d.male > d.female ? option1 : option2;
+//   }
 
   mouseHover = function(event, d) {
     tooltip
     .style("opacity", 1)
-    .html(options(d))
-    .style("left", event.x + 70 + "px") 
-    .style("top", event.y + "px")
+    .html(`<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male:</span></b> ${d.male}<br>
+    <b> <span style="color:#66c2a5;">Female</span></b>: ${d.female}`)
+    .style("left", ((event.x > width/2 + 50) ? event.x + 70 + "px" :event.x + -140 + "px")) 
+    .style("top", event.y + 20 + "px")
     .transition()
-    .delay(50)
+    // .delay(50);
+    // svg.selectAll(d => "rect")
+    svg.selectAll(`rect[year="${d.Year}"]`)
+    .transition()
+    .style("opacity", "0.5")
   }
 
       // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
       mouseleave = function(event,d) {
         tooltip
           .transition()
-          .delay(20)
-          .duration(200)
-          .style("opacity", 0)
+          // .delay(20)
+          // .duration(200)
+          .style("opacity", 0);
+          svg.selectAll(`rect[year="${d.Year}"]`)
+          .transition()
+    .style("opacity", "1")
       }
 
 d3.selectAll("[name=greaterToggle]").on("change", function() {
@@ -151,7 +159,7 @@ toggle = function(toggleState) {
   svg.selectAll("rect.year-female")
   .filter(function(d) {return d.male > d.female;})
   .transition()
-  .style("fill", "#ccc"),
+  .style("fill", "#aaa"),
   svg.selectAll("rect.year-male")
   .filter(function(d) {return d.female > d.male;})
   .transition()
@@ -159,7 +167,7 @@ toggle = function(toggleState) {
   svg.selectAll("rect.year-male")
   .filter(function(d) {return d.male > d.female;})
   .transition()
-  .style("fill", "#ccc"))  : (svg.selectAll("rect.year-female")
+  .style("fill", "#aaa"))  : (svg.selectAll("rect.year-female")
   .transition()
   .style("fill", d3.schemeSet2[0]),
   svg.selectAll("rect.year-male")
@@ -212,8 +220,6 @@ filteredData = state.data2
     // .ease(d3.easeLinear)
         .call(xAxis3);
 
-console.log(state.selectedToggle)
-
 svg // male
 .selectAll("rect.year-male")
 .data(filteredData, d => d.Year + d.Classification + d.male +  state.selectedToggle)
@@ -222,11 +228,13 @@ svg // male
     .append("rect")
     .attr("class", "year-male")
     .attr("id", d => d.Year + d.Classification + d.male + state.selectedToggle)
-.attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : "#ccc")
+    .attr("year", d => d.Year)
+.attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : "#aaa")
 .attr("x", (width / 2)-25)
 .attr("y", d => y(d.Year))
 .attr("height", y.bandwidth())
 .attr("width", 0)
+// .attr("opacity", "0.7")
 .call(sel => sel
     .transition()
     .duration(1000)
@@ -259,9 +267,9 @@ svg // female
     .append("rect")
     .attr("class", "year-female")
     .attr("id", d => d.Year + d.Classification + d.female + state.selectedToggle)
+    .attr("year", d => d.Year)
 .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
-                    d.female > d.male ? d3.schemeSet2[0] : "#ccc"
-
+                    d.female > d.male ? d3.schemeSet2[0] : "#aaa"
 )
 .attr("x", (width / 2)+25)
 .attr("y", d => y(d.Year))
