@@ -200,8 +200,10 @@ filteredData = state.data2
           
         g1 = svg.append("g").attr('class', 'x-axis-left');
         g2 = svg.append("g").attr('class', 'x-axis-right');
-        xAxis2 = d3.axisBottom(xM);
-        xAxis3 = d3.axisBottom(xF);
+        xAxis2 = d3.axisBottom(xM).tickFormat(function(e){
+          if(Math.floor(e) != e) {return;} return e;});
+        xAxis3 = d3.axisBottom(xF).tickFormat(function(e){
+          if(Math.floor(e) != e) {return;} return e;});
         
         svg.select('.x-axis-left')
         .attr("transform", `translate(0,${height - margin.bottom})`)

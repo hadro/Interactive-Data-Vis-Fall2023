@@ -7,11 +7,25 @@
   
   </head>
   <body>
-    <h1>MoMA Gender Disparity</h1>
-    <h2>Mirror chart</h2>
+
+    <div id="mirror-intro">
+        <h1>MoMA Collecting Gender Disparity</h1>
+        <p>This chart shows the percentage of unique artists collected by the Museum of Modern Art (MoMA) for each year since 1929, 
+        broken out by the genders identified in the MoMA data. The size of the bubble represents how many artists of a given
+        gender were collected that year.</p>
+    
+    </div>
     <div id="ratio-container"> </div>
    
-    <div id="container"> </div>
+    <footer>
+        <div id="info">
+          
+        </p>
+        <p>Visualization made possible by the open data release from <a href="https://github.com/MuseumofModernArt/collection">The Museum of Modern Art (MoMA)</a>; DOI: <a href="https://zenodo.org/records/7269353">http://dx.doi.org/10.5281/zenodo.7269353</a>.
+          <p><a href="https://github.com/hadro/Interactive-Data-Vis-Fall2023/blob/main/moma/main.js">Visualiztion in D3</a>. Data work done in <a href="https://github.com/hadro/Interactive-Data-Vis-Fall2023/blob/main/moma/moma_data_cleanup_and_shaping.ipynb">Python with Pandas</a>.</p>
+        </div>
+        </footer>
+        
     <script src="../lib/d3.js"></script>
     <!-- <script src="main.js"></script> -->
     <script src="ratio.js"></script>

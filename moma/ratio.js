@@ -1,6 +1,6 @@
 /* CONSTANTS AND GLOBALS */
 const width = window.innerWidth * 0.9,
-  height = window.innerHeight * 0.9,
+  height = window.innerHeight * 0.85,
   margin = ({top: 10, right: 0, bottom: 20, left: 70})
   
   let state = {
@@ -89,7 +89,7 @@ Promise.all([
     svg.append("text")
 	.text("Parity of Collected Genders")
     // .style("font", "white")
-	.attr("x", width/2)
+	.attr("x", width/2 - 85)
 	.attr("y", height/2 + margin.top /2 -12);
 
     tooltip = d3.select("#ratio-container")
@@ -106,17 +106,18 @@ Promise.all([
   
   mouseHover = function(event, d) {
     tooltip
-    .style("opacity", 1)
+    
     .html(`<h3>${d3.timeFormat('%Y')(d.Year)}</h3>
             <b style="color:#66c2a5;">Female</b>: ${d.female}
             <br> <b style="color:#fc8d62;">Male</b>: ${d.male}`)
     .style("left", event.x + 70 + "px") 
     .style("top", d3.select(this).attr("cy") + "px")
     .transition()
-    .delay(50);
+    .style("opacity", 1)
+    // .delay(50);
     svg.selectAll(`circle[year="${d3.timeFormat('%Y')(d.Year)}"]`)
     .transition()
-    .delay(50)
+    // .delay(50)
     .attr('fill-opacity', "1")
     .attr("fill", d=>  "#aaa" );
   
@@ -126,8 +127,8 @@ Promise.all([
   mouseleave = function(event,d) {
       tooltip
         .transition()
-        .delay(200)
-        .duration(200)
+        // .delay(200)
+        // .duration(200)
         .style("opacity", 0);
 
         svg.selectAll("circle.male-ratio")
