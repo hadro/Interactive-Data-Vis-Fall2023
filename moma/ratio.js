@@ -11,9 +11,11 @@ const width = window.innerWidth * 0.9,
 // All these variables are empty before we assign something to them.
 let svg;
 let xScale;
-let yScale;
+let x;
+let y;
 let xAxis;
 let yAxis;
+let GridLine;
 
 Promise.all([
     d3.csv("moma_ratios.csv", d => {
@@ -91,6 +93,28 @@ Promise.all([
     // .style("font", "white")
 	.attr("x", width/2 - 85)
 	.attr("y", height/2 + margin.top /2 -12);
+
+
+// set horizontal grid line
+GridLine = () => d3.axisLeft().scale(y);
+svg
+  .append("g")
+  .attr("transform", `translate(${margin.left},${0})`)
+    .attr("class", "grid")
+    .style("stroke", "#333")
+    .style("stroke-width", "0.3px")
+    .style("stroke-opacity", "0.3")
+  .call(GridLine()
+    .tickSize(-width, 0, 0)
+    .tickFormat("")
+    .ticks(8)
+);
+// .grid .tick line {
+//   stroke: #333333;
+//   stroke-width: 0.3px;
+//   stroke-opacity: 0.3;
+
+
 
     tooltip = d3.select("#ratio-container")
     .append("div")
@@ -191,6 +215,8 @@ Promise.all([
     )
     .on("mouseleave", mouseleave )
     .on("mouseover", mouseHover )
+   
+   
     const mdot = svg //male
     .selectAll("circle.male-ratio")
     .data(state.data, d => d.Year + d.male)

@@ -222,6 +222,40 @@ filteredData = state.data2
     // .ease(d3.easeLinear)
         .call(xAxis3);
 
+    // set horizontal grid line
+const gridLeft = svg.append("g").attr("class", "grid-left");
+const gridRight = svg.append("g").attr("class", "grid-right")
+GridL = () => d3.axisBottom().scale(xM);
+GridR = () => d3.axisBottom().scale(xF);
+
+svg.select('.grid-left')
+  .attr("transform", `translate(0,${height - margin.bottom})`)
+    .style("stroke", "#333")
+    .style("stroke-width", "0.3px")
+    // .style("stroke-width", d => Math.floor(xM(d)) != 1 ? "10px" : "1px")
+    // .style("stroke-width", function(e){
+      // if(Math.floor(e) != e) {return;} return "10px"})
+    .style("stroke-opacity", "0.3")
+    .transition()
+    .duration(1500)
+  .call(GridL()
+    .tickSize(-height, 0, 0)
+    .tickFormat("")
+    .ticks(8)
+);
+svg.select('.grid-right')
+  .attr("transform", `translate(0,${height - margin.bottom})`)
+    .style("stroke", "#333")
+    .style("stroke-width", "0.3px")
+    .style("stroke-opacity", "0.3")
+    .transition()
+    .duration(1500)
+  .call(GridR()
+    .tickSize(-width, 0, 0)
+    .tickFormat("")
+    .ticks(8)
+);
+
 svg // male
 .selectAll("rect.year-male")
 .data(filteredData, d => d.Year + d.Classification + d.male +  state.selectedToggle)
