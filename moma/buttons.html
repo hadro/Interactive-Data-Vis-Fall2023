@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <title>Interactive Data Visualization Tutorial</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      #mirror-intro {
+        float: right;
+        width: 25%;
+      }
+      #container {
+        float: left;
+        width: 69%;
+        height: 100%;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="mirror-intro">
+        <h1>MoMA Collecting Gender Disparity</h1>
+        <p>This chart lists the number of unique artists acquired for the Museum of Modern Art (MoMA) 
+          collections each year since 1929, broken out by the genders identified in the MoMA data.</p>
+        <button class="favorite styled" type="button" name="bars" id="bars">Bars</button>
+        <button class="favorite styled" type="circles" id="circles">Scatter</button> 
+</div>
+<div id="container"> </div>
+    <div id="ratio-container"> </div>
+
+
+    
+
+
+
+
+
+
+
+    <script src="../lib/d3.js"></script>
+    <!-- <script type="module" src="main.js"></script> -->
+    <script type="module" src="button2.js"></script>
+  </body>
+</html>
+
