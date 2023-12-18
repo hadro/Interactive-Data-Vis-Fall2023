@@ -419,12 +419,12 @@ function bars() {
 
    const yM = d3.scaleLinear()
     .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
-    .rangeRound([((height-margin.top) / 2), margin.top])
+    .rangeRound([(height-margin.top+margin.bottom) / 2, margin.bottom])
     .nice();
     
     const yF = d3.scaleLinear()
       .domain(yM.domain())
-      .rangeRound([((height-margin.top) / 2), height - margin.bottom])
+      .range([((height-margin.top+margin.bottom) / 2), height - margin.bottom])
       .nice();
 
       g1 = svg.append("g").attr('class', 'y-axis-top');
