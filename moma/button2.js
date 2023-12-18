@@ -173,7 +173,8 @@ svg
         .style("opacity", 1)
         .html(`<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male:</span></b> ${d.male}<br>
         <b> <span style="color:#66c2a5;">Female</span></b>: ${d.female}`)
-        .style("left", ((event.x > width/2 + 50) ? event.x + 70 + "px" :event.x + -140 + "px")) 
+        // .style("left", ((event.x > width/2 + 50) ? event.x + 70 + "px" :event.x + -140 + "px")) 
+        .style("left", event.x + 50 + "px")
         .style("top", event.y + 20 + "px")
         .transition()
         svg.selectAll(`rect[year="${d.Year}"]`)
@@ -279,6 +280,15 @@ function circles() {
     // .duration(600)
     .remove();
 
+    d3.select('#intro-swap')
+    .transition()
+    .duration(500)
+    .style("opacity","0")
+    .transition()
+    .duration(500)
+    .text("This chart shows the percentage of unique artists collected by the Museum of Modern Art (MoMA) for each year since 1929, broken out by the genders identified in the MoMA data. The size of the bubble represents how many artists of a given gender were collected that year.")
+    .style("opacity","1");
+
 
 
     svg
@@ -325,6 +335,25 @@ svg
       .transition()
       .duration(1000)
       .call(yAxis);
+
+
+
+          // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+          mouseleave = function(event,d) {
+            tooltip
+              .transition()
+              .style("opacity", 0);
+              svg.selectAll("rect.male-ratio")
+              .transition()
+              .delay(20)
+              .attr("fill", colorScale(1) )
+              .attr('fill-opacity', "0.5");
+              svg.selectAll("rect.female-ratio")
+              .transition()
+              .delay(20)
+              .attr("fill", colorScale(2) )
+              .attr('fill-opacity', "0.5");
+          }
 
 
     fdot = svg //female
@@ -407,6 +436,7 @@ svg
    
 
 function bars() {
+    mouseHover = "";
 
     d3.select('#init-y-axis')
     // .transition()
@@ -416,6 +446,16 @@ function bars() {
     .transition()
     .duration(600)
     .remove();
+
+    d3.select('#intro-swap')
+    .transition()
+    .duration(500)
+    .style("opacity","0")
+    .transition()
+    .duration(500)
+    .text("This chart lists the number of unique artists acquired for the Museum of Modern Art (MoMA) collections each year since 1929, broken out by the genders identified in the MoMA data.")
+    .style("opacity","1");
+
 
    const yM = d3.scaleLinear()
     .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
@@ -501,7 +541,7 @@ function bars() {
           mouseleave = function(event,d) {
             tooltip
               .transition()
-              .attr('fill-opacity', "0");
+              .style('opacity', "0");
               svg.selectAll(`rect.male-ratio`)
               .transition()
               .delay(20)
