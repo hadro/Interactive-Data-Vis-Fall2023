@@ -10,7 +10,7 @@ const width = window.innerWidth * 0.9,
       country: null,
       count: null
     },
-    selectedGender: "All", // + YOUR INITIAL FILTER SELECTION
+    selectedGender: "All",
     selectedClassification: "All",
     selectedToggle: false
   };
@@ -44,8 +44,8 @@ Promise.all([
             female: +d.female,
               male: +d.male
         }})
-  ]).then(([data2]) => {
-    state.data2 = data2;
+  ]).then(([data]) => {
+    state.data = data;
 
     init();
   });
@@ -58,7 +58,7 @@ const selectElementClassification = d3.select("#dropdown-classification")
 
   selectElementClassification
   .selectAll("option")
-  .data([...Array.from(new Set(state.data2.map(d => d.Classification)))])
+  .data([...Array.from(new Set(state.data.map(d => d.Classification)))])
   .join("option")
   .attr("value", d => d)
   .text(d => d)
@@ -70,7 +70,7 @@ const selectElementClassification = d3.select("#dropdown-classification")
   })
   
   y = d3.scaleBand()
-  .domain(state.data2.map(d => d.Year))
+  .domain(state.data.map(d => d.Year))
   .rangeRound([height - margin.bottom, margin.top])
   .padding(0.1)
 
@@ -155,7 +155,8 @@ toggle = function(toggleState) {
   svg.selectAll("rect.year-male")
   .filter(function(d) {return d.male > d.female;})
   .transition()
-  .style("fill", "#aaa"))  : (svg.selectAll("rect.year-female")
+  .style("fill", "#aaa"))  : 
+  (svg.selectAll("rect.year-female")
   .transition()
   .style("fill", d3.schemeSet2[0]),
   svg.selectAll("rect.year-male")
@@ -163,23 +164,18 @@ toggle = function(toggleState) {
   .style("fill", d3.schemeSet2[1]))
 
 }
-
-
     draw();
   }
   function draw() {
 
 //   // + FILTER DATA BASED ON STATE
-filteredData = state.data2
-//     // .filter(d => state.selectedGender === "All" || d.male >=0)
-//     // .filter(d => state.selectedYear === "All" || state.selectedYear == d.Year)
+filteredData = state.data
     .filter(d => d.Classification === state.selectedClassification)
-    // .filter( state.selectedToggle === true ? )
 
         xM = d3.scaleLinear()
-        .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
-        .rangeRound([(width / 2)-25, margin.left])
-        .nice();
+          .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
+          .rangeRound([(width / 2)-25, margin.left])
+          .nice();
         
         xF = d3.scaleLinear()
           .domain(xM.domain())
@@ -188,6 +184,7 @@ filteredData = state.data2
           
         g1 = svg.append("g").attr('class', 'x-axis-left');
         g2 = svg.append("g").attr('class', 'x-axis-right');
+        
         xAxis2 = d3.axisBottom(xM).ticks(d3.max(filteredData, d => Math.max(d.female,d.male)) <= 5 ? 1 : 8)
         .tickFormat(function(e){if(Math.floor(e) != e) {return;} return e;});
         xAxis3 = d3.axisBottom(xF).ticks(d3.max(filteredData, d => Math.max(d.female,d.male)) <= 5 ? 1 : 8)
@@ -220,10 +217,10 @@ svg.select('.grid-left')
     .style("stroke-opacity", "0.3")
     .transition()
     .duration(1500)
-  .call(GridL()
-    .tickSize(-height, 0, 0)
-    .tickFormat("")
-    .ticks(d3.max(filteredData, d => Math.max(d.female,d.male)) <= 5 ? 0 : 8)
+    .call(GridL()
+      .tickSize(-height, 0, 0)
+      .tickFormat("")
+      .ticks(d3.max(filteredData, d => Math.max(d.female,d.male)) <= 5 ? 0 : 8)
 );
 svg.select('.grid-right')
   .attr("transform", `translate(0,${height - margin.bottom})`)
@@ -232,10 +229,10 @@ svg.select('.grid-right')
     .style("stroke-opacity", "0.3")
     .transition()
     .duration(1500)
-  .call(GridR()
-    .tickSize(-width, 0, 0)
-    .tickFormat("")
-    .ticks(d3.max(filteredData, d => Math.max(d.female,d.male)) <= 5 ? 0 : 8)
+    .call(GridR()
+      .tickSize(-width, 0, 0)
+      .tickFormat("")
+      .ticks(d3.max(filteredData, d => Math.max(d.female,d.male)) <= 5 ? 0 : 8)
 );
 
 svg // male
@@ -247,29 +244,29 @@ svg // male
     .attr("class", "year-male")
     .attr("id", d => d.Year + d.Classification + d.male + state.selectedToggle)
     .attr("year", d => d.Year)
-.attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : "#aaa")
-.attr("x", (width / 2)-25)
-.attr("y", d => y(d.Year))
-.attr("height", y.bandwidth())
-.attr("width", 0)
-.call(sel => sel
-    .transition()
-    .duration(1000)
-  .delay((d,i) => {return i*delaySet})
-  .attr("x", d => xM(d.male))
-  .attr("width", d => xM(0) - xM(d.male))),
+    .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : "#aaa")
+    .attr("x", (width / 2)-25)
+    .attr("y", d => y(d.Year))
+    .attr("height", y.bandwidth())
+    .attr("width", 0)
+    .call(sel => sel
+      .transition()
+      .duration(1000)
+      .delay((d,i) => {return i*delaySet})
+      .attr("x", d => xM(d.male))
+      .attr("width", d => xM(0) - xM(d.male))),
     update => update
     .call(sel => sel
-    .attr("x", d => xM(d.male))
-    .attr("width", d => xM(0) - xM(d.male))),
+      .attr("x", d => xM(d.male))
+      .attr("width", d => xM(0) - xM(d.male))),
     exit => exit
     .call(sel => sel
-        .transition()
-        .duration(1000)
+      .transition()
+      .duration(1000)
       .delay(150)
       .attr("x", (width / 2)-25)
-    .attr("width", 0)
-        .remove())
+      .attr("width", 0)
+      .remove())
 )
 .on("mouseleave", mouseleave )
 .on("mouseover", mouseHover )
@@ -283,30 +280,30 @@ svg // female
     .attr("class", "year-female")
     .attr("id", d => d.Year + d.Classification + d.female + state.selectedToggle)
     .attr("year", d => d.Year)
-.attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
+    .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
                     d.female > d.male ? d3.schemeSet2[0] : "#aaa"
-)
-.attr("x", (width / 2)+25)
-.attr("y", d => y(d.Year))
-.attr("height", y.bandwidth())
-.attr("width", 0)
-.call(sel => sel
-    .transition()
-    .duration(1000)
-    .delay((d,i) => {return i*delaySet})
-  .attr("x", xF(0))
-  .attr("width", d => xF(d.female) - xF(0))),
+          )
+    .attr("x", (width / 2)+25)
+    .attr("y", d => y(d.Year))
+    .attr("height", y.bandwidth())
+    .attr("width", 0)
+    .call(sel => sel
+      .transition()
+      .duration(1000)
+      .delay((d,i) => {return i*delaySet})
+      .attr("x", xF(0))
+      .attr("width", d => xF(d.female) - xF(0))),
     update => update
     .call(sel => sel
-    .attr("x", d => xF(0))
-    .attr("width", d => xF(d.female) - xF(0))),
+      .attr("x", d => xF(0))
+      .attr("width", d => xF(d.female) - xF(0))),
     exit => exit
     .call(sel => sel
-        .transition()
-        .duration(1000)
+      .transition()
+      .duration(1000)
       .delay(150)
       .attr("x", (width / 2)+25)
-    .attr("width", 0)
+      .attr("width", 0)
         .remove())
 )
 .on("mouseleave", mouseleave )
