@@ -183,7 +183,8 @@ footer {
   }
   
   .radio-toolbar-3 input[type="radio"]:checked+label {
-    background-color: #DAA521;
+    background-color: #d05fda;
+    
     color: white;
   }
   
