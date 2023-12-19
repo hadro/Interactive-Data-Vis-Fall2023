@@ -48,6 +48,7 @@ let yAxis2;
 let yAxis3;
 let xAxis2;
 // let selectedClassification;
+let toggle;
 
 
 const delaySet = 5;
@@ -139,6 +140,43 @@ Promise.all([
     .style("padding", "10px")
     .style("position", "absolute")
 
+
+    d3.selectAll("[name=greaterToggle]").on("change", function() {
+        state.selectedToggle = this.checked;
+        // color = this.checked ? d3.schemeSet2[0] : d3.schemeSet2[0];
+       toggle(state.selectedToggle)
+       console.log(state.selectedToggle)
+        }); 
+      
+        toggle = function(toggleState) {
+            return state.selectedToggle === true ?
+            (svg.selectAll("rect.female-ratio")
+            .filter(function(d) {return d.female > d.male;})
+            .transition()
+            .style("fill", d3.schemeSet2[0]),
+            svg.selectAll("rect.female-ratio")
+            .filter(function(d) {return d.male > d.female;})
+            .transition()
+            .style("fill", "#aaa"),
+            svg.selectAll("rect.male-ratio")
+            .filter(function(d) {return d.female > d.male;})
+            .transition()
+            .style("fill", d3.schemeSet2[1]),
+            svg.selectAll("rect.male-ratio")
+            .filter(function(d) {return d.male > d.female;})
+            .transition()
+            .style("fill", "#aaa"))  : 
+            (svg.selectAll("rect.female-ratio")
+            .transition()
+            .style("fill", d3.schemeSet2[0]),
+            svg.selectAll("rect.male-ratio")
+            .transition()
+            .style("fill", d3.schemeSet2[1]))
+          
+          }
+
+
+
         draw();
       }
 
@@ -215,19 +253,21 @@ svg
               svg.selectAll("rect.male-ratio")
               .transition()
               .delay(20)
-              .attr("fill", colorScale(1) )
+              .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : 
+    d.female > d.male ? d3.schemeSet2[1] : "#aaa")
               .attr('fill-opacity', "0.5");
               svg.selectAll("rect.female-ratio")
               .transition()
               .delay(20)
-              .attr("fill", colorScale(2) )
+              .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
+    d.female > d.male ? d3.schemeSet2[0] : "#aaa")
               .attr('fill-opacity', "0.5");
           }
     
        
     fdot = svg //female
     .selectAll("rect.female-ratio")
-    .data(filteredData, d => d.Year + d.female + d.f_ratio + d.Classification)
+    .data(filteredData, d => d.Year + d.female + d.f_ratio + d.Classification + state.selectedToggle)
     .join(
       // + HANDLE ENTER SELECTION
       enter => enter
@@ -239,7 +279,9 @@ svg
       .attr("y", d=> y(d.f_ratio) - works(d.female))
       .attr("rx", 0)
       .attr("ry", 0)
-      .attr("fill", colorScale(2) )
+    //   .attr("fill", colorScale(2) )
+    .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
+    d.female > d.male ? d3.schemeSet2[0] : "#aaa")
       .attr('fill-opacity', "0.5")
       .call(sel => sel
         .transition()
@@ -259,7 +301,7 @@ svg
    
     mdot = svg //male
     .selectAll("rect.male-ratio")
-    .data(filteredData, d => d.Year + d.male + d.m_ratio + d.Classification)
+    .data(filteredData, d => d.Year + d.male + d.m_ratio + d.Classification + state.selectedToggle)
     .join(
       // + HANDLE ENTER SELECTION
       enter => enter
@@ -269,7 +311,9 @@ svg
       .attr("year", d => d.Year)
       .attr("x", d=>  x(d.Year) - works(d.male))
       .attr("y", d=> y(d.m_ratio) - works(d.male))
-      .attr("fill", colorScale(1) )
+    //   .attr("fill", colorScale(1) )
+    .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : 
+    d.female > d.male ? d3.schemeSet2[1] : "#aaa")
       .attr('fill-opacity', "0.5")
       .call(sel => sel
         .transition()
@@ -390,19 +434,21 @@ svg
               svg.selectAll("rect.male-ratio")
               .transition()
               .delay(20)
-              .attr("fill", colorScale(1) )
+              .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : 
+              d.female > d.male ? d3.schemeSet2[1] : "#aaa")
               .attr('fill-opacity', "0.5");
               svg.selectAll("rect.female-ratio")
               .transition()
               .delay(20)
-              .attr("fill", colorScale(2) )
+              .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
+              d.female > d.male ? d3.schemeSet2[0] : "#aaa")
               .attr('fill-opacity', "0.5");
           }
 
 
     fdot = svg //female
     .selectAll("rect.female-ratio")
-    .data(filteredData, d => d.Year + d.female + d.f_ratio + d.Classification)
+    .data(filteredData, d => d.Year + d.female + d.f_ratio + d.Classification + state.selectedToggle)
     .join(
       // + HANDLE ENTER SELECTION
       enter => enter
@@ -419,7 +465,10 @@ svg
       .attr("y", d=> y(d.f_ratio) - works(d.female))
       .attr("rx", 0)
       .attr("ry", 0)
-      .attr("fill", colorScale(2) )
+    //   .attr("fill", colorScale(2) )
+    .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
+                    d.female > d.male ? d3.schemeSet2[0] : "#aaa"
+          )
       .attr('fill-opacity', "0.5")
       .attr("rx", d=> works(d.female)* 2)
       .attr("ry", d=> works(d.female)* 2)
@@ -434,7 +483,10 @@ svg
         .duration(1000)
         .attr("x", d=>  x(d.Year) - works(d.female))
         .attr("y", d=> y(d.f_ratio) - works(d.female))
-        .attr("fill", colorScale(2) )
+        // .attr("fill", colorScale(2) )
+        .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
+                    d.female > d.male ? d3.schemeSet2[0] : "#aaa"
+          )
         .attr('fill-opacity', "0.5")
         .attr("rx", d=> works(d.female)* 2)
         .attr("ry", d=> works(d.female)* 2)
@@ -457,7 +509,7 @@ svg
    
     mdot = svg //male
     .selectAll("rect.male-ratio")
-    .data(filteredData, d => d.Year + d.male + d.m_ratio + d.Classification)
+    .data(filteredData, d => d.Year + d.male + d.m_ratio + d.Classification + state.selectedToggle)
     .join(
       // + HANDLE ENTER SELECTION
       enter => enter
@@ -474,7 +526,9 @@ svg
       .attr("y", d=> y(d.m_ratio) - works(d.male))
       .attr("rx", 0)
       .attr("ry", 0)
-      .attr("fill", colorScale(1) )
+    //   .attr("fill", colorScale(1) )
+    .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : 
+    d.female > d.male ? d3.schemeSet2[1] : "#aaa")
       .attr('fill-opacity', "0.5")
       .attr("rx", d=> works(d.male)* 2)
       .attr("ry", d=> works(d.male)* 2)
@@ -491,7 +545,9 @@ svg
       .attr("year", d => d.Year)
       .attr("x", d=>  x(d.Year) - works(d.male))
       .attr("y", d=> y(d.m_ratio) - works(d.male))
-      .attr("fill", colorScale(1) )
+    //   .attr("fill", colorScale(1) )
+    .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : 
+    d.female > d.male ? d3.schemeSet2[1] : "#aaa")
       .attr('fill-opacity', "0.5")
         .attr("rx", d=> works(d.male)*2)
         .attr("ry", d=> works(d.male)*2)
@@ -627,18 +683,20 @@ function bars() {
               svg.selectAll(`rect.male-ratio`)
               .transition()
               .delay(20)
-              .attr("fill", colorScale(1) )
+              .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : 
+    d.female > d.male ? d3.schemeSet2[1] : "#aaa")
             //   .attr('fill-opacity', "1");
               svg.selectAll(`rect.female-ratio`)
               .transition()
               .delay(20)
-              .attr("fill", colorScale(2) )
+              .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
+              d.female > d.male ? d3.schemeSet2[0] : "#aaa")
             //   .attr('fill-opacity', "1");
           }
 
     svg // male
     .selectAll("rect.male-ratio")
-    .data(filteredData, d => d.Year + d.male + d.m_ratio + d.Classification)
+    .data(filteredData, d => d.Year + d.male + d.m_ratio + d.Classification + state.selectedToggle)
 .join(
     enter => enter
     .append("rect")
@@ -650,7 +708,9 @@ function bars() {
     .call(sel => sel
         .transition()
         .duration(1000)
-        .attr("fill", d3.schemeSet2[1])
+        // .attr("fill", d3.schemeSet2[1])
+        .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : 
+    d.female > d.male ? d3.schemeSet2[1] : "#aaa")
         .attr("x", d=>  x(d.Year))
         .attr("width", 8)
         .attr('fill-opacity', "1")
@@ -663,7 +723,9 @@ function bars() {
     .call(sel => sel
         .transition()
         .duration(1000)
-        .attr("fill", d3.schemeSet2[1])
+        // .attr("fill", d3.schemeSet2[1])
+        .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[1] : 
+    d.female > d.male ? d3.schemeSet2[1] : "#aaa")
         .attr("x", d=>  x(d.Year))
         .attr("width", 8)
         .attr('fill-opacity', "1")
@@ -690,7 +752,7 @@ function bars() {
 
 svg // female
 .selectAll("rect.female-ratio")
-.data(filteredData, d => d.Year + d.female + d.f_ratio + d.Classification)
+.data(filteredData, d => d.Year + d.female + d.f_ratio + d.Classification + state.selectedToggle)
 .join(
     enter => enter
     .append("rect")
@@ -702,7 +764,9 @@ svg // female
     .call(sel => sel        
         .transition()
         .duration(1000)
-        .attr("fill", d3.schemeSet2[0])
+        // .attr("fill", d3.schemeSet2[0])
+        .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
+                    d.female > d.male ? d3.schemeSet2[0] : "#aaa")
         .attr("x", d =>  x(d.Year))
         .attr("width", 8)
         .attr('fill-opacity', "1")
@@ -725,6 +789,8 @@ svg // female
             .delay((d,i) => {return i*delaySet})
             .attr("x", d=>  x(d.Year))
             .attr("y", d => yF(0))
+            .attr("fill", d => state.selectedToggle === false ? d3.schemeSet2[0] : 
+                    d.female > d.male ? d3.schemeSet2[0] : "#aaa")
             .attr("height", d => yF(d.female)-(height/2))
             .attr("width", 8)
             .attr('fill-opacity', "1")
