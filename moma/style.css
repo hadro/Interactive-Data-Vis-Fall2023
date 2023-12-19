@@ -116,6 +116,10 @@ footer {
     clear: both;
 }
 
+#intro-swap {
+  height: 120px;
+}
+
   .checkbox-wrapper-3 input[type="checkbox"] {
     visibility: hidden;
     display: none;
@@ -181,4 +185,38 @@ footer {
     transform: scale(1);
     opacity: 0;
     transition: all 0.4s ease;
+  }
+
+
+  .radio-toolbar-3 {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
+    height: 40px;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 2em;
+  }
+  
+  .radio-toolbar-3 label {
+    width: 100%;
+    display: inline-block;
+    background-color: #FFFFFF;
+    margin-left: -30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .radio-toolbar-3 label:hover {
+    background-color: #B4B4B4;
+  }
+  
+  .radio-toolbar-3 input[type="radio"]:checked+label {
+    background-color: #DAA521;
+    color: white;
+  }
+  
+  input[type="radio"] {
+    visibility: hidden;
   }
