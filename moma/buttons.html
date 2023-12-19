@@ -2,19 +2,7 @@
   <head>
     <meta charset="utf-8">
     <title>Interactive Data Visualization Tutorial</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
     <link rel="stylesheet" href="style.css">
-    <style>
-      #mirror-intro {
-        float: right;
-        width: 25%;
-      }
-      #container {
-        float: left;
-        width: 69%;
-        height: 100%;
-      }
-    </style>
 
   </head>
   <body>
@@ -23,9 +11,6 @@
         <p id="intro-swap">This chart shows the percentage of unique artists collected by the Museum of Modern Art (MoMA) for each year since 1929, 
           broken out by the genders identified in the MoMA data. The size of the bubble represents how many artists of a given
           gender were collected that year.</p>
-          
-        <!-- <button class="favorite styled" type="button" name="bars" id="bars">Count</button>
-        <button class="favorite styled" type="circles" id="circles">Ratio</button>  -->
         
         <div class="radio-toolbar-3">
           <input type="radio" id="circles" name="subscription-type" value="circles" checked>
@@ -36,7 +21,7 @@
 
 
         
-        <div>
+        <div id="classification">
           <label for="dropdown-classification"><b>Select classification:</b></label>
           <select id="dropdown-classification" name="dropdown-classification">
             <option selected>All</option>
@@ -52,9 +37,6 @@
 </div>
 <div id="container"> </div>
 
-
-    
-
     <footer>
       <div id="info">
         
@@ -63,14 +45,8 @@
         <p><a href="https://github.com/hadro/Interactive-Data-Vis-Fall2023/blob/main/moma/main.js">Visualiztion in D3</a>. Data work done in <a href="https://github.com/hadro/Interactive-Data-Vis-Fall2023/blob/main/moma/moma_data_cleanup_and_shaping.ipynb">Python with Pandas</a>.</p>
       </div>
       </footer>
-      
-
-
-
-
 
     <script src="../lib/d3.js"></script>
-    <!-- <script type="module" src="main.js"></script> -->
     <script type="module" src="button2.js"></script>
   </body>
 </html>
