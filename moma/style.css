@@ -7,14 +7,7 @@ font-style: normal;
 font-weight: normal;
 unicode-range: U+0000-DFFF, U+F900-FFFD;
 }
-@font-face {
-font-display: block;
-font-family: "Neue Haas Grotesk";
-src: url("https://type.cargo.site/files/NeueHaasGroteskText-Italic.woff") format("woff");
-font-style: italic;
-font-weight: normal;
-unicode-range: U+0000-DFFF, U+F900-FFFD;
-}
+
 @font-face {
 font-display: block;
 font-family: "Neue Haas Grotesk";
@@ -23,14 +16,7 @@ font-style: normal;
 font-weight: 500;
 unicode-range: U+0000-DFFF, U+F900-FFFD;
 }
-@font-face {
-font-display: block;
-font-family: "Neue Haas Grotesk";
-src: url("https://type.cargo.site/files/NeueHaasGroteskText-MediumItalic.woff") format("woff");
-font-style: italic;
-font-weight: 500;
-unicode-range: U+0000-DFFF, U+F900-FFFD;
-}
+
 @font-face {
 font-display: block;
 font-family: "Neue Haas Grotesk";
@@ -39,14 +25,7 @@ font-style: normal;
 font-weight: bold;
 unicode-range: U+0000-DFFF, U+F900-FFFD;
 }
-@font-face {
-font-display: block;
-font-family: "Neue Haas Grotesk";
-src: url("https://type.cargo.site/files/NeueHaasGroteskText-BoldItalic.woff") format("woff");
-font-style: italic;
-font-weight: bold;
-unicode-range: U+0000-DFFF, U+F900-FFFD;
-}
+
 @font-face {
 font-display: block;
 font-family: "Freight Text";
@@ -55,14 +34,7 @@ font-style: normal;
 font-weight: normal;
 unicode-range: U+0000-DFFF, U+F900-FFFD;
 }
-@font-face {
-font-display: block;
-font-family: "Freight Text";
-src: url("https://type.cargo.site/files/FreightText-BookItalic.woff") format("woff");
-font-style: italic;
-font-weight: normal;
-unicode-range: U+0000-DFFF, U+F900-FFFD;
-}
+
 @font-face {
 font-display: block;
 font-family: "Freight Text";
@@ -71,14 +43,7 @@ font-style: normal;
 font-weight: bold;
 unicode-range: U+0000-DFFF, U+F900-FFFD;
 }
-@font-face {
-font-display: block;
-font-family: "Freight Text";
-src: url("https://type.cargo.site/files/FreightText-BoldItalic.woff") format("woff");
-font-style: italic;
-font-weight: bold;
-unicode-range: U+0000-DFFF, U+F900-FFFD;
-}
+
 
 body {
     font-family: "Neue Haas Grotesk";   
@@ -86,7 +51,7 @@ body {
 }
 
 #intro {
-    width: 28%; 
+    width: 24%; 
     float: right;
     z-index: 2000;
     margin-top: 10%;
@@ -94,7 +59,10 @@ body {
     padding: 1em;
     box-shadow: -8px 11px 10px 4px rgba(153, 153, 153, 1);
 
+}
 
+select, label {
+  font-size: 1.2em;
 }
 
 #mirror-intro {
@@ -105,7 +73,7 @@ body {
 
 #container {
     float: left;
-    width: 69%;
+    width: 70%;
 }
 
 #info {
@@ -120,6 +88,7 @@ footer {
   height: 120px;
 }
 
+/* Toggle */
   .checkbox-wrapper-3 input[type="checkbox"] {
     visibility: hidden;
     display: none;
@@ -187,6 +156,7 @@ footer {
     transition: all 0.4s ease;
   }
 
+/* Radio buttons */
 
   .radio-toolbar-3 {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
