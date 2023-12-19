@@ -19,7 +19,11 @@ const width = window.innerWidth * 0.7,
   height = window.innerHeight * 0.9,
   margin = ({top: 10, right: 10, bottom: 10, left: 70})
 
-  let state = {}
+  let state = {
+    selectedClassification: "All",
+    selectedChart: "Ratio",
+    selectedToggle: false
+  }
   let svg;
   let filteredData;
 let x;
@@ -43,6 +47,7 @@ let g2;
 let yAxis2;
 let yAxis3;
 let xAxis2;
+// let selectedClassification;
 
 
 const delaySet = 5;
@@ -59,7 +64,6 @@ Promise.all([
         }})
   ]).then(([data]) => {
     state.data = data;
-
 
     init();
   });
@@ -80,6 +84,25 @@ Promise.all([
     const xAxis1 =  d3.axisTop(x).tickFormat(d3.format("Y"))
     const yAxis =  d3.axisLeft(y).tickFormat(d3.format(".0%"))
     
+
+    const selectElementClassification = d3.select("#dropdown-classification")
+
+  selectElementClassification
+  .selectAll("option")
+  .data([...Array.from(new Set(state.data.map(d => d.Classification)))])
+  .join("option")
+  .attr("value", d => d)
+  .text(d => d)
+
+  selectElementClassification
+  .on("change", event => {
+    
+    state.selectedClassification = event.target.value;
+    console.log(state.selectedClassification, state.selectedChart);
+    state.selectedChart === "Ratio" ? circles() : bars();
+    
+  })
+
 
     svg = d3.select("#container")
     .append("svg")
@@ -158,9 +181,7 @@ svg
 
 
     filteredData = state.data
-//     // .filter(d => state.selectedGender === "All" || d.male >=0)
-//     // .filter(d => state.selectedYear === "All" || state.selectedYear == d.Year)
-    .filter(d => d.Classification === "All")
+    .filter(d => d.Classification === state.selectedClassification)
 
 
     works = d3.scaleSqrt()
@@ -172,7 +193,9 @@ svg
         tooltip
         .style("opacity", 1)
         .html(`<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male:</span></b> ${d.male}<br>
-        <b> <span style="color:#66c2a5;">Female</span></b>: ${d.female}`)
+        <b><span style="color:#fc8d62;">Male ratio:</span></b> ${d3.format(".0%")(d.m_ratio)}<br>
+        <b> <span style="color:#66c2a5;">Female</span></b>: ${d.female}<br>
+        <b> <span style="color:#66c2a5;">Female ratio</span></b>: ${d3.format(".0%")(d.f_ratio)}`)
         // .style("left", ((event.x > width/2 + 50) ? event.x + 70 + "px" :event.x + -140 + "px")) 
         .style("left", event.x + 50 + "px")
         .style("top", event.y + 20 + "px")
@@ -212,8 +235,8 @@ svg
       .attr("class", "female-ratio")
       .attr("id", d => `${d.Year}-${d.female}-${d.f_ratio}-${d.Classification}`)
       .attr("year", d => d.Year)
-      .attr("x", d=>  x(d.Year))
-      .attr("y", d=> y(d.f_ratio))
+      .attr("x", d=>  x(d.Year) - works(d.female))
+      .attr("y", d=> y(d.f_ratio) - works(d.female))
       .attr("rx", 0)
       .attr("ry", 0)
       .attr("fill", colorScale(2) )
@@ -244,8 +267,8 @@ svg
       .attr("class", "male-ratio")
       .attr("id", d => `${d.Year}-${d.female}-${d.f_ratio}-${d.Classification}`)
       .attr("year", d => d.Year)
-      .attr("x", d=>  x(d.Year))
-      .attr("y", d=> y(d.m_ratio))
+      .attr("x", d=>  x(d.Year) - works(d.male))
+      .attr("y", d=> y(d.m_ratio) - works(d.male))
       .attr("fill", colorScale(1) )
       .attr('fill-opacity', "0.5")
       .call(sel => sel
@@ -266,6 +289,11 @@ svg
 
 
 function circles() {
+
+    filteredData = state.data
+    .filter(d => d.Classification === state.selectedClassification)
+
+    state.selectedChart = "Ratio";
 
     d3.select('.y-axis-top')
     // .transition()
@@ -336,7 +364,23 @@ svg
       .duration(1000)
       .call(yAxis);
 
-
+      mouseHover = function(event, d) {
+        tooltip
+        .style('opacity', "1")
+        .html(`<h3>${d.Year}</h3><b><span style="color:#fc8d62;">Male:</span></b> ${d.male}<br>
+        <b><span style="color:#fc8d62;">Male ratio:</span></b> ${d3.format(".0%")(d.m_ratio)}<br>
+        <b> <span style="color:#66c2a5;">Female</span></b>: ${d.female}<br>
+        <b> <span style="color:#66c2a5;">Female ratio</span></b>: ${d3.format(".0%")(d.f_ratio)}`)
+        .style("left", event.x+30+"px")
+        .style("top", event.y+30+"px")
+        // .style("left", ((event.x > width/2 + 50) ? event.x + 70 + "px" :event.x + -140 + "px")) 
+        // .style("top", event.y + 20 + "px")
+        .transition()
+        svg.selectAll(`rect[year="${d.Year}"]`)
+        .transition()
+        .attr("fill-opacity", "1")
+        .attr("fill", d=>  "#aaa" );
+      }
 
           // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
           mouseleave = function(event,d) {
@@ -361,17 +405,18 @@ svg
     .data(filteredData, d => d.Year + d.female + d.f_ratio + d.Classification)
     .join(
       // + HANDLE ENTER SELECTION
-      enter => enter,
-      // + HANDLE UPDATE SELECTION
-      update => update
-      .call(sel => sel
-        .transition()
-        .duration(1000)
-      // .delay(1500)
+      enter => enter
+      .append("rect")
       .attr("class", "female-ratio")
       .attr("year", d => d.Year)
       .attr("x", d=>  x(d.Year))
       .attr("y", d=> y(d.f_ratio))
+      .call(sel => sel
+        .transition()
+        .duration(1000)
+      // .delay(1500)
+      .attr("x", d=>  x(d.Year) - works(d.female))
+      .attr("y", d=> y(d.f_ratio) - works(d.female))
       .attr("rx", 0)
       .attr("ry", 0)
       .attr("fill", colorScale(2) )
@@ -380,13 +425,30 @@ svg
       .attr("ry", d=> works(d.female)* 2)
       .attr("height", d=> works(d.female)*2)
         .attr("width", d=> works(d.female)*2)),
+      // + HANDLE UPDATE SELECTION
+      update => update
+      .call(sel => sel
+        // .attr("rx", 0)
+        // .attr("ry", 0)
+        .transition()
+        .duration(1000)
+        .attr("x", d=>  x(d.Year) - works(d.female))
+        .attr("y", d=> y(d.f_ratio) - works(d.female))
+        .attr("fill", colorScale(2) )
+        .attr('fill-opacity', "0.5")
+        .attr("rx", d=> works(d.female)* 2)
+        .attr("ry", d=> works(d.female)* 2)
+        .attr("height", d=> works(d.female)*2)
+        .attr("width", d=> works(d.female)*2)),
       // + HANDLE EXIT SELECTION
       exit => exit
       .call(sel => sel
+        .attr("rx", d=> works(d.female)* 2)
+        .attr("ry", d=> works(d.female)* 2)
         .transition()
         .duration(1000)
-        .attr("rx", 0)
-        .attr("ry", 0)
+        .attr("height", 0)
+        .attr("width", 0)
         .remove()),
     )
     .on("mouseleave", mouseleave )
@@ -400,9 +462,24 @@ svg
       // + HANDLE ENTER SELECTION
       enter => enter
       .append("rect")
-      
-          .call(sel => sel
-               ),
+      .attr("class", "male-ratio")
+      .attr("year", d => d.Year)
+      .attr("x", d=>  x(d.Year) - works(d.male))
+      .attr("y", d=> y(d.m_ratio) - works(d.male))
+      .call(sel => sel
+        .transition()
+        .duration(1000)
+      // .delay(1500)
+      .attr("x", d=>  x(d.Year) - works(d.male))
+      .attr("y", d=> y(d.m_ratio) - works(d.male))
+      .attr("rx", 0)
+      .attr("ry", 0)
+      .attr("fill", colorScale(1) )
+      .attr('fill-opacity', "0.5")
+      .attr("rx", d=> works(d.male)* 2)
+      .attr("ry", d=> works(d.male)* 2)
+      .attr("height", d=> works(d.male)*2)
+        .attr("width", d=> works(d.male)*2)),
       // + HANDLE UPDATE SELECTION
       update => update
       .call(sel => sel
@@ -412,8 +489,8 @@ svg
         .attr("class", "male-ratio")
         .delay((d,i) => {return i*delaySet})
       .attr("year", d => d.Year)
-      .attr("x", d=>  x(d.Year))
-      .attr("y", d=> y(d.m_ratio))
+      .attr("x", d=>  x(d.Year) - works(d.male))
+      .attr("y", d=> y(d.m_ratio) - works(d.male))
       .attr("fill", colorScale(1) )
       .attr('fill-opacity', "0.5")
         .attr("rx", d=> works(d.male)*2)
@@ -423,11 +500,13 @@ svg
 
       // + HANDLE EXIT SELECTION
       exit => exit
-      .call(sel => sel
-        .transition()
-        .duration(1000)
-        .attr("rx", 0)
-        .attr("ry", 0)
+        .call(sel => sel
+            .attr("rx", d=> works(d.male)* 2)
+            .attr("ry", d=> works(d.male)* 2)
+            .transition()
+            .duration(1000)
+            .attr("height", 0)
+            .attr("width", 0)
         .remove()),
     )
     .on("mouseleave", mouseleave )
@@ -436,7 +515,10 @@ svg
    
 
 function bars() {
-    mouseHover = "";
+    filteredData = state.data
+    .filter(d => d.Classification === state.selectedClassification)
+    console.log(filteredData, (width / filteredData.length - 3))
+    state.selectedChart = "Bars";
 
     d3.select('#init-y-axis')
     // .transition()
@@ -561,19 +643,29 @@ function bars() {
     enter => enter
     .append("rect")
     .attr("class", "male-ratio")
-    .attr("id", d => `${d.Year}-${d.female}-${d.f_ratio}-${d.Classification}`)
+    .attr("id", d => `${d.Year}-${d.male}-${d.m_ratio}-${d.Classification}`)
     .attr("year", d => d.Year)
-    .call(sel => sel),
+    .attr("x", d=>  x(d.Year))
+    .attr("y", d => yM(0))
+    .call(sel => sel
+        .transition()
+        .duration(1000)
+        .attr("fill", d3.schemeSet2[1])
+        .attr("x", d=>  x(d.Year))
+        .attr("width", 8)
+        .attr('fill-opacity', "1")
+        // .delay((d,i) => {return i*delaySet})
+        .attr("y", d => yM(d.male))
+        .attr("height", d => yM(0) - yM(d.male))
+        .attr("rx", 0)
+        .attr("ry", 0)),
     update => update
     .call(sel => sel
         .transition()
         .duration(1000)
         .attr("fill", d3.schemeSet2[1])
         .attr("x", d=>  x(d.Year))
-        // .attr("y", (height / 2))
-        // .attr("rx", 0)
-        // .attr("ry", 0)
-        .attr("width", (width / filteredData.length) -3)
+        .attr("width", 8)
         .attr('fill-opacity', "1")
         .delay((d,i) => {return i*delaySet})
         .attr("y", d => yM(d.male))
@@ -587,7 +679,7 @@ function bars() {
         .transition()
         .duration(1000)
         .attr("width", 0)
-        .attr("height", 0)
+        // .attr("height", d=> yM(0))
     //   .delay(150)
     //   .attr("x", (width / 2)-25)
         // .attr("height", 0)
@@ -605,23 +697,27 @@ svg // female
     .attr("class", "female-ratio")
     .attr("id", d => `${d.Year}-${d.female}-${d.f_ratio}-${d.Classification}`)
     .attr("year", d => d.Year)
-    .attr("fill", d3.schemeSet2[0])
-    .attr("x", d => y(d.Year))
-    .attr("y", (height / 2)+25)
-    // .attr("height", d=>  yM(d.female))
-    .call(sel => sel
+    .attr("x", d=>  x(d.Year))
+    .attr("y", d => yF(0))
+    .call(sel => sel        
         .transition()
         .duration(1000)
-        // .attr("width", (width / filteredData.length) -3)
-        // .attr("width", width / filteredData.length)
-        
-        .attr("width", width / filteredData.length - 3)
+        .attr("fill", d3.schemeSet2[0])
+        .attr("x", d=>  x(d.Year))
+        .attr("width", 8)
         .attr('fill-opacity', "1")
-        .attr("y", (height / 2)+25)
-        .attr("height", d => yF(d.female))
-        // .attr("rx", 0)
-        // .attr("ry", 0)
-        ),
+        // .delay((d,i) => {return i*delaySet})
+        .attr("y", d => yF(0))
+        .attr("height", d => yF(d.female)-(height/2))
+        .attr("rx", 0)
+        .attr("ry", 0)),
+    // .call(sel => sel
+        // .transition()
+        // .duration(1000)        
+        // .attr("width", 8)
+        // .attr('fill-opacity', "1")
+        // .attr("y", (height / 2)+25)
+        // ),
     update => update
         .call(sel => sel
             .transition()
@@ -629,7 +725,7 @@ svg // female
             .delay((d,i) => {return i*delaySet})
             .attr("y", d => yF(0))
             .attr("height", d => yF(d.female)-(height/2))
-            .attr("width", width / filteredData.length - 3)
+            .attr("width", 8)
             .attr('fill-opacity', "1")
             .attr("rx", 0)
             .attr("ry", 0)
