@@ -85,6 +85,7 @@ Promise.all([
     const xAxis1 =  d3.axisTop(x).tickFormat(d3.format("Y"))
     const yAxis =  d3.axisLeft(y).tickFormat(d3.format(".0%"))
     
+    
 
     const selectElementClassification = d3.select("#dropdown-classification")
 
@@ -99,7 +100,6 @@ Promise.all([
   .on("change", event => {
     
     state.selectedClassification = event.target.value;
-    console.log(state.selectedClassification, state.selectedChart);
     state.selectedChart === "Ratio" ? circles() : bars();
     
   })
@@ -116,17 +116,18 @@ Promise.all([
     svg.append("g")
     .attr("transform", `translate(0,${10})`)
     .style("font-size", "1.6em")
-    .call(xAxis1);
+    .call(xAxis1.tickSizeOuter(0));
     svg.append("g")
     .attr("transform", `translate(0,${height-10})`)
     .style("font-size", "1.6em")
-    .call(xAxis2);
+    .call(xAxis2.tickSizeOuter(0));
     svg.append("g")
     .attr("transform", `translate(${margin.left},${0})`)
     .style("font-size", "1.6em")
     .attr("id", "init-y-axis")
     .call(yAxis);
 
+    
     colorScale = d3.scaleOrdinal(d3.schemeSet2);
     
     tooltip = d3.select("#container")
@@ -143,9 +144,7 @@ Promise.all([
 
     d3.selectAll("[name=greaterToggle]").on("change", function() {
         state.selectedToggle = this.checked;
-        // color = this.checked ? d3.schemeSet2[0] : d3.schemeSet2[0];
        toggle(state.selectedToggle)
-       console.log(state.selectedToggle)
         }); 
       
         toggle = function(toggleState) {
@@ -224,7 +223,7 @@ svg
 
     works = d3.scaleSqrt()
       .domain([0, d3.max(filteredData, d => Math.max(d.female,d.male))])
-       .range([1,45]);
+       .range([3,50]);
 
 
        mouseHover = function(event, d) {
@@ -573,7 +572,6 @@ svg
 function bars() {
     filteredData = state.data
     .filter(d => d.Classification === state.selectedClassification)
-    console.log(filteredData, (width / filteredData.length - 3))
     state.selectedChart = "Bars";
 
     d3.select('#init-y-axis')
